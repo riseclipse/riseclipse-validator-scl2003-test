@@ -9,7 +9,7 @@ PASSED_TESTS=""
 FAILED_TESTS_COUNT=0
 FAILED_TESTS=""
 
-echo -n "Running tests for the $1 validator..."
+echo -n "Running tests for the $1 validator... "
 
 for filepath in input/$1/*; do
     OUTPUT=$(java -jar $JAR_PATH $filepath)
