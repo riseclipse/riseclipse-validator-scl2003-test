@@ -13,7 +13,7 @@ case $# in
 esac
 
 function run_tests() {
-    source ./setup_vars.sh $1
+    source ./setup_vars.sh
 
     CREATED_SNAPSHOTS_COUNT=0
     CREATED_SNAPSHOTS=""
@@ -22,16 +22,21 @@ function run_tests() {
     FAILED_TESTS_COUNT=0
     FAILED_TESTS=""
 
-    echo -n "Running tests for the $1 validator... "
+    echo -n "Running tests for the $1 format... "
 
-    for filepath in input/$1/*; do
+    if [ -z $(ls -A "$1/input") ]; then
+        echo "No test found."
+        return 0
+    fi
+
+    for filepath in $1/input/*; do
         OUTPUT=$(java -jar $JAR_PATH $filepath)
-        SNAPSHOT_FILEPATH=snapshots/$1/$(basename $filepath)
+        SNAPSHOT_FILEPATH=$1/snapshots/$(basename $filepath)
         SNAPSHOT_FILEPATH=${SNAPSHOT_FILEPATH%\.xml}.out
 
         if [ ! -f $SNAPSHOT_FILEPATH ]; then
-            if [ ! -d snapshots/$1 ]; then
-                mkdir -p snapshots/$1
+            if [ ! -d $1/snapshots ]; then
+                mkdir -p $1/snapshots
             fi
             printf "$OUTPUT" > $SNAPSHOT_FILEPATH
             CREATED_SNAPSHOTS_COUNT=$((CREATED_SNAPSHOTS_COUNT + 1))
@@ -72,6 +77,7 @@ function run_tests() {
 
 for format in $formats; do
     run_tests $format
+    printf "\n"
 done
 
 exit 0

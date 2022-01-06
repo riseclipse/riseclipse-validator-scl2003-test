@@ -13,16 +13,21 @@ case $# in
 esac
 
 function update_snapshots() {
-    source ./setup_vars.sh $1
+    source ./setup_vars.sh
 
     UPDATED_SNAPSHOTS_COUNT=0
     UPDATED_SNAPSHOTS=""
 
-    echo -n "Updating snapshots for the $1 validator... "
+    echo -n "Updating snapshots for the $1 format... "
 
-    for filepath in input/$1/*; do
+    if [ -z $(ls -A "$1/input") ]; then
+        echo "No test found."
+        return 0
+    fi
+
+    for filepath in $1/input/*; do
         OUTPUT=$(java -jar $JAR_PATH $filepath)
-        SNAPSHOT_FILEPATH=snapshots/$1/$(basename $filepath)
+        SNAPSHOT_FILEPATH=$1/snapshots/$(basename $filepath)
         SNAPSHOT_FILEPATH=${SNAPSHOT_FILEPATH%\.xml}.out
         printf "$OUTPUT" > $SNAPSHOT_FILEPATH
         UPDATED_SNAPSHOTS_COUNT=$((UPDATED_SNAPSHOTS_COUNT + 1))
@@ -36,6 +41,7 @@ function update_snapshots() {
 
 for format in $formats; do
     update_snapshots $format
+    printf "\n"
 done
 
 exit 0
