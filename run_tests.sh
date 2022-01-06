@@ -73,11 +73,12 @@ function run_tests() {
         printf "$FAILED_TESTS" 1>&2
         exit 1
     fi
+
+    printf "\n"
 }
 
 for format in $formats; do
     run_tests $format
-    printf "\n"
 done
 
 exit 0

@@ -36,12 +36,11 @@ function update_snapshots() {
 
     echo "Done !"
     printf "\n=== Updated snapshots: $UPDATED_SNAPSHOTS_COUNT ===\n"
-    printf "$UPDATED_SNAPSHOTS"
+    printf "$UPDATED_SNAPSHOTS\n"
 }
 
 for format in $formats; do
     update_snapshots $format
-    printf "\n"
 done
 
 exit 0
