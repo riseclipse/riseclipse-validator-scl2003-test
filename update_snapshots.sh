@@ -28,7 +28,7 @@ function update_snapshots() {
     for filepath in $1/input/*; do
         OUTPUT=$(java -jar $JAR_PATH $filepath)
         SNAPSHOT_FILEPATH=$1/snapshots/$(basename $filepath)
-        SNAPSHOT_FILEPATH=${SNAPSHOT_FILEPATH%\.xml}.out
+        SNAPSHOT_FILEPATH=${SNAPSHOT_FILEPATH%.*}.out
         printf "$OUTPUT" > $SNAPSHOT_FILEPATH
         UPDATED_SNAPSHOTS_COUNT=$((UPDATED_SNAPSHOTS_COUNT + 1))
         UPDATED_SNAPSHOTS="$UPDATED_SNAPSHOTS> $SNAPSHOT_FILEPATH\n"

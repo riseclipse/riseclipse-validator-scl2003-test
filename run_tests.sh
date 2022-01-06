@@ -32,7 +32,7 @@ function run_tests() {
     for filepath in $1/input/*; do
         OUTPUT=$(java -jar $JAR_PATH $filepath)
         SNAPSHOT_FILEPATH=$1/snapshots/$(basename $filepath)
-        SNAPSHOT_FILEPATH=${SNAPSHOT_FILEPATH%\.xml}.out
+        SNAPSHOT_FILEPATH=${SNAPSHOT_FILEPATH%.*}.out
 
         if [ ! -f $SNAPSHOT_FILEPATH ]; then
             if [ ! -d $1/snapshots ]; then
