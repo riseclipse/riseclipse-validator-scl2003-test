@@ -4,12 +4,16 @@ case $# in
 0)
     formats='scl ocl nsd';;
 1)
-    formats="$1";;
+    if [ "$1" = "--help" ]; then
+        printf "Usage:\n"
+        printf "$0 \t\t\t\tRuns tests for all formats\n"
+        printf "$0 [scl|ocl|nsd]... \tRuns tests for the given formats\n"
+        exit 0
+    else
+        formats="$1"
+    fi;;
 *)
-    printf "Usage:\n"
-    printf "$0 \t\t\tRuns all tests\n"
-    printf "$0 [scl|ocl|nsd] \tRuns tests for the given format\n"
-    exit 1;;
+    formats="$@";;
 esac
 
 function run_tests() {
@@ -22,10 +26,10 @@ function run_tests() {
     FAILED_TESTS_COUNT=0
     FAILED_TESTS=""
 
-    echo -n "Running tests for the $1 format... "
+    echo -n "Running tests for the '$1' format... "
 
-    if [ -z $(ls -A "$1/input") ]; then
-        echo "No test found."
+    if [ ! -d "$1/input" ] || [ -z $(ls -A "$1/input") ]; then
+        printf "No test found.\n\n"
         return 0
     fi
 

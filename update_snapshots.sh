@@ -4,12 +4,16 @@ case $# in
 0)
     formats='scl ocl nsd';;
 1)
-    formats="$1";;
+    if [ "$1" = "--help" ]; then
+        printf "Usage:\n"
+        printf "$0 \t\t\t\tUpdates snapshots for all formats\n"
+        printf "$0 [scl|ocl|nsd]... \t\tUpdates snapshots for the given formats\n"
+        exit 0
+    else
+        formats="$1"
+    fi;;
 *)
-    printf "Usage:\n"
-    printf "$0 \t\t\tUpdates all snapshots\n"
-    printf "$0 [scl|ocl|nsd] \tUpdates snapshots for the given format\n"
-    exit 1;;
+    formats="$@";;
 esac
 
 function update_snapshots() {
@@ -18,10 +22,10 @@ function update_snapshots() {
     UPDATED_SNAPSHOTS_COUNT=0
     UPDATED_SNAPSHOTS=""
 
-    echo -n "Updating snapshots for the $1 format... "
+    echo -n "Updating snapshots for the '$1' format... "
 
-    if [ -z $(ls -A "$1/input") ]; then
-        echo "No test found."
+    if [ ! -d "$1/input" ] || [ -z $(ls -A "$1/input") ]; then
+        printf "No test found.\n\n"
         return 0
     fi
 
