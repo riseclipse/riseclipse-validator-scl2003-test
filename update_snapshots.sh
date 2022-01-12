@@ -1,24 +1,13 @@
 #!/bin/bash
 
-case $# in
-0)
-    formats='scl ocl nsd';;
-1)
-    if [ "$1" = "--help" ]; then
-        printf "Usage:\n"
-        printf "$0 \t\t\t\tUpdates snapshots for all formats\n"
-        printf "$0 [scl|ocl|nsd]... \t\tUpdates snapshots for the given formats\n"
-        exit 0
-    else
-        formats="$1"
-    fi;;
-*)
-    formats="$@";;
-esac
+function usage() {
+    printf "Usage: $0 [-h] [-j <PATH_TO_JAR>] [scl|ocl|nsd]...\n\n"
+    printf "Examples:\n"
+    printf "$0 \t\t\tUpdate snapshots for all formats\n"
+    printf "$0 scl ocl \t\tUpdate snapshots for the SCL and OCL formats\n"
+}
 
 function update_snapshots() {
-    source ./setup_vars.sh
-
     UPDATED_SNAPSHOTS_COUNT=0
     UPDATED_SNAPSHOTS=""
 
@@ -42,6 +31,9 @@ function update_snapshots() {
     printf "\n=== Updated snapshots: $UPDATED_SNAPSHOTS_COUNT ===\n"
     printf "$UPDATED_SNAPSHOTS\n"
 }
+
+# Setting up required variables
+. ./setup_vars.sh $*
 
 for format in $formats; do
     update_snapshots $format

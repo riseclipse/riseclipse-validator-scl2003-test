@@ -1,24 +1,13 @@
 #!/bin/bash
 
-case $# in
-0)
-    formats='scl ocl nsd';;
-1)
-    if [ "$1" = "--help" ]; then
-        printf "Usage:\n"
-        printf "$0 \t\t\t\tRuns tests for all formats\n"
-        printf "$0 [scl|ocl|nsd]... \tRuns tests for the given formats\n"
-        exit 0
-    else
-        formats="$1"
-    fi;;
-*)
-    formats="$@";;
-esac
+function usage() {
+    printf "Usage: $0 [-h] [-j <PATH_TO_JAR>] [scl|ocl|nsd]...\n\n"
+    printf "Examples:\n"
+    printf "$0 \t\t\tRun tests for all formats\n"
+    printf "$0 scl ocl \t\tRun tests for the SCL and OCL formats\n"
+}
 
 function run_tests() {
-    source ./setup_vars.sh
-
     CREATED_SNAPSHOTS_COUNT=0
     CREATED_SNAPSHOTS=""
     PASSED_TESTS_COUNT=0
@@ -35,6 +24,7 @@ function run_tests() {
 
     for filepath in $1/input/*; do
         OUTPUT=$(java -jar $JAR_PATH $filepath)
+
         SNAPSHOT_FILEPATH=$1/snapshots/$(basename $filepath)
         SNAPSHOT_FILEPATH=${SNAPSHOT_FILEPATH%.*}.out
 
@@ -80,6 +70,9 @@ function run_tests() {
 
     printf "\n"
 }
+
+# Setting up required variables
+. ./setup_vars.sh $*
 
 for format in $formats; do
     run_tests $format
