@@ -1,13 +1,6 @@
 #!/bin/bash
 
-function usage() {
-    printf "Usage: $0 [-h] [-j <PATH_TO_JAR>] [scl|ocl|nsd]...\n\n"
-    printf "Examples:\n"
-    printf "$0 \t\t\tRun tests for all formats\n"
-    printf "$0 scl ocl \t\tRun tests for the SCL and OCL formats\n"
-}
-
-function run_tests() {
+run_tests() {
     CREATED_SNAPSHOTS_COUNT=0
     CREATED_SNAPSHOTS=""
     PASSED_TESTS_COUNT=0
@@ -15,22 +8,17 @@ function run_tests() {
     FAILED_TESTS_COUNT=0
     FAILED_TESTS=""
 
-    echo -n "Running tests for the '$1' format... "
+    echo -n "Running tests... "
 
-    if [ ! -d "$1/input" ] || [ -z $(ls -A "$1/input") ]; then
-        printf "No test found.\n\n"
-        return 0
-    fi
+    for filepath in $SCL_PATHS; do
+        OUTPUT=$(java -jar $JAR_PATH $filepath $OCL_PATHS $NSD_PATHS)
 
-    for filepath in $1/input/*; do
-        OUTPUT=$(java -jar $JAR_PATH $filepath)
-
-        SNAPSHOT_FILEPATH=$1/snapshots/$(basename $filepath)
+        SNAPSHOT_FILEPATH=scl/snapshots/$(basename $filepath)
         SNAPSHOT_FILEPATH=${SNAPSHOT_FILEPATH%.*}.out
 
         if [ ! -f $SNAPSHOT_FILEPATH ]; then
-            if [ ! -d $1/snapshots ]; then
-                mkdir -p $1/snapshots
+            if [ ! -d scl/snapshots ]; then
+                mkdir -p scl/snapshots
             fi
             printf "$OUTPUT" > $SNAPSHOT_FILEPATH
             CREATED_SNAPSHOTS_COUNT=$((CREATED_SNAPSHOTS_COUNT + 1))
@@ -72,10 +60,8 @@ function run_tests() {
 }
 
 # Setting up required variables
-. ./setup_vars.sh $*
+. ./setup_vars.sh
 
-for format in $formats; do
-    run_tests $format
-done
+run_tests
 
 exit 0
