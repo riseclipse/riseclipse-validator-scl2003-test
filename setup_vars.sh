@@ -1,16 +1,17 @@
+OCL_DEFAULT_DIR=ocl
+NSD_DEFAULT_DIR=nsd
+
 usage() {
     printf "Usage: $0 [options...]\n\n"
     printf "Options:\n"
     printf -- "-h --help \t\t\tShow this help message\n"
     printf -- "-j --jar-path <JAR_PATH> \tPath to the SCL validator jar\n"
-    printf -- "-o --ocl \t\t\tUse OCL validation\n"
-    printf -- "--ocl-root-dir <DIR> \t\tPath to the OCL files root directory (default: 'ocl')\n"
-    printf -- "--ocl-dirs <DIRS> \t\tPaths to the desired OCL directories, relative to the OCL root directory.\n"
-    printf "\t\t\t\tPaths must be separated by columns (:), the whole root directory will be used by default\n"
-    printf -- "-n --nsd \t\t\tUse NSD validation\n"
-    printf -- "--nsd-root-dir <DIR> \t\tPath to the NSD files root directory (default: 'nsd')\n"
-    printf -- "--nsd-dirs <DIRS> \t\tPaths to the desired NSD directories, relative to the NSD root directory.\n"
-    printf "\t\t\t\tPaths must be separated by columns (:), the whole root directory will be used by default\n"
+    printf -- "-o[PATHS] --ocl[=PATHS] \tUse OCL validation. The optional PATHS argument is a column (:) separated list of paths to include OCL files from.\n"
+    printf                      "\t\t\t\tThose can either be directories which will be searched recursively, or full paths to OCL files.\n"
+    printf                      "\t\t\t\tPATHS defaults to '$OCL_DEFAULT_DIR' if none is provided.\n"
+    printf -- "-n[PATHS] --nsd[=PATHS] \tUse NSD validation. The optional PATHS argument is a column (:) separated list of paths to include NSD files from.\n"
+    printf                      "\t\t\t\tThose can either be directories which will be searched recursively, or full paths to NSD files.\n"
+    printf                      "\t\t\t\tPATHS defaults to '$NSD_DEFAULT_DIR' if none is provided.\n"
 }
 
 arg_required() {
@@ -20,11 +21,7 @@ arg_required() {
     fi
 }
 
-# Default OCL and NSD root directories
-OCL_ROOT_DIR="ocl"
-NSD_ROOT_DIR="nsd"
-
-OPTS=$(getopt -o hj:on -l help,jar-path,ocl,ocl-root-dir:,ocl-dirs:,nsd,nsd-root-dir:,nsd-dirs: -- "$@")
+OPTS=$(getopt -o hj:o::n:: -l help,jar-path,ocl::,,nsd:: -- "$@")
 
 eval set -- "$OPTS"
 
@@ -38,24 +35,16 @@ while true; do
             JAR_PATH="$2"
             shift;;
         -o | --ocl)
-            OCL=1;;
-        --ocl-root-dir)
-            arg_required "$1" "$2"
-            OCL_ROOT_DIR="$2"
-            shift;;
-        --ocl-dirs)
-            arg_required "$1" "$2"
-            OCL_DIRS="$(echo -n "$2" |tr : ' ')"
+            OCL=1
+            if [ -n "$2" ]; then
+                OCL_DIRS=$(echo -n "$2" |tr : ' ')
+            fi
             shift;;
         -n | --nsd)
-            NSD=1;;
-        --nsd-root-dir)
-            arg_required "$1" "$2"
-            NSD_ROOT_DIR="$2"
-            shift;;
-        --nsd-dirs)
-            arg_required "$1" "$2"
-            NSD_DIRS="$(echo -n "$2" |tr : ' ')"
+            NSD=1
+            if [ -n "$2" ]; then
+                NSD_DIRS=$(echo -n "$2" |tr : ' ')
+            fi
             shift;;
         --) 
             shift
@@ -98,10 +87,10 @@ if [ -z "$OCL" ]; then
 elif [ -n "$OCL_DIRS" ]; then
     OCL_PATHS=""
     for directory in $OCL_DIRS; do
-        OCL_PATHS="$OCL_PATHS $(find $OCL_ROOT_DIR/$directory -path *.ocl |tr '\n' ' ')"
+        OCL_PATHS="$OCL_PATHS $(find $directory -path *.ocl |tr '\n' ' ')"
     done
 else
-    OCL_PATHS=$(find $OCL_ROOT_DIR -path *.ocl |tr '\n' ' ')
+    OCL_PATHS=$(find $OCL_DEFAULT_DIR -path *.ocl |tr '\n' ' ')
 fi
 
 # Retrieve NSD files paths
@@ -111,8 +100,8 @@ if [ -z "$NSD" ]; then
 elif [ -n "$NSD_DIRS" ]; then
     NSD_PATHS=""
     for directory in $NSD_DIRS; do
-        NSD_PATHS="$NSD_PATHS $(find $NSD_ROOT_DIR/$directory -path *.nsd |tr '\n' ' ')"
+        NSD_PATHS="$NSD_PATHS $(find $directory -path *.nsd |tr '\n' ' ')"
     done
 else
-    NSD_PATHS=$(find $NSD_ROOT_DIR -path *.nsd |tr '\n' ' ')
+    NSD_PATHS=$(find $NSD_DEFAULT_DIR -path *.nsd |tr '\n' ' ')
 fi
