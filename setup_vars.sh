@@ -2,16 +2,18 @@ OCL_DEFAULT_DIR=ocl
 NSD_DEFAULT_DIR=nsd
 
 usage() {
-    printf "Usage: $0 [options...]\n\n"
+    printf "Usage: $0 [OPTION...] [SCL_FILE...]\n\n"
+    printf "If you want to validate specific SCL files, provide their paths separated by spaces after the options.\n"
+    printf "By default, all files under the 'scl/input' directory will be validated.\n\n"
     printf "Options:\n"
-    printf -- "-h --help \t\t\tShow this help message\n"
+    printf -- "-h --help              \t\tShow this help message\n"
     printf -- "-j --jar-path <JAR_PATH> \tPath to the SCL validator jar\n"
-    printf -- "-o[PATHS] --ocl[=PATHS] \tUse OCL validation. The optional PATHS argument is a column (:) separated list of paths to include OCL files from.\n"
-    printf                      "\t\t\t\tThose can either be directories which will be searched recursively, or full paths to OCL files.\n"
-    printf                      "\t\t\t\tPATHS defaults to '$OCL_DEFAULT_DIR' if none is provided.\n"
-    printf -- "-n[PATHS] --nsd[=PATHS] \tUse NSD validation. The optional PATHS argument is a column (:) separated list of paths to include NSD files from.\n"
-    printf                      "\t\t\t\tThose can either be directories which will be searched recursively, or full paths to NSD files.\n"
-    printf                      "\t\t\t\tPATHS defaults to '$NSD_DEFAULT_DIR' if none is provided.\n"
+    printf -- "-o[PATHS] --ocl[=PATHS]  \tUse OCL validation. The optional PATHS argument is a column (:) separated list of paths to include OCL files from.\n"
+    printf                       "\t\t\t\tThose can either be directories which will be searched recursively, or full paths to OCL files.\n"
+    printf                       "\t\t\t\tPATHS defaults to '$OCL_DEFAULT_DIR' if none is provided.\n"
+    printf -- "-n[PATHS] --nsd[=PATHS]  \tUse NSD validation. The optional PATHS argument is a column (:) separated list of paths to include NSD files from.\n"
+    printf                       "\t\t\t\tThose can either be directories which will be searched recursively, or full paths to NSD files.\n"
+    printf                       "\t\t\t\tPATHS defaults to '$NSD_DEFAULT_DIR' if none is provided.\n"
 }
 
 arg_required() {
