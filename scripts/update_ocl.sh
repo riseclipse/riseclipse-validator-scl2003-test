@@ -1,0 +1,70 @@
+#!/bin/bash
+
+SCRIPTS_DIR=$(dirname "${BASH_SOURCE[0]}")
+. "$SCRIPTS_DIR/utils.sh"
+
+usage() {
+    printf "Usage: $0 [OPTION...]\n\n"
+    printf "Updates OCL validation files from the given branch by downloading them to the desired target directory.\n"
+    printf "Files will only be overwritten if they were updated since the last download.\n\n"
+    printf "Options:\n"
+    printf -- "-h --help        \tShow this help message\n"
+    printf -- "-b --branch      \tThe branch of the OCL git repository to pull validation files from.\n"
+    printf                 "\t\t\tDefault is 'master'.\n"
+    printf -- "-o --out-dir     \tThe directory in which you want to store OCL files.\n"
+    printf                 "\t\t\tDefault is '<ROOT>/ocl' where <ROOT> is the root of the testing repository.\n"
+}
+
+OPTS=$(getopt -o hb:o: -l help,branch:,out-dir: -- "$@")
+
+eval set -- "$OPTS"
+
+while true; do
+    case "$1" in
+        -h | --help)
+            usage
+            exit 0;;
+        -b | --branch)
+            arg_required "$1" "$2"
+            OCL_BRANCH="$2"
+            shift;;
+        -o | --out-dir)
+            arg_required "$1" "$2"
+            OCL_OUTPUT_DIR="$2"
+            shift;;
+        --)
+            shift
+            break;;
+        *)
+            echo "Unrecognized option: $1" 1>&2
+            usage
+            exit 1;;
+    esac
+    shift
+done
+
+if [ -z "$OCL_BRANCH" ]; then
+    OCL_BRANCH='master'
+fi
+
+if [ -z "$OCL_OUTPUT_DIR" ]; then
+    OCL_OUTPUT_DIR="$ROOT_DIR/ocl"
+fi
+
+mkdir -p $OCL_OUTPUT_DIR
+
+OCL_REPOSITORY='https://github.com/riseclipse/riseclipse-ocl-constraints-scl2003.git'
+TMP_DIR="$ROOT_DIR/tmp"
+
+echo -n "Fetching OCL files from distant '$OCL_BRANCH' branch... "
+git clone --quiet --depth 1 --branch $OCL_BRANCH $OCL_REPOSITORY $TMP_DIR
+echo "Done."
+
+OCL_FILES="$TMP_DIR/fr.centralesupelec.edf.riseclipse.iec61850.scl.ocl/*"
+
+echo -n "Moving OCL files to '$OCL_OUTPUT_DIR'... "
+mv --update $OCL_FILES $OCL_OUTPUT_DIR
+rm -rf $TMP_DIR
+echo "Done."
+
+exit 0
