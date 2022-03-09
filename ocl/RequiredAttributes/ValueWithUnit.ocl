@@ -1,0 +1,59 @@
+/*
+*************************************************************************
+**  Copyright (c) 2016-2021 CentraleSupélec & EDF.
+**  All rights reserved. This program and the accompanying materials
+**  are made available under the terms of the Eclipse Public License v2.0
+**  which accompanies this distribution, and is available at
+**  https://www.eclipse.org/legal/epl-v20.html
+** 
+**  This file is part of the RiseClipse tool
+**  
+**  Contributors:
+**      Computer Science Department, CentraleSupélec
+**      EDF R&D
+**  Contacts:
+**      dominique.marcadet@centralesupelec.fr
+**      aurelie.dehouck-neveu@edf.fr
+**  Web site:
+**      https://riseclipse.github.io/
+*************************************************************************
+*/
+
+import scl: 'http://www.iec.ch/61850/2003/SCL'
+import '../Helpers/BaseSimpleTypes.ocl'
+
+package scl
+
+context ValueWithUnit
+-- extends NONE
+
+    -- The value shall be present
+    inv ValueWithUnit_value_required
+        ( 'ERROR:[RequiredAttributes] value shall be present in ValueWithUnit (line ' + self.lineNumber.toString() + ')' )
+    :
+        self.value <> null
+
+    -- The unit shall be present
+    inv ValueWithUnit_unit_required
+        ( 'ERROR:[RequiredAttributes] unit shall be present in ValueWithUnit (line ' + self.lineNumber.toString() + ')' )
+    :
+        self.unit <> null
+
+    -- The unit shall be valid
+    inv ValueWithUnit_unit_valid
+        ( 'ERROR:[RequiredAttributes] unit shall be present in ValueWithUnit (line ' + self.lineNumber.toString() + '). '
+          + 'Current value is ' + self.unit.toString()
+        )
+    :
+        -- It is a token in XSD
+        -- There is a SIUnitEnum but it is commented out
+        -- TODO: why ?
+        self.unit <> null implies self.validSclAnyName(unit)
+        -- There is no Enum with SIUnits, only an example in the 61850-6, also there are no constraints in the xsd indicating it has an enum
+        
+
+    -- multiplier is a real enum
+
+
+endpackage
+

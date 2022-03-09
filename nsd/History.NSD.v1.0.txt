@@ -1,0 +1,144 @@
+===============================================================
+REVISION HISTORY FOR THE MACHINE-PROCESSABLE FORMAT FOR TOOLS
+NSD.XSD (NameSpace Definition format).
+FROM October 1st, 2015.
+===============================================================
+
+CF 2015-10-12: starting schema version is 0.3.
+
+
+CF 2015-10-13: implementation of decisions taken during WG10 in Brussels.
+ - Usage of element names according to Part 7-2:
+     + Enumeration: OK
+     + Literal: OK
+     + DO: change to DataObject
+     + LN: change to LNClass
+     + AbstractLN: change to AbstractLNClass
+     + CDC: OK
+     + SDO: change to SubDataObject
+     + FCDA: change to DataAttribute
+     + ConstructedDA: change to ConstructedAttribute
+     + DA: change to SubDataAttribute
+   Changed the name of corresponding XSD types accordingly.
+ - Renamed "tPresenceCondition" to "tPresenceConditionName".
+ - New code components:
+	 + List of FCs: addition of sub-element FunctionalConstraints to tNS.
+	 + List of presence conditions: addition of sub-element PresenceConditions to tNS.
+
+	 
+CF 2015-10-14:
+ - Added uniqueness identity constraints for FunctionalContraints, PresenceConditions, Enumeration (string and int) values, SubDataAttributes, child name in a CDC, DataObjects (in AbstractLNClass and LNClass).
+ - Commented all identity constraints (for automatic documentation generation).
+ - tLNClass: added optional Boolean attribute "canHaveLOG", default false.
+	  Note: with Ed. 2, a logical node may have 0..n LOG sub-elements if so specified. In the substation automation domain (7-4), this is allowed only for LLN0.
+ - Added tServiceParameter to model control value service parameters.
+ - tCDC: added optional sub-element ServiceParameter, of type tServiceParameter.
+ - Implementation of a service namespace, with a root element "ServiceNS". See the types tServiceNS, tServiceCDC, and tServiceDataAttribute.
+
+	 
+CF 2015-10-20:
+ - tNS and tServiceNS: can have 0..1 (instead of 0..n) FunctionalConstraints.
+ - tNS and tServiceNS: can have 0..1 (instead of 0..n) PresenceConditions.
+
+	 
+CF 2015-10-14:
+ - tBasedOn: set default value of revision to "A", and release to "1".
+
+	 
+CF 2015-10-29: (during telco)
+ - agArray: added optional attribute "sizeAttribute" that shall hold the name of the sibling data attribute giving the size of the array. This attribute may not be used together with "maxIndexAttribute".
+ - realization of abstract types in a service namespace shall be done using element "ServiceTypeRealization".
+
+	 
+CF 2015-10-30:
+ - Implemented TISSUE 948 (final proposal): tLiteralName is now limited to the Basic-Latin and Latin-1Supplement characters. Max length is 127 characters.
+ - Implemented type parameterization on tServiceConstructedAttribute and tServiceDataAttribute
+
+	 
+CF 2016-02-18: implementation of decisions from the TF meeting in Cathedral City
+ - Set schema version to 0.5.
+ - Creation of "agUML", including attributes umlVersion (from tNS) and umlDate (new). Both are optional but the latter shall be provided if the former is.
+ - tNS: addition of agUML (and removal of umlVersion).
+ - tServiceNS: addition of agUML (and removal of umlVersion).
+ - Renamed BasedOn to Changes (and tBasedOn to tChanges).
+ - Renamed Needs to DependsOn.
+ - tServiceAttribute now extends tDocumentedClass (in order to have a descID).
+ - added tDataSetMemberOf, tDataSetMemberOf, and tApplicableServices.
+ - added sub-element ApplicableServices to tFunctionalConstraint describing the applicable services per FC.
+ - added sub-element Changes to tServiceNS.
+ - tNSDoc: added attribute group agUML.
+ 
+ 
+ CF 2016-03-02: (schema version 0.6)
+  - Correction: tApplicableServices has a 1..1 sequence.
+  - Addition of identity constraint "uniqueDataSetMemberOf" to ensure that the DataSetMemberOf element cannot be defined twice for a same CB (for a specific FC).
+  - Addition of the services GetEditSGValues and SetEditSGValues to tApplicableServices.
+ 
+ 
+ CF 2016-03-11: (schema version 0.7) Implementation of decisions from TF Telco of 2016-03-10.
+ - XML namespace changed to 2016 (instead of 2015).
+ - Added "agNSdesc" (description of a namespace, typically the application domain).
+ - Added "agNSdesc" to tNS and tServiceNS.
+ - Added attribute "changesID" to "tChanges".
+ - Added tBasicTypeName, tBasicType, and tBasicTypes
+ - Added 0..1 BasicTypes sub-element to tNS.
+ 
+ 
+ CF 2016-04-29: (schema version 0.8) Implementation of decisions from TF Telco of 2016-04-28.
+ - the information on which service NS can be applied to which NS is moved into another file type.
+	+ tServiceNS: removal of AppliesTo.
+	+ new root element "ApplicableServiceNS" and corresponding type "tApplicableServiceNS".
+	+ new file type shall have "AppNS" as extension.
+ - Resolution of the issue for 8-1 SNSD: same namespace is used for Ed. 1 and 2, however for SBO different visible string lengths shall be used: 65 for Ed. 1, 129 for Ed. 2.
+	+ introduction of "abstract" type DAReference, that shall be mapped by the tool to the right concrete type, i.e., VisString65 for Ed. 1, and VisString129 for Ed. 2 and later.
+ - Modification of applicable services per FC:
+	+ Defined enumeration ServiceNameKind, listing all ACSI services.
+	+ Added 0..n sub-element Service with a name of type ServiceNameKind.
+	+ Added identity constraint "uniqueService" to prevent the duplicate definition of an allowed ACSI service for a given FC.
+
+ CB 2016-11-23: (schema version 0.9) Implementation of Code Component copyright
+ - update root annotation to use Code component format
+ - include IECCopyright.XSD and update root elements to extends "tCopyrighted" and allow definition of a copyright for all of them
+
+ CB 2017-01-12: 
+ - fix Cancel.ctlNum type from 'a' to 'INT8U'
+
+ CB 2017-01-25: 
+ - integrate copyright notice
+ - create version 1.0
+
+  
+OPEN ISSUES:
+------------
+ - Issues to solve with UML TF:
+	+ Extensibility of enumerations (wait for UML TF decision).
+	+ Changes missing in UML and in the format for web-based publishing.
+	+ Integration of the release attribute for versioning.
+	+ Whether an LN allows to have a child LOG or not (for LNClass.canHaveLOG): this information is missing in UML.
+		=> raised in UML TF, to be addressed by 7-2 editors.
+	+ Presence conditions' definition specific for 8-1, aligned in naming with the current ones. Part 8-1 editors need to be involved.
+ - Still to do:
+	+ More identity constraints?
+	
+Closed open issues:
+-------------------
+ - Extensions of LNs in a TR/apparatus NS: usage of Ext suffix in UML. Hard-coded in XSLT. No issue for now.
+ - Decide for the CDC.variant: use only the FC (e.g., "SP") or CDC name with FC (e.g., "SPG_SP"); UML has "SPG_SP".
+		=> go for "SP"
+ - File extensions, including language indication for NSDoc (language indication according to ISO 639-1, e.g., "en", "en-US"...).
+ - Add reference to NSD file from NSDoc file? (However not the other way round.)
+	=> not needed, we have everything in the files (and their name).
+ - Modelling of the array size. UML: maxIndex="maxPts-1": do we need 2 attributes? The maxIndexAttribute as now, and a Boolean flag indicating whether the max index shall be -1 or as maxIndexAttribute’s value is.
+	=> use maxIndexAttribute XOR sizeAttribute.
+ - NSD files should use SCL basic types (and not 7-2 ones). Part 6 maps LCBLogEntryOptions to OptFlds, as as for RCBReportOptions, however they are not the same. NSD introduces LogOptFlds, to be added to Part 6 via NC comment to the amendment 2.1. 
+ 
+ 
+Possible future extensions:
+---------------------------
+ - Include allowed valKinds for each FC.
+ - Modeling of control blocks, as well as their mapping in service namespaces.
+
+
+===============================================================
+EOF
+===============================================================

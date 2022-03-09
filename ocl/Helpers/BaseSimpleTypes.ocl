@@ -1,0 +1,259 @@
+/*
+*************************************************************************
+**  Copyright (c) 2016-2021 CentraleSupélec & EDF.
+**  All rights reserved. This program and the accompanying materials
+**  are made available under the terms of the Eclipse Public License v2.0
+**  which accompanies this distribution, and is available at
+**  https://www.eclipse.org/legal/epl-v20.html
+** 
+**  This file is part of the RiseClipse tool
+**  
+**  Contributors:
+**      Computer Science Department, CentraleSupélec
+**      EDF R&D
+**  Contacts:
+**      dominique.marcadet@centralesupelec.fr
+**      aurelie.dehouck-neveu@edf.fr
+**  Web site:
+**      https://riseclipse.github.io/
+*************************************************************************
+*/
+
+-----------------------------------------------------------
+
+import scl: 'http://www.iec.ch/61850/2003/SCL'
+
+package scl
+
+context SclObject
+
+def: validSclRef( s : String ) : Boolean =
+    s.matches( '.+/.+/.+/.+(/.+)*' )
+
+def: validSclAnyName( s : String ) : Boolean =
+    true
+ 
+def: validSclName( s : String ) : Boolean =
+    if( self.validSclAnyName( s )) then
+        s.size() >= 1
+    else
+        false
+    endif
+
+def: validSclID( s : String ) : Boolean =
+    if( self.validSclAnyName( s )) then
+        s.tokenize(' ')->size() = 1
+        and s = s.trim()
+        and s.size() >= 1 and s.size() <= 255
+    else
+        false
+    endif
+
+def: validSclAcsiName( s : String ) : Boolean =
+    if( self.validSclName( s )) then
+        s.matches( '[A-Za-z][0-9A-Za-z_]*' )
+    else
+        false
+    endif
+
+def: validSclRestrName1stU( s : String ) : Boolean =
+    if( self.validSclName( s )) then
+        s.matches( '[A-Z][0-9A-Za-z]*' )
+    else
+        false
+    endif
+
+def: validSclRestrName1stL( s : String ) : Boolean =
+    if( self.validSclName( s )) then
+        s.matches( '[a-z][0-9A-Za-z]*' )
+    else
+        false
+    endif
+
+def: validSclPAddr( s : String ) : Boolean =
+    s.size() >= 1
+
+def: validSclVersion( s : String ) : Boolean =
+    if( self.validSclName( s )) then
+        s.matches( '2[0-2][0-9]{2}' )
+    else
+        false
+    endif
+ 
+def: validSclRevision( s : String ) : Boolean =
+    if( self.validSclName( s )) then
+        s.matches( '[A-Z]' )
+    else
+        false
+    endif
+
+-----------------------------------------------------------
+
+def: validSclRelease( i : Integer ) : Boolean =
+    i >= 0 and i <= 255
+
+-----------------------------------------------------------
+
+def: validSclEmpty( s : String ) : Boolean =
+    s.size() <= 0
+
+-- def: validSclIEDName( s : String ) : Boolean =
+--     if( self.validSclVisibleBasicLatin( s )) then
+--         s.size() >= 1 and s.size() <= 129
+--     else
+--         false
+--     endif
+-- 
+-- the constraint validSclIEDName was changed to follow the rules in the XSD
+  def: validSclIEDName( s : String ) : Boolean =
+    if( self.validSclVisibleBasicLatin( s )) then
+           s.matches( '[A-Za-z][0-9A-Za-z_]{0,2}' )
+        or s.matches( '[A-Za-z][0-9A-Za-z_]{4,63}' )
+        or s.matches( '[A-MO-Za-z][0-9A-Za-z_]{3}' )
+        or s.matches( 'N[0-9A-Za-np-z_][0-9A-Za-z_]{2}' )
+        or s.matches( 'No[0-9A-Za-mo-z_][0-9A-Za-z_]' )
+        or s.matches( 'Non[0-9A-Za-df-z_]' ) 
+        and s.size() <= 64
+    else
+        false
+    endif
+
+def: validSclIEDNameIsNone( s : String ) : Boolean =
+    if( self.validSclVisibleBasicLatin( s )) then
+        s.matches( 'None' )
+    else
+        false
+    endif
+
+def: validSclIEDNameOrNone( s : String ) : Boolean =
+    if( validSclIEDName( s )) then
+        true
+    else
+        validSclIEDNameIsNone( s )
+    endif
+     
+def: validSclOnlyRelativeIEDName( s : String ) : Boolean =
+    -- XSD: <xs:pattern value="&#x0040;"/>
+    s.matches( '\u0040' )
+
+def: validSclIEDNameOrRelative( s : String ) : Boolean =
+    if( self.validSclIEDName( s )) then
+        true
+    else
+        self.validSclOnlyRelativeIEDName( s )
+    endif
+
+def: validSclLDName( s : String ) : Boolean =
+    s.matches( '[A-Za-z][0-9A-Za-z_]{0,63}' )
+ 
+def: validSclLDInst( s : String ) : Boolean =
+    s.matches( '[A-Za-z0-9][0-9A-Za-z_]{0,63}' )
+ 
+def: validSclLDInstOrEmpty( s : String ) : Boolean =
+    if( self.validSclEmpty( s )) then
+        true
+    else
+        self.validSclLDInst( s )
+    endif
+
+def: validSclPrefix( s : String ) : Boolean =
+    if( s = '' ) then
+        true
+    else
+        s.matches( '[A-Za-z][0-9A-Za-z_]{0,10}' )
+    endif
+ 
+def: validSclLNInst( s : String ) : Boolean =
+    s.matches( '[0-9]{1,7}' )
+ 
+def: validSclLNInstOrEmpty( s : String ) : Boolean =
+    if( self.validSclEmpty( s )) then
+        true
+    else
+        self.validSclLNInst( s )
+    endif
+
+def: validSclDataName( s : String ) : Boolean =
+    if( self.validSclRestrName1stU( s )) then
+        s.size() <= 12
+    else
+        false
+    endif
+ 
+def: validSclDataSetName( s : String ) : Boolean =
+    if( self.validSclAcsiName( s )) then
+        s.size() <= 32
+    else
+        false
+    endif
+ 
+def: validSclCBName( s : String ) : Boolean =
+    if( self.validSclAcsiName( s )) then
+        s.size() <= 32
+    else
+        false
+    endif
+ 
+def: validSclLogName( s : String ) : Boolean =
+    if( self.validSclAcsiName( s )) then
+        s.size() <= 32
+    else
+        false
+    endif
+ 
+def: validSclAccessPointName( s : String ) : Boolean =
+    s.matches( '[A-Za-z0-9][0-9A-Za-z_]*' ) and s.size() <= 32
+
+def: validSclAssociationID( s : String ) : Boolean =
+    s.matches( '[0-9A-Za-z]+' )
+
+def: validSclVisibleBasicLatin( s : String ) : Boolean =
+    -- XSD: <xs:pattern value="[&#x0020;-&#x007E;]*"/>
+    -- using \u0020 because \x20 is not recognized
+    s.matches( '[\u0020-\u007E]*' )
+
+def: validSclMessageID( s : String ) : Boolean =
+    if( self.validSclVisibleBasicLatin( s )) then
+        s.size() >= 1 and s.size() <= 129
+    else
+        false
+    endif
+
+def: validSclFullAttributeName( s : String ) : Boolean =
+    -- XSD: <xs:pattern value="[a-zA-Z][a-zA-Z0-9]*(\([0-9]+\))?(\.[a-zA-Z][a-zA-Z0-9]*(\([0-9]+\))?)*"/>
+    s.matches( '[a-zA-Z][a-zA-Z0-9]*(\u0028[0-9]+\u0029)?(\u002E[a-zA-Z][a-zA-Z0-9]*(\u0028[0-9]+\u0029)?)*' )
+
+def: validSclFullDOName( s : String ) : Boolean =
+    -- XSD: <xs:pattern value="[A-Z][0-9A-Za-z]{0,11}(\.[a-z][0-9A-Za-z]*(\([0-9]+\))?)?"/>
+    s.matches( '[A-Z][0-9A-Za-z]{0,11}(\u002E[a-z][0-9A-Za-z]*(\u0028[0-9]+\u0029)?)?' )
+ 
+def: validSclSubDataName( s : String ) : Boolean =
+    if( self.validSclRestrName1stL( s )) then
+        s.size() >= 1 and s.size() <= 60
+    else
+        false
+    endif
+
+def: validSclNamespaceName( s : String ) : Boolean =
+    -- XSD: <xs:pattern value="[&#x0020;-&#x007E;]+:20\d\d[A-Z]?"/>
+    -- \d not recognized ?
+    s.matches( '[\u0020-\u007E]+:20[0-9][0-9][A-Z]?' )
+
+def: validSclLineType( s : String ) : Boolean =
+    s.size() >= 1
+
+def: validSclProcessType( s : String ) : Boolean =
+    s.size() >= 1
+
+def: validSclProcessName( s : String ) : Boolean =
+    s.matches( '.+(/.+)*' )
+
+def: validSclEnumStringValue( s : String ) : Boolean =
+    if( s.matches( '[\u0020-\u00FF]*' )) then
+        s.size() <= 127
+    else
+        false
+    endif
+ 
+endpackage
+

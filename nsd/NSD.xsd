@@ -1,0 +1,1557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.iec.ch/61850/2016/NSD" xmlns:nsd="http://www.iec.ch/61850/2016/NSD" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.iec.ch/61850/2016/NSD" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2017A">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+			COPYRIGHT (c) IEC, 2017. This version of this XSD is part of IEC 61850-7-7:2017; see the IEC 61850-7-7:2017 for full legal notices. In case of any differences between the here-below code and the IEC published content, the IEC published content remains the reference to be considered. The whole document has to be taken into account to have a full description of this code component.
+		See www.iec.ch/CCv1 for copyright details.
+		</xs:documentation>
+		<xs:documentation xml:lang="en">
+			NameSpace Definition file syntax (NSD.xsd) for the machine processable format for tools.
+			2017-08-28 (version 2017A).
+			
+			Describes in a machine-processable way selected components from the IEC 61850 data model.
+			Four elements are defined:
+			- NS: shall hold the namespace definition, all its documentation strings to be resolved in the sibling file (i.e., with same name but file extension "NSDOC") with NSDoc as root. Shall have as file extension "NSD".
+			- ServiceNS: shall hold a service namespace definition, all its documentation strings to be resolved in the sibling file (i.e., with same name but file extension "NSDOC") with NSDoc as root. Shall have as file extension "SNSD".
+			- NSDoc: shall hold all documentation strings defined in the sibling NS file. Shall have as file extension "NSDOC".
+			- ApplicableServiceNS: shall hold definition of link between NS and applicable ServiceNS. Shall have as file extension "AppNS".
+		</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="IECCopyright.xsd"/>
+	<!-- =========================================================================== -->
+	<xs:simpleType name="tDocID">
+		<xs:annotation>
+			<xs:documentation>Identifier referring to a documentation string, available in a sibling file.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tIec61850Name">
+		<xs:restriction base="xs:Name">
+			<xs:minLength value="1"/>
+			<xs:pattern value="[\p{IsBasicLatin}\p{IsLatin-1Supplement}]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tEmptyString">
+		<xs:annotation>
+			<xs:documentation>The empty string.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString">
+			<xs:maxLength value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tIec61850NameString">
+		<xs:restriction base="xs:normalizedString">
+			<xs:pattern value="[\p{IsBasicLatin}\p{IsLatin-1Supplement}]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tUMLVersion">
+		<xs:annotation>
+			<xs:documentation>Version of the UML model used to generate this NSD.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:Name">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tNSIdentifier">
+		<xs:annotation>
+			<xs:documentation>Identifier of a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString">
+			<xs:pattern value="\p{IsBasicLatin}+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tNSVersion">
+		<xs:annotation>
+			<xs:documentation>Version of a namespace (a year between 2002 and 2099).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedShort">
+			<xs:minInclusive value="2002"/>
+			<xs:maxInclusive value="2099"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tNSRevision">
+		<xs:annotation>
+			<xs:documentation>Revision of a namespace (a basic latin upper-case letter), distinguishing between revisions of a same namespace version.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[A-Z]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tNSRelease">
+		<xs:annotation>
+			<xs:documentation>Release of a namespace (number between 1 and 255), distinguishing between releases of a same namespace version and revision.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedByte">
+			<xs:minExclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tPubStage">
+		<xs:annotation>
+			<xs:documentation>Publication stage of the namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="WD">
+				<xs:annotation>
+					<xs:documentation>Working Draft</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CD">
+				<xs:annotation>
+					<xs:documentation>Committee Draft</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CDV">
+				<xs:annotation>
+					<xs:documentation>Committee Draft for Vote</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DTS">
+				<xs:annotation>
+					<xs:documentation>Draft Technical Specification</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DTR">
+				<xs:annotation>
+					<xs:documentation>Draft Technical Report</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FDIS">
+				<xs:annotation>
+					<xs:documentation>Final Draft International Standard</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TS">
+				<xs:annotation>
+					<xs:documentation>Technical Specification</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TR">
+				<xs:annotation>
+					<xs:documentation>Technical Report</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IS">
+				<xs:annotation>
+					<xs:documentation>International Standard</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tDefinedAttributeTypeKind">
+		<xs:annotation>
+			<xs:documentation>Type kind of a data attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="BASIC">
+				<xs:annotation>
+					<xs:documentation>The type of the data attribute is a basic one (e.g., BOOLEAN, INT32), including CODED ENUMs (e.g., Dbpos, Tcmd) and PACKED LISTs (Timestamp, Quality, OptFlds).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ENUMERATED">
+				<xs:annotation>
+					<xs:documentation>The type of the data attribute is an enumeration.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CONSTRUCTED">
+				<xs:annotation>
+					<xs:documentation>The type of the data attribute is a constructed (composed) one.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tUndefinedAttributeTypeKind">
+		<xs:annotation>
+			<xs:documentation>Type kind for a data attribute which has its type "undefined".</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="undefined">
+				<xs:annotation>
+					<xs:documentation>Indicates that the type is not defined, and shall be done so where it is used.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tAttributeTypeKind">
+		<xs:annotation>
+			<xs:documentation>Type kind of a data attribute, which may be "undefined".</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="tDefinedAttributeTypeKind tUndefinedAttributeTypeKind"/>
+	</xs:simpleType>
+	<xs:simpleType name="tFCAbbreviation">
+		<xs:annotation>
+			<xs:documentation>Functional Constraint abbreviation.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:minLength value="1"/>
+			<xs:pattern value="[\p{IsBasicLatin}]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tLiteralName">
+		<xs:annotation>
+			<xs:documentation>Name of an enumeration literal. Maybe the empty string.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString">
+			<xs:maxLength value="127"/>
+			<xs:pattern value="[\p{IsBasicLatin}\p{IsLatin-1Supplement}]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tAttributeName">
+		<xs:annotation>
+			<xs:documentation>Name of a Data Attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tIec61850Name"/>
+	</xs:simpleType>
+	<xs:simpleType name="tSubDataObjectName">
+		<xs:annotation>
+			<xs:documentation>Name of a Sub-Data Object.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tIec61850Name"/>
+	</xs:simpleType>
+	<xs:simpleType name="tCDCName">
+		<xs:annotation>
+			<xs:documentation>Name of a Common Data Class (CDC).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tIec61850Name">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tDataObjectName">
+		<xs:annotation>
+			<xs:documentation>Name of a Data Object.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tIec61850Name">
+			<xs:maxLength value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tLNClassName">
+		<xs:annotation>
+			<xs:documentation>Name of a (non-abstract) logical node class.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:Name">
+			<xs:pattern value="LLN0"/>
+			<xs:pattern value="[A-Z]{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tAbstractLNClassName">
+		<xs:annotation>
+			<xs:documentation>Name of an abstract logical node.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tIec61850Name"/>
+	</xs:simpleType>
+	<xs:simpleType name="tPresenceConditionName">
+		<xs:annotation>
+			<xs:documentation>Name of a presence condition of a child.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString"/>
+	</xs:simpleType>
+	<xs:simpleType name="tPresenceConditionArgument">
+		<xs:annotation>
+			<xs:documentation>Argument to (some) presence conditions.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString"/>
+	</xs:simpleType>
+	<xs:simpleType name="tAbbreviationName">
+		<xs:annotation>
+			<xs:documentation>Name of an abbreviation.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString"/>
+	</xs:simpleType>
+	<xs:simpleType name="tCBKind">
+		<xs:annotation>
+			<xs:documentation>Enumeration of control block kinds.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString">
+			<xs:enumeration value="RCB"/>
+			<xs:enumeration value="LCB"/>
+			<xs:enumeration value="GoCB"/>
+			<xs:enumeration value="SVCB"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tBasicTypeName">
+		<xs:annotation>
+			<xs:documentation>Type describing the name of a basic type of a data attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tACSIServicesKind">
+		<xs:annotation>
+			<xs:documentation>Enumeration holding the names of all ACSI services, as defined in Part 7-2. Is conceptually identical to the 7-2 ServiceNameKind enumeration (except the Unknown).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Associate"/>
+			<xs:enumeration value="Abort"/>
+			<xs:enumeration value="Release"/>
+			<xs:enumeration value="GetServerDirectory"/>
+			<xs:enumeration value="GetLogicalDeviceDirectory"/>
+			<xs:enumeration value="GetAllDataValues"/>
+			<xs:enumeration value="GetDataValues"/>
+			<xs:enumeration value="SetDataValues"/>
+			<xs:enumeration value="GetDataDirectory"/>
+			<xs:enumeration value="GetDataDefinition"/>
+			<xs:enumeration value="GetDataSetValues"/>
+			<xs:enumeration value="SetDataSetValues"/>
+			<xs:enumeration value="CreateDataSet"/>
+			<xs:enumeration value="DeleteDataSet"/>
+			<xs:enumeration value="GetDataSetDirectory"/>
+			<xs:enumeration value="SelectActiveSG"/>
+			<xs:enumeration value="SelectEditSG"/>
+			<xs:enumeration value="SetEditSGValue"/>
+			<xs:enumeration value="ConfirmEditSGValues"/>
+			<xs:enumeration value="GetEditSGValue"/>
+			<xs:enumeration value="GetSGCBValues"/>
+			<xs:enumeration value="Report"/>
+			<xs:enumeration value="GetBRCBValues"/>
+			<xs:enumeration value="SetBRCBValues"/>
+			<xs:enumeration value="GetURCBValues"/>
+			<xs:enumeration value="SetURCBValues"/>
+			<xs:enumeration value="GetLCBValues"/>
+			<xs:enumeration value="SetLCBValues"/>
+			<xs:enumeration value="QueryLogByTime"/>
+			<xs:enumeration value="QueryLogAfter"/>
+			<xs:enumeration value="GetLogStatusValues"/>
+			<xs:enumeration value="SendGOOSEMessage"/>
+			<xs:enumeration value="GetGoCBValues"/>
+			<xs:enumeration value="SetGoCBValues"/>
+			<xs:enumeration value="GetGoReference"/>
+			<xs:enumeration value="GetGOOSEElementNumber"/>
+			<xs:enumeration value="SendMSVMessage"/>
+			<xs:enumeration value="GetMSVCBValues"/>
+			<xs:enumeration value="SetMSVCBValues"/>
+			<xs:enumeration value="SendUSVMessage"/>
+			<xs:enumeration value="GetUSVCBValues"/>
+			<xs:enumeration value="SetUSVCBValues"/>
+			<xs:enumeration value="Select"/>
+			<xs:enumeration value="SelectWithValue"/>
+			<xs:enumeration value="Cancel"/>
+			<xs:enumeration value="Operate"/>
+			<xs:enumeration value="CommandTermination"/>
+			<xs:enumeration value="TimeActivatedOperate"/>
+			<xs:enumeration value="GetFile"/>
+			<xs:enumeration value="SetFile"/>
+			<xs:enumeration value="DeleteFile"/>
+			<xs:enumeration value="GetFileAttributeValues"/>
+			<xs:enumeration value="TimeSynchronization"/>
+			<xs:enumeration value="InternalChange"/>
+			<xs:enumeration value="GetLogicalNodeDirectory"/>
+			<xs:enumeration value="GetMsvReference"/>
+			<xs:enumeration value="GetMSVElementNumber"/>
+			<xs:enumeration value="GetUsvReference"/>
+			<xs:enumeration value="GetUSVElementNumber"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- =========================================================================== -->
+	<xs:attributeGroup name="agNSIdentification">
+		<xs:annotation>
+			<xs:documentation>Full identification of a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="id" type="tNSIdentifier" use="required">
+			<xs:annotation>
+				<xs:documentation>Identifier of the namespace, e.g., "IEC 61850-7-4", "(Tr)IEC 61850-90-4".</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="version" type="tNSVersion" use="required">
+			<xs:annotation>
+				<xs:documentation>Version (year) of the namespace.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="revision" type="tNSRevision" use="optional" default="A">
+			<xs:annotation>
+				<xs:documentation>Revision of the namespace version, by default 'A'.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="release" type="tNSRelease" use="optional" default="1">
+			<xs:annotation>
+				<xs:documentation>Release of the namespace version and revision, by default 1.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="publicationStage" type="tPubStage" use="optional" default="IS">
+			<xs:annotation>
+				<xs:documentation>The publication stage of the namespace, by default IS.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="agPresenceCondition">
+		<xs:annotation>
+			<xs:documentation>Presence condition definition.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="presCond" type="tPresenceConditionName" use="optional" default="M">
+			<xs:annotation>
+				<xs:documentation>Presence condition of the element. By default 'M' (mandatory).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="presCondArgs" type="tPresenceConditionArgument" use="optional">
+			<xs:annotation>
+				<xs:documentation>Optional argument to the presence condition. Can be a sibling element or a group number.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="presCondArgsID" type="tDocID" use="optional">
+			<xs:annotation>
+				<xs:documentation>Optional argument to the presence condition: a documentation identifier referring to some free text.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="agPresenceConditionDerivedStatistics">
+		<xs:annotation>
+			<xs:documentation>Presence condition definition for the derived statistics context.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="dsPresCond" type="tPresenceConditionName" use="optional" default="M">
+			<xs:annotation>
+				<xs:documentation>Presence condition of the element. By default 'M' (mandatory).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="dsPresCondArgs" type="tPresenceConditionArgument" use="optional">
+			<xs:annotation>
+				<xs:documentation>Optional argument to the presence condition. Can be a sibling element or a group number.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="dsPresCondArgsID" type="tDocID" use="optional">
+			<xs:annotation>
+				<xs:documentation>Optional argument to the presence condition: a documentation identifier referring to some free text.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="agArray">
+		<xs:annotation>
+			<xs:documentation>Array definition.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="isArray" type="xs:boolean" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation>Flag indicating whether the element is an array. By default, not an array.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="minIndex" type="xs:unsignedInt" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>Lowest index of the array.
+Is relevant information if and only if isArray=true.
+By default 0.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="sizeAttribute" type="tAttributeName" use="optional">
+			<xs:annotation>
+				<xs:documentation>Sibling data attribute name holding the size of the array.
+Is relevant information if and only if isArray=true. One and only one of sizeAttribute and maxIndexAttribute shall be used.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="maxIndexAttribute" type="tAttributeName" use="optional">
+			<xs:annotation>
+				<xs:documentation>Name of the Attribute holding the maximal index of the array.
+Is relevant information if and only if isArray=true. One and only one of sizeAttribute and maxIndexAttribute shall be used.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="agTrgOp">
+		<xs:annotation>
+			<xs:documentation>Triggering conditions definition.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="dchg" type="xs:boolean" use="optional" default="false"/>
+		<xs:attribute name="qchg" type="xs:boolean" use="optional" default="false"/>
+		<xs:attribute name="dupd" type="xs:boolean" use="optional" default="false"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="agAttributeType">
+		<xs:annotation>
+			<xs:documentation>Definition of the type of a data attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="typeKind" type="tAttributeTypeKind" use="optional" default="BASIC">
+			<xs:annotation>
+				<xs:documentation>The kind of the data attribute's type. By  default, "BASIC".</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="type" type="tIec61850Name" use="optional">
+			<xs:annotation>
+				<xs:documentation>The type of the data attribute, e.g., the name of a basic type like INT32, the name of an enumeration of a constructed data attribute - depending on the sibling typeKind. If not provided, shall be defined by the "parent" element.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="agAttributeTypeAndValues">
+		<xs:annotation>
+			<xs:documentation>Definition of the type of a data attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:attributeGroup ref="agAttributeType"/>
+		<xs:attribute name="defaultValue" type="xs:normalizedString" use="optional">
+			<xs:annotation>
+				<xs:documentation>Default value for the data attribute. May only be defined for data attributes with typeKind="BASIC" or "ENUMERATED".</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="minValue" type="xs:decimal" use="optional">
+			<xs:annotation>
+				<xs:documentation>Allowed minimal value (inclusive) for the data attribute. If not provided the minimal value according to the type is allowed. May only be defined for data attributes with typeKind="BASIC" and corresponding to a number.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="maxValue" type="xs:decimal" use="optional">
+			<xs:annotation>
+				<xs:documentation>Allowed maximal value (inclusive) for the data attribute. If not provided the minimal value according to the type is allowed. May only be defined for data attributes with typeKind="BASIC" and corresponding to a number.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="agUnderlyingType">
+		<xs:attribute name="underlyingTypeKind" type="tDefinedAttributeTypeKind" use="optional">
+			<xs:annotation>
+				<xs:documentation>The typeKind to be used for all "undefined" attributes of the CDC of this DataObject.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="underlyingType" type="tIec61850Name" use="optional">
+			<xs:annotation>
+				<xs:documentation>Type to be used for type-open CDCs, e.g., enumeration to be used for enumeration-based CDCs (e.g., ENS, ENC, ENG).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="agUML">
+		<xs:attribute name="umlVersion" type="tUMLVersion" use="optional">
+			<xs:annotation>
+				<xs:documentation>Version of UML from which this namespace definition file was generated from.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="umlDate" type="xs:dateTime" use="optional">
+			<xs:annotation>
+				<xs:documentation>UTC Date and time of the UML version from which this namespace definition file was generated. Shall be provided if umlVersion is present. Format: YYYY-MM-DDThh:mm:ssZ, where: YYYY indicates the year, MM indicates the month, DD indicates the day, T indicates the start of the required time section, hh indicates the hour, mm indicates the minute, ss indicates the second, and Z the UTC time stamp indication.
+</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="agNSdesc">
+		<xs:annotation>
+			<xs:documentation>Description of a namespace (typically the application domain)</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="descID" type="tDocID" use="optional">
+			<xs:annotation>
+				<xs:documentation>Documentation identifier referring to a full description of this NS.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<!-- =========================================================================== -->
+	<xs:complexType name="tDocumentedClass">
+		<xs:annotation>
+			<xs:documentation>A class with description.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="descID" type="tDocID" use="optional">
+			<xs:annotation>
+				<xs:documentation>Documentation identifier referring to a full description of this object.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="informative" type="xs:boolean" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation>Flag indicating whether this object is classified as informative or not. By default not informative.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="deprecated" type="xs:boolean" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation>Flag indicating whether this object is classified as deprecated or not. By default not deprecated.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tTitledClass">
+		<xs:annotation>
+			<xs:documentation>A tDocumentedClass with title.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tDocumentedClass">
+				<xs:attribute name="titleID" type="tDocID" use="required">
+					<xs:annotation>
+						<xs:documentation>Documentation identifier referring to the title (alias) of this object.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tChanges">
+		<xs:annotation>
+			<xs:documentation>Namespace history, e.g., which version it is based on and which TISSUES it includes since then.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="version" type="tNSVersion" use="required">
+			<xs:annotation>
+				<xs:documentation>Version of the namespace this NSD file is based on.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="revision" type="tNSRevision" use="optional" default="A">
+			<xs:annotation>
+				<xs:documentation>Revision of the namespace this NSD file is based on, per default 'A'.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="release" type="tNSRelease" use="optional" default="1">
+			<xs:annotation>
+				<xs:documentation>Release of the namespace this NSD file is based on, per default 1.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="date" type="xs:date" use="optional">
+			<xs:annotation>
+				<xs:documentation>The date since the Tissues have been logged.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="tissues" use="optional">
+			<xs:annotation>
+				<xs:documentation>Comma-separated list of TISSUE numbers that were implemented since the previous namespace version/revision/release.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:normalizedString">
+					<xs:minLength value="1"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="changesID" type="tDocID" use="optional">
+			<xs:annotation>
+				<xs:documentation>Documentation identifier referring to a textual description of changes (not TISSUE list). Shall only be used for private namespaces.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tBasicType">
+		<xs:annotation>
+			<xs:documentation>Definition of a basic type for a data attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name" type="tBasicTypeName" use="required">
+			<xs:annotation>
+				<xs:documentation>Name of the basic type (e.g., INT32), as used in SCL.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="descID" type="tDocID" use="optional">
+			<xs:annotation>
+				<xs:documentation>Documentation identifier referring to a full description of this object.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tBasicTypes">
+		<xs:annotation>
+			<xs:documentation>List of basic types for data attributes introduced by a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="BasicType" type="tBasicType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tDataSetMemberOf">
+		<xs:annotation>
+			<xs:documentation>Indication of a given object can be a data set member of a given control block.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="cb" type="tCBKind" use="required">
+			<xs:annotation>
+				<xs:documentation>Control block kind.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tApplicableServices">
+		<xs:annotation>
+			<xs:documentation>Applicable services for a given functional constraint.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Service" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>If present, indicates that the service with given name applies to attributes with the specified FC (otherwise it may not be used).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="name" type="tACSIServicesKind" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DataSetMemberOf" type="tDataSetMemberOf" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>An attribute of this FC can be member of a dataset for a control block type indicated by attribute cb if and only if this element is present.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tFunctionalConstraint">
+		<xs:annotation>
+			<xs:documentation>Definition of a Functional Constraint.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ApplicableServices" type="tApplicableServices" minOccurs="0">
+				<xs:unique name="uniqueDataSetMemberOf">
+					<xs:selector xpath="nsd:DataSetMemberOf"/>
+					<xs:field xpath="@cb"/>
+				</xs:unique>
+				<xs:unique name="uniqueService">
+					<xs:selector xpath="nsd:Service"/>
+					<xs:field xpath="@name"/>
+				</xs:unique>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="abbreviation" type="tFCAbbreviation" use="required">
+			<xs:annotation>
+				<xs:documentation>Abbreviated name of the FC (e.g., ST, MX, etc.).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="titleID" type="tDocID" use="optional">
+			<xs:annotation>
+				<xs:documentation>Documentation identifier referring to the title (alias) of this object.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="descID" type="tDocID" use="optional">
+			<xs:annotation>
+				<xs:documentation>Documentation identifier referring to a full description of this object.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tFunctionalConstraints">
+		<xs:annotation>
+			<xs:documentation>List of Functional Constraints introduced by a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="FunctionalConstraint" type="tFunctionalConstraint" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Definition of a Functional Constraint.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tPresenceCondition">
+		<xs:annotation>
+			<xs:documentation>Definition of a presence condition.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name" type="tPresenceConditionName" use="required">
+			<xs:annotation>
+				<xs:documentation>Name of the presence condition, as used in IEC 61850 data models.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="argument" type="tPresenceConditionArgument" use="optional">
+			<xs:annotation>
+				<xs:documentation>The presence condition argument, if any.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="titleID" type="tDocID" use="optional">
+			<xs:annotation>
+				<xs:documentation>Documentation identifier referring to the title (alias) of this object.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="descID" type="tDocID" use="optional">
+			<xs:annotation>
+				<xs:documentation>Documentation identifier referring to a full description of this object.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tPresenceConditions">
+		<xs:annotation>
+			<xs:documentation>List of presence conditions which are introduced by a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PresenceCondition" type="tPresenceCondition" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Definition of a presence condition.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tAbbreviation">
+		<xs:annotation>
+			<xs:documentation>Definition of an abbreviation.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name" type="tAbbreviationName" use="required">
+			<xs:annotation>
+				<xs:documentation>Name of the abbreviation, as used in IEC 61850 data models.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="descID" type="tDocID" use="optional">
+			<xs:annotation>
+				<xs:documentation>Documentation identifier referring to a full description of this abbreviation.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tAbbreviations">
+		<xs:annotation>
+			<xs:documentation>List of abbreviationss which are introduced by a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Abbreviation" type="tAbbreviation" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Definition of an abbreviation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tLiteral">
+		<xs:annotation>
+			<xs:documentation>Definition of a literal of an enumeration.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tDocumentedClass">
+				<xs:attribute name="name" type="tLiteralName" use="required">
+					<xs:annotation>
+						<xs:documentation>Name of the enumeration's literal.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="literalVal" type="xs:int" use="required">
+					<xs:annotation>
+						<xs:documentation>Enumeration literal integer value.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tEnumeration">
+		<xs:annotation>
+			<xs:documentation>Definition of an enumeration.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tTitledClass">
+				<xs:sequence>
+					<xs:element name="Literal" type="tLiteral" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="name" type="tIec61850Name" use="required">
+					<xs:annotation>
+						<xs:documentation>Name of the enumeration.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="inheritedFrom" type="tIec61850Name" use="optional">
+					<xs:annotation>
+						<xs:documentation>Name of the enumeration which is extended by the current enumeration.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tEnumerations">
+		<xs:annotation>
+			<xs:documentation>List of Enumerations introduced by a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Enumeration" type="tEnumeration" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Definition of an enumeration.</xs:documentation>
+				</xs:annotation>
+				<xs:unique name="uniqueLiteralName">
+					<xs:annotation>
+						<xs:documentation>For an Enumeration, there shall not be two Literal sub-elements with same name.</xs:documentation>
+					</xs:annotation>
+					<xs:selector xpath="nsd:Literal"/>
+					<xs:field xpath="@name"/>
+				</xs:unique>
+				<xs:unique name="uniqueLiteralVal">
+					<xs:annotation>
+						<xs:documentation>For an Enumeration, there shall not be two Literal sub-elements with same liiteralVal.</xs:documentation>
+					</xs:annotation>
+					<xs:selector xpath="nsd:Literal"/>
+					<xs:field xpath="@literalVal"/>
+				</xs:unique>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tSubDataAttribute">
+		<xs:annotation>
+			<xs:documentation>Definition of a Sub Data Attribute (within a constructed data attribute).</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tDocumentedClass">
+				<xs:attribute name="name" type="tAttributeName" use="required">
+					<xs:annotation>
+						<xs:documentation>Name of the data attribute.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attributeGroup ref="agAttributeTypeAndValues"/>
+				<xs:attributeGroup ref="agPresenceCondition"/>
+				<xs:attributeGroup ref="agArray"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tConstructedAttribute">
+		<xs:annotation>
+			<xs:documentation>Definition of a constructed (structured) data attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tTitledClass">
+				<xs:sequence>
+					<xs:element name="SubDataAttribute" type="tSubDataAttribute" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="name" type="tIec61850Name" use="required">
+					<xs:annotation>
+						<xs:documentation>Name of the constructed (structured) data attribute.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tConstructedAttributes">
+		<xs:annotation>
+			<xs:documentation>List of Constructed Attributes introduced by a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ConstructedAttribute" type="tConstructedAttribute" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Definition of a constructed (structured) data attribute.</xs:documentation>
+				</xs:annotation>
+				<xs:unique name="uniqueSubDataAttribute">
+					<xs:annotation>
+						<xs:documentation>For a ConstructedAttribute, there shall not be two SubDataAttribute sub-elements with same name.</xs:documentation>
+					</xs:annotation>
+					<xs:selector xpath="nsd:SubDataAttribute"/>
+					<xs:field xpath="@name"/>
+				</xs:unique>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tDataAttribute">
+		<xs:annotation>
+			<xs:documentation>Definition of a Data Attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tDocumentedClass">
+				<xs:attribute name="name" type="tAttributeName" use="required">
+					<xs:annotation>
+						<xs:documentation>Name of the data attribute.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attributeGroup ref="agAttributeTypeAndValues"/>
+				<xs:attribute name="fc" type="tFCAbbreviation" use="required">
+					<xs:annotation>
+						<xs:documentation>Functional constraint of the data attribute.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attributeGroup ref="agTrgOp"/>
+				<xs:attributeGroup ref="agPresenceCondition"/>
+				<xs:attributeGroup ref="agArray"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tServiceParameter">
+		<xs:annotation>
+			<xs:documentation>Definition of the service parameter for control services.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tDocumentedClass">
+				<xs:attribute name="name" type="tAttributeName" use="required">
+					<xs:annotation>
+						<xs:documentation>Name of the data attribute.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attributeGroup ref="agAttributeTypeAndValues"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tSubDataObject">
+		<xs:annotation>
+			<xs:documentation>Definition of a Sub-Data Object.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tDocumentedClass">
+				<xs:attribute name="name" type="tSubDataObjectName" use="required">
+					<xs:annotation>
+						<xs:documentation>Name of the Sub-Data Object.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="type" type="tCDCName" use="required">
+					<xs:annotation>
+						<xs:documentation>Type of the SubDataObject, i.e., its CDC.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attributeGroup ref="agPresenceCondition"/>
+				<xs:attributeGroup ref="agArray"/>
+				<xs:attributeGroup ref="agUnderlyingType"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tCDC">
+		<xs:annotation>
+			<xs:documentation>Definition of a Common Data Class (CDC). It is always non-abstract.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tTitledClass">
+				<xs:sequence>
+					<xs:element name="SubDataObject" type="tSubDataObject" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="DataAttribute" type="tDataAttribute" maxOccurs="unbounded"/>
+					<xs:element name="ServiceParameter" type="tServiceParameter" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="name" type="tCDCName" use="required">
+					<xs:annotation>
+						<xs:documentation>Name of the common data class.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="statistics" type="xs:boolean" use="optional" default="false">
+					<xs:annotation>
+						<xs:documentation>Flag indicating whether DataObject of this CDC can be used for statistics.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="variant" type="xs:token" use="optional">
+					<xs:annotation>
+						<xs:documentation>Identification of the variant of the CDC (e.g., SPG_SP).</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="enumParameterized" type="xs:boolean" use="optional" default="false">
+					<xs:annotation>
+						<xs:documentation>Flag indicating whether this CDC has at least one child data attribute of typeKind ENUMERATION but its exact enumeration type is left open.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="typeKindParameterized" type="xs:boolean" use="optional" default="false">
+					<xs:annotation>
+						<xs:documentation>Flag indicating whether this CDC has at least one child data attribute with typeKind "undefined".
+Cannot be set to true at the same time as sibling attribute enumParameterized.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tCDCs">
+		<xs:annotation>
+			<xs:documentation>List of CDCs introduced by a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CDC" type="tCDC" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Definition of a common data class.</xs:documentation>
+				</xs:annotation>
+				<xs:unique name="uniqueCDCChild">
+					<xs:annotation>
+						<xs:documentation>For a CDC, there shall not be two sub-elements (SubDataObject or DataAttribute) with same name.</xs:documentation>
+					</xs:annotation>
+					<xs:selector xpath="*"/>
+					<xs:field xpath="@name"/>
+				</xs:unique>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tDataObject">
+		<xs:annotation>
+			<xs:documentation>Definition of a Data Object of a logical node.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tDocumentedClass">
+				<xs:attribute name="name" type="tDataObjectName" use="required">
+					<xs:annotation>
+						<xs:documentation>Name of the data object.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="type" type="tCDCName" use="required">
+					<xs:annotation>
+						<xs:documentation>Type of the data object, i.e., the name of the CDC.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="transient" type="xs:boolean" use="optional" default="false">
+					<xs:annotation>
+						<xs:documentation>Flag indicating whether this data object is transient. By default, it is not.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attributeGroup ref="agPresenceCondition"/>
+				<xs:attributeGroup ref="agPresenceConditionDerivedStatistics"/>
+				<xs:attributeGroup ref="agUnderlyingType"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tAnyLNClass" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Definition of a logical node (abstract or not) and its contents.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tTitledClass">
+				<xs:sequence>
+					<xs:element name="DataObject" type="tDataObject" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Child Data Object of the logical node.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="base" type="tAbstractLNClassName" use="optional">
+					<xs:annotation>
+						<xs:documentation>Name of the abstract LN class this one extends (directly).</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tAbstractLNClass">
+		<xs:annotation>
+			<xs:documentation>Definition of an abstract logical node and its contents.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tAnyLNClass">
+				<xs:attribute name="name" type="tAbstractLNClassName" use="required">
+					<xs:annotation>
+						<xs:documentation>The name of the abstract logical node.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tLNClass">
+		<xs:annotation>
+			<xs:documentation>Definition of a concrete (i.e., not abstract) logical node and its contents. At most one of "base" and "isExtension" shall be defined.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tAnyLNClass">
+				<xs:attribute name="name" type="tLNClassName" use="required">
+					<xs:annotation>
+						<xs:documentation>The logical node class name.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="isExtension" type="xs:boolean" use="optional" default="false">
+					<xs:annotation>
+						<xs:documentation>Flag indicating whether this logical node is an extension of another non-abstract logical node (with the same LN class name) defined in a namespace this one imports.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="canHaveLOG" type="xs:boolean" use="optional" default="false">
+					<xs:annotation>
+						<xs:documentation>Flag indicating whether a LOG can be allocated to this logical node. By default, false.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tLNClasses">
+		<xs:annotation>
+			<xs:documentation>List of LNClasses introduced by a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AbstractLNClass" type="tAbstractLNClass" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Definition of an abstract logical node.</xs:documentation>
+				</xs:annotation>
+				<xs:unique name="uniqueDataObjectAbstractLNClass">
+					<xs:annotation>
+						<xs:documentation>For a AbstractLNClass, there shall not be two DataObject sub-elements with same name.</xs:documentation>
+					</xs:annotation>
+					<xs:selector xpath="nsd:DataObject"/>
+					<xs:field xpath="@name"/>
+				</xs:unique>
+			</xs:element>
+			<xs:element name="LNClass" type="tLNClass" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Definition of a (non-abstract) logical node.</xs:documentation>
+				</xs:annotation>
+				<xs:unique name="uniqueDataObject">
+					<xs:annotation>
+						<xs:documentation>For a LNClass, there shall not be two DataObject sub-elements with same name.</xs:documentation>
+					</xs:annotation>
+					<xs:selector xpath="nsd:DataObject"/>
+					<xs:field xpath="@name"/>
+				</xs:unique>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tNS">
+		<xs:annotation>
+			<xs:documentation>Definition of a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tCopyrighted">
+				<xs:sequence>
+					<xs:element name="Changes" type="tChanges" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The version/revision/release this namespace is based on, including the TISSUEs implemented in this release.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="DependsOn" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The namespace identification this namespace depends on (and whose definitions are imported into this one).</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attributeGroup ref="agNSIdentification"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="BasicTypes" type="tBasicTypes" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of basic types added by this namespace. Is cumulative to those defined in namespaces this one DependsOn (may not redefine "included" ones). Note: shall only be used in practice by the 7-2 namespace.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="FunctionalConstraints" type="tFunctionalConstraints" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of Functional Constraints added by this namespace. Is cumulative to those defined in namespaces this one DependsOn (may not redefine "included" ones).</xs:documentation>
+						</xs:annotation>
+						<xs:unique name="uniqueFunctionalConstraint">
+							<xs:annotation>
+								<xs:documentation>There shall not be two FunctionalConstraint elements with same abbreviation.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:FunctionalConstraint"/>
+							<xs:field xpath="@abbreviation"/>
+						</xs:unique>
+					</xs:element>
+					<xs:element name="PresenceConditions" type="tPresenceConditions" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of presence conditions added by this namespace. Is cumulative to those defined in namespaces this one DependsOn (may not redefine "included" ones.).</xs:documentation>
+						</xs:annotation>
+						<xs:unique name="uniquePresenceCondition">
+							<xs:annotation>
+								<xs:documentation>There shall not be two PresenceCondition elements with same name.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:PresenceCondition"/>
+							<xs:field xpath="@name"/>
+						</xs:unique>
+					</xs:element>
+					<xs:element name="Abbreviations" type="tAbbreviations" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of abbreviations added by this namespace. Is cumulative to those defined in namespaces this one needs (may not redefine "included" ones.).</xs:documentation>
+						</xs:annotation>
+						<xs:unique name="uniqueAbbreviation">
+							<xs:annotation>
+								<xs:documentation>There shall not be two Abbreviations elements with same name.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:Abbreviation"/>
+							<xs:field xpath="@name"/>
+						</xs:unique>
+					</xs:element>
+					<xs:element name="Enumerations" type="tEnumerations" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of Enumerations added by this namespace. Is cumulative to those defined in namespaces this one DependsOn (may not redefine "included" ones).</xs:documentation>
+						</xs:annotation>
+						<xs:unique name="uniqueEnumeration">
+							<xs:annotation>
+								<xs:documentation>Within an NS, there shall not be two Enumeration sub-elements with same name.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:Enumeration"/>
+							<xs:field xpath="@name"/>
+						</xs:unique>
+					</xs:element>
+					<xs:element name="ConstructedAttributes" type="tConstructedAttributes" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of Constructed Attributes added by this namespace. Constructed Attributes are not allowed to be extended by another namespace. Note: shall only be used in practice by the 7-3</xs:documentation>
+						</xs:annotation>
+						<xs:unique name="uniqueConstructedAttribute">
+							<xs:annotation>
+								<xs:documentation>Within an NS, there shall not be two ConstructedAttribute sub-elements with same name.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:ConstructedAttribute"/>
+							<xs:field xpath="@name"/>
+						</xs:unique>
+					</xs:element>
+					<xs:element name="CDCs" type="tCDCs" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of CDCs added by this namespace. CDCs are not allowed to be extended by another namespace. Note: shall only be used in practice by the 7-3</xs:documentation>
+						</xs:annotation>
+						<xs:unique name="uniqueCDC">
+							<xs:annotation>
+								<xs:documentation>Within an NS, there shall not be two CDC sub-elements with same name and (if defined) variant.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:CDC"/>
+							<xs:field xpath="@name"/>
+							<xs:field xpath="@variant"/>
+						</xs:unique>
+					</xs:element>
+					<xs:element name="LNClasses" type="tLNClasses" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of LNClasses added by this namespace. Is cumulative to those defined in namespaces this one DependsOn (may not redefine "included" ones).</xs:documentation>
+						</xs:annotation>
+						<xs:unique name="uniqueAbstractLNClass">
+							<xs:annotation>
+								<xs:documentation>Within an NS, there shall not be two AbstractLNClass sub-elements with same name.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:AbstractLNClass"/>
+							<xs:field xpath="@name"/>
+						</xs:unique>
+						<xs:unique name="uniqueLNClass">
+							<xs:annotation>
+								<xs:documentation>Within an NS, there shall not be two LNClass sub-elements with same name.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:LNClass"/>
+							<xs:field xpath="@name"/>
+						</xs:unique>
+					</xs:element>
+				</xs:sequence>
+				<xs:attributeGroup ref="agNSIdentification"/>
+				<xs:attributeGroup ref="agUML"/>
+				<xs:attributeGroup ref="agNSdesc"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tServiceTypeRealization">
+		<xs:annotation>
+			<xs:documentation>Definition of the realization of an abstract type as constructed attribute in the service namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name" type="tAttributeName" use="required">
+			<xs:annotation>
+				<xs:documentation>Name of the data attribute.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="agAttributeType"/>
+		<xs:attribute name="fc" type="tFCAbbreviation" use="required">
+			<xs:annotation>
+				<xs:documentation>Functional constraint of the data attribute.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="agPresenceCondition"/>
+	</xs:complexType>
+	<xs:complexType name="tServiceTypeRealizations">
+		<xs:annotation>
+			<xs:documentation>List of Service Type Realizations introduced by a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ServiceTypeRealization" type="tConstructedAttribute" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Realization of an abstract type as constructed attribute in the service namespace.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tServiceConstructedAttribute">
+		<xs:annotation>
+			<xs:documentation>Definition of a constructed attribute type for services.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tConstructedAttribute">
+				<xs:attribute name="typeKindParameterized" type="xs:boolean" use="optional" default="false">
+					<xs:annotation>
+						<xs:documentation>Flag indicating whether this ServiceConstructedAttribute has at least one child data attribute with typeKind "undefined".</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tServiceConstructedAttributes">
+		<xs:annotation>
+			<xs:documentation>List of Service Constructed Attributes introduced by a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ServiceConstructedAttribute" type="tServiceConstructedAttribute" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Realization of Part 7-2 abstract types or constructed attributes needed for control services. Note: in SCL instance files, the ProtNs element shall be specified for these.</xs:documentation>
+				</xs:annotation>
+				<xs:unique name="uniqueSubDataAttribute_Service">
+					<xs:annotation>
+						<xs:documentation>For a ConstructedAttribute, there shall not be two SubDataAttribute sub-elements with same name.</xs:documentation>
+					</xs:annotation>
+					<xs:selector xpath="nsd:SubDataAttribute"/>
+					<xs:field xpath="@name"/>
+				</xs:unique>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tServiceDataAttribute">
+		<xs:annotation>
+			<xs:documentation>Definition of a service parameter as Data Attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tDocumentedClass">
+				<xs:attribute name="name" type="tAttributeName" use="required">
+					<xs:annotation>
+						<xs:documentation>Name of the data attribute.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attributeGroup ref="agAttributeType"/>
+				<xs:attribute name="fc" type="tFCAbbreviation" use="required">
+					<xs:annotation>
+						<xs:documentation>Functional constraint of the data attribute.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attributeGroup ref="agPresenceCondition"/>
+				<xs:attributeGroup ref="agUnderlyingType"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tServiceCDC">
+		<xs:annotation>
+			<xs:documentation>Definition of a CDC extension for control services.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ServiceDataAttribute" type="tServiceDataAttribute" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Data attribute to be used as service parameter.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="cdc" type="tCDCName" use="required">
+			<xs:annotation>
+				<xs:documentation>Name of the common data class the service extension is for.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="variant" type="xs:token" use="optional">
+			<xs:annotation>
+				<xs:documentation>Identification of the variant of the CDC (e.g., SPG_SP).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tServiceCDCs">
+		<xs:annotation>
+			<xs:documentation>List of Service CDCs introduced by a namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ServiceCDC" type="tServiceCDC" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>CDC extensions for control in this service namespace.</xs:documentation>
+				</xs:annotation>
+				<xs:unique name="uniqueServiceCDCChild">
+					<xs:annotation>
+						<xs:documentation>For a CDC, there shall not be two ServiceDataAttribute sub-elements with same name.</xs:documentation>
+					</xs:annotation>
+					<xs:selector xpath="nsd:ServiceDataAttribute"/>
+					<xs:field xpath="@name"/>
+				</xs:unique>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tServiceNS">
+		<xs:annotation>
+			<xs:documentation>Definition of a service namespace.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tCopyrighted">
+				<xs:sequence>
+					<xs:element name="Changes" type="tChanges" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The version/revision/release this namespace is based on, including the TISSUEs implemented in this release.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="FunctionalConstraints" type="tFunctionalConstraints" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of Functional Constraints added by this namespace. Is cumulative to those defined in namespaces this one needs (may not redefine "included" ones.).</xs:documentation>
+						</xs:annotation>
+						<xs:unique name="uniqueFunctionalConstraint_Service">
+							<xs:annotation>
+								<xs:documentation>There shall not be two FunctionalConstraint elements with same abbreviation.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:FunctionalConstraint"/>
+							<xs:field xpath="@abbreviation"/>
+						</xs:unique>
+					</xs:element>
+					<xs:element name="PresenceConditions" type="tPresenceConditions" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of presence conditions added by this namespace. Is cumulative to those defined in namespaces this one needs (may not redefine "included" ones.).</xs:documentation>
+						</xs:annotation>
+						<xs:unique name="uniquePresenceCondition_Service">
+							<xs:annotation>
+								<xs:documentation>There shall not be two PresenceCondition elements with same name.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:PresenceCondition"/>
+							<xs:field xpath="@name"/>
+						</xs:unique>
+					</xs:element>
+					<xs:element name="Abbreviations" type="tAbbreviations" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of abbreviations added by this namespace. Is cumulative to those defined in namespaces this one needs (may not redefine "included" ones.).</xs:documentation>
+						</xs:annotation>
+						<xs:unique name="uniqueAbbreviation_Service">
+							<xs:annotation>
+								<xs:documentation>There shall not be two Abbreviations elements with same name.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:Abbreviation"/>
+							<xs:field xpath="@name"/>
+						</xs:unique>
+					</xs:element>
+					<xs:element name="ServiceTypeRealizations" type="tServiceTypeRealizations" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of service type realization added by this namespace. Is cumulative to those defined in namespaces this one needs (may not redefine "included" ones.).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ServiceConstructedAttributes" type="tServiceConstructedAttributes" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of service constructed attributes added by this namespace. Is cumulative to those defined in namespaces this one needs (may not redefine "included" ones.).</xs:documentation>
+						</xs:annotation>
+						<xs:unique name="uniqueServiceConstructedAttribute">
+							<xs:annotation>
+								<xs:documentation>Within an ServiceNS, there shall not be two ServiceConstructedAttribute sub-elements with same name.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:ServiceConstructedAttribute"/>
+							<xs:field xpath="@name"/>
+						</xs:unique>
+					</xs:element>
+					<xs:element name="ServiceCDCs" type="tServiceCDCs" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of service CDCs added by this namespace. Is cumulative to those defined in namespaces this one needs (may not redefine "included" ones.).</xs:documentation>
+						</xs:annotation>
+						<xs:unique name="uniqueServiceCDC">
+							<xs:annotation>
+								<xs:documentation>Within an ServiceNS, there shall not be two ServiceCDC sub-elements with same name and (if defined) variant.</xs:documentation>
+							</xs:annotation>
+							<xs:selector xpath="nsd:ServiceCDC"/>
+							<xs:field xpath="@cdc"/>
+							<xs:field xpath="@variant"/>
+						</xs:unique>
+					</xs:element>
+				</xs:sequence>
+				<xs:attributeGroup ref="agNSIdentification"/>
+				<xs:attributeGroup ref="agUML"/>
+				<xs:attributeGroup ref="agNSdesc"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tDoc" mixed="true">
+		<xs:annotation>
+			<xs:documentation>A key-value pair for documentation. Attribute "id" is the key (the documentation string identifier) and the value of the element is the documentation string itself.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:any namespace="##any" processContents="lax"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="tDocID" use="required">
+			<xs:annotation>
+				<xs:documentation>Identifier of the documentation string.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tNSDoc">
+		<xs:annotation>
+			<xs:documentation>A non-empty list of tDoc elements.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tCopyrighted">
+				<xs:sequence>
+					<xs:element name="Doc" type="tDoc" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>List of documentation identifiers and corresponding documentation strings in the corresponding language.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attributeGroup ref="agNSIdentification"/>
+				<xs:attributeGroup ref="agUML"/>
+				<xs:attribute name="lang" type="xs:language" use="required">
+					<xs:annotation>
+						<xs:documentation>Language of the documentation strings in the file.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="tServiceNsUsage">
+		<xs:annotation>
+			<xs:documentation>Describes the list of (domain) NS for which a ServiceNS is applicable.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AppliesTo" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>References to namespaces this ServiceNS can be used with.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="agNSIdentification"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="agNSIdentification"/>
+	</xs:complexType>
+	<xs:complexType name="tApplicableServiceNS">
+		<xs:annotation>
+			<xs:documentation>Describes the allowed usages of ServiceNS-es.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tCopyrighted">
+				<xs:sequence>
+					<xs:element name="ServiceNsUsage" type="tServiceNsUsage" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Specification of a ServiceNS and all NS it can be used for.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="version" type="xs:unsignedInt" use="required">
+					<xs:annotation>
+						<xs:documentation>Version of the file.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="date" type="xs:dateTime" use="required">
+					<xs:annotation>
+						<xs:documentation>Date of definition of the file.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- =========================================================================== -->
+	<xs:element name="NS" type="tNS">
+		<xs:annotation>
+			<xs:documentation>Root element of a namespace definition (NSD) file.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ServiceNS" type="tServiceNS">
+		<xs:annotation>
+			<xs:documentation>Root element of a service namespace definition (SNSD) file.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="NSDoc" type="tNSDoc">
+		<xs:annotation>
+			<xs:documentation>Root element of a file holding the documentation strings of an NSD file (NSDOC).</xs:documentation>
+		</xs:annotation>
+		<xs:unique name="uniqueDocID">
+			<xs:annotation>
+				<xs:documentation>Within an NSDoc element, there shall not be two Doc sub-elements with same id.</xs:documentation>
+			</xs:annotation>
+			<xs:selector xpath="nsd:Doc"/>
+			<xs:field xpath="@id"/>
+		</xs:unique>
+	</xs:element>
+	<xs:element name="ApplicableServiceNS" type="tApplicableServiceNS">
+		<xs:annotation>
+			<xs:documentation>Root element of a file holding the allowed usages of ServiceNS-es.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

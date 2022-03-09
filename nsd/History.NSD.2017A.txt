@@ -1,0 +1,42 @@
+===============================================================
+REVISION HISTORY FOR THE MACHINE-PROCESSABLE FORMAT FOR TOOLS
+NSD.XSD (NameSpace Definition format). v2017A
+FROM January 25, 2017.
+===============================================================
+
+CB 2017-08-09: 
+ - Update version to adopt namespace format 2017A
+
+CB 2017-08-28: (NC comment resolution)
+ - FR07: add list of abbreviations for a namespace
+ - FR08: add "publicationStage" attribute in NS to identify the current publication stage. Default is IS.
+ - FR09: add "inheritedFrom" in enumeration to allow extension of an enumeration into an extended namespace
+ - FR12: add a root element for all list of element flattened under NS (Enumerations, ConstructedAttributes, CDCs, LNClasses, ServiceTypeRealizations, ServiceConstructedAttributes, ServiceCDCs)
+
+CB 2018-01-19:
+ - add date for tissue list
+  
+OPEN ISSUES:
+------------
+ - Issues to solve with UML TF:
+	+ Changes missing in UML and in the format for web-based publishing.
+	+ Whether an LN allows to have a child LOG or not (for LNClass.canHaveLOG): this information is missing in UML.
+		=> raised in UML TF, to be addressed by 7-2 editors.
+	+ Presence conditions' definition specific for 8-1, aligned in naming with the current ones. Part 8-1 editors need to be involved.
+ - Still to do:
+	+ More identity constraints?
+	
+Closed open issues:
+-------------------
+ - Extensibility of enumerations (wait for UML TF decision).
+ 
+ 
+Possible future extensions:
+---------------------------
+ - Include allowed valKinds for each FC.
+ - Modeling of control blocks, as well as their mapping in service namespaces.
+
+
+===============================================================
+EOF
+===============================================================

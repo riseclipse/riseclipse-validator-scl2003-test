@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IECManifest xmlns="http://www.iec.ch/CC/2017/IECManifest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iec.ch/CC/2017/IECManifest IECManifest.xsd">
+	<Copyright>
+		<Notice>
+			COPYRIGHT (c) IEC, 2018. This version of this XSD is part of IEC 61850-7-7:2017; see the IEC 61850-7-7:2017 for full legal notices. In case of any differences between the here-below code and the IEC published content, the here-below definition supersedes the IEC publication; it may contain updates. See history files. The whole document has to be taken into account to have a full description of this code component.
+		See www.iec.ch/CCv1 for copyright details.
+		</Notice>
+		<License uri="www.iec.ch/CCv1">IEC License</License>
+	</Copyright>
+	<CodeComponent id="IEC_61850-7-7.2017A.NSD.XSD" name="NSD schema 2017A" content="full" date="2018-01-19">
+		<Publication name="IEC 61850-7-7.2017_ed1.0" comment="Machine-processable format of IEC 61850-related data models for tools"/>
+		<File name="NSD.xsd" category="normative" content="full" comment="Schema describing the namespace files"/>
+		<File name="IECCopyright.xsd" category="normative" content="full" comment="Schema included in NSD to integrate management of IEC Copyright notice"/>
+		<File name="NSD.Doc.HTML.zip" category="normative" content="full" comment="Zip archive containing the HTML documentation of the NSD. Contains the 'NSD.html' file and all related pictures"/>
+		<HistoryFile name="History.NSD.v1.0.txt" startingDate="2015-10-12" endingDate="2017-01-25" startingVersion="NSD.XSD.v0.3" endingVersion="NSD.XSD.v1.0"/>
+		<HistoryFile name="History.NSD.2017A.txt" startingDate="2017-01-25" endingDate="2017-01-19" startingVersion="NSD.XSD.v1.0" endingVersion="NSD.XSD.2017A"/>
+	</CodeComponent>
+</IECManifest>

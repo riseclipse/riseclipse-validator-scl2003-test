@@ -1,0 +1,115 @@
+/*
+*************************************************************************
+**  Copyright (c) 2016-2021 CentraleSupélec & EDF.
+**  All rights reserved. This program and the accompanying materials
+**  are made available under the terms of the Eclipse Public License v2.0
+**  which accompanies this distribution, and is available at
+**  https://www.eclipse.org/legal/epl-v20.html
+** 
+**  This file is part of the RiseClipse tool
+**  
+**  Contributors:
+**      Computer Science Department, CentraleSupélec
+**      EDF R&D
+**  Contacts:
+**      dominique.marcadet@centralesupelec.fr
+**      aurelie.dehouck-neveu@edf.fr
+**  Web site:
+**      https://riseclipse.github.io/
+*************************************************************************
+*/
+
+import scl: 'http://www.iec.ch/61850/2003/SCL'
+
+import '../Helpers/BaseSimpleTypes.ocl'
+import '../Helpers/Enums.ocl'
+
+package scl
+
+context Association
+-- extends BaseElement
+
+    -- The kind attribute shall be present
+    inv Association_kind_required
+        ( 'ERROR:[RequiredAttributes] kind attribute shall be present in Association (line ' + self.lineNumber.toString() + ')' )
+    :
+        self.kind <> null
+
+    -- The kind attribute shall be valid
+    -- this is a real enum
+
+    -- The length of the association ID shall be at least one
+    inv Association_associationID_valid
+        ( 'ERROR:[RequiredAttributes] The length of the association ID shall be at least one (line ' + self.lineNumber.toString() + '). '
+          + 'Current value is ' + self.associationID.toString()
+        )
+    :
+        self.associationID <> null implies self.validSclAssociationID( associationID )
+        
+        -- The prefix attribute shall be valid 
+        inv Association_prefix_valid
+        ( 'ERROR:[RequiredAttributes] The prefix attribute shall be valid (line ' + self.lineNumber.toString() + '). '
+          + 'Current value is ' + self.prefix.toString()
+        )
+    :
+        self.prefix <> null implies self.validSclPrefix( prefix )
+            
+     --   The lnClass attribute shall be present
+      inv Association_lnClass_required
+        ( 'ERROR:[RequiredAttributes] lnClass attribute shall be present in Association (line ' + self.lineNumber.toString() + ')' )
+    :
+        self.lnClass <> null
+        
+        -- The lnClass attribute shall be valid 
+        inv Association_lnClass_valid
+        ( 'ERROR:[RequiredAttributes] The lnClass attribute shall be valid (line ' + self.lineNumber.toString() + '). '
+          + 'Current value is ' + self.lnClass.toString()
+        )
+    :
+        self.lnClass <> null implies self.validSclLNClassEnum( lnClass )
+      
+      --  The lnInst attribute shall be present
+      inv Association_lnInst_required
+        ( 'ERROR:[RequiredAttributes] lnInst attribute shall be present in Association (line ' + self.lineNumber.toString() + ')' )
+    :
+        self.lnInst <> null
+     
+      -- The lnInst attribute shall be valid   
+     inv Association_lnInst_valid
+        ( 'ERROR:[RequiredAttributes] The lnInst attribute shall be valid (line ' + self.lineNumber.toString() + '). '
+          + 'Current value is ' + self.lnInst.toString()
+        )
+    :
+        self.lnInst <> null implies self.validSclLNInstOrEmpty( lnInst )
+
+      --  The iedName attribute shall be present
+      inv Association_iedName_required
+        ( 'ERROR:[RequiredAttributes] iedName attribute shall be present in Association (line ' + self.lineNumber.toString() + ')' )
+    :
+        self.iedName <> null
+     
+      -- The iedName attribute shall be valid   
+     inv Association_iedName_valid
+        ( 'ERROR:[RequiredAttributes] The iedName attribute shall be valid (line ' + self.lineNumber.toString() + '). '
+          + 'Current value is ' + self.iedName.toString()
+        )
+    :
+        self.iedName <> null implies self.validSclIEDName( iedName )
+        
+      --  The ldInst attribute shall be present
+      inv Association_ldInst_required
+        ( 'ERROR:[RequiredAttributes] ldInst attribute shall be present in Association (line ' + self.lineNumber.toString() + ')' )
+    :
+        self.ldInst <> null
+     
+      -- The ldInst attribute shall be valid   
+     inv Association_ldInst_valid
+        ( 'ERROR:[RequiredAttributes] The ldInst attribute shall be valid (line ' + self.lineNumber.toString() + '). '
+          + 'Current value is ' + self.ldInst.toString()
+        )
+    :
+        self.ldInst <> null implies self.validSclLDInst( ldInst )        
+
+
+endpackage
+

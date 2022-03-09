@@ -1,0 +1,96 @@
+/*
+*************************************************************************
+**  Copyright (c) 2016-2021 CentraleSupélec & EDF.
+**  All rights reserved. This program and the accompanying materials
+**  are made available under the terms of the Eclipse Public License v2.0
+**  which accompanies this distribution, and is available at
+**  https://www.eclipse.org/legal/epl-v20.html
+** 
+**  This file is part of the RiseClipse tool
+**  
+**  Contributors:
+**      Computer Science Department, CentraleSupélec
+**      EDF R&D
+**  Contacts:
+**      dominique.marcadet@centralesupelec.fr
+**      aurelie.dehouck-neveu@edf.fr
+**  Web site:
+**      https://riseclipse.github.io/
+*************************************************************************
+*/
+
+import scl: 'http://www.iec.ch/61850/2003/SCL'
+
+import '../Helpers/BaseSimpleTypes.ocl'
+
+package scl
+
+context SampledValueControl
+-- extends ControlWithIEDName
+
+    -- The smvID attribute shall be present
+    inv SampledValueControl_smvID_required
+        ( 'ERROR:[RequiredAttributes] smvID attribute shall be present in SampledValueControl (line ' + self.lineNumber.toString() + ')' )
+    :
+        self.smvID <> null
+
+     -- The smvID attribute shall be valid
+    inv SampledValueControl_smvID_valid
+        ( 'ERROR:[RequiredAttributes] smvID attribute shall be present in SampledValueControl (line ' + self.lineNumber.toString() + '). '
+          + 'Current value is ' + self.smvID.toString()
+        )
+    :
+        self.smvID <> null implies self.validSclMessageID( smvID )
+
+    -- The smpRate attribute shall be present
+    inv SampledValueControl_smpRate_required
+        ( 'ERROR:[RequiredAttributes] smpRate attribute shall be present in SampledValueControl (line ' + self.lineNumber.toString() + ')' )
+    :
+        self.smpRate <> null
+
+    -- The smpRate attribute shall be an unsignedInt
+    -- Note: unsignedInt are EInt in the metaModel
+    inv SampledValueControl_smpRate_valid
+        ( 'ERROR:[RequiredAttributes] smpRate attribute shall be valid in SampledValueControl (line ' + self.lineNumber.toString() + '). '
+          + 'Current value is ' + self.smpRate.toString()
+        )
+    :
+        self.smpRate <> null implies self.smpRate >= 0
+
+    -- The nofASDU attribute shall be present
+    inv SampledValueControl_nofASDU_required
+        ( 'ERROR:[RequiredAttributes] nofASDU attribute shall be present in SampledValueControl (line ' + self.lineNumber.toString() + ')' )
+    :
+        self.nofASDU <> null
+
+    -- The nofASDU attribute shall be an unsignedInt
+    -- Note: unsignedInt are EInt in the metaModel
+    inv SampledValueControl_nofASDU_valid
+        ( 'ERROR:[RequiredAttributes] nofASDU attribute shall be present in SampledValueControl (line ' + self.lineNumber.toString() + '). '
+          + 'Current value is ' + self.nofASDU.toString()
+        )
+    :
+        self.nofASDU <> null implies self.nofASDU >= 0
+
+    -- multicast is a boolean
+    -- smpMod is a real enum
+    -- securityEnable is a real enum
+    
+    --  The confRev attribute is mandatory for the SV control block
+    inv SampledValueControl_confRev_required
+        ( 'ERROR:[RequiredAttributes] confRev attribute shall be present in SampledValueControl (line ' + self.lineNumber.toString() + ')' )
+    :
+        self.confRev <> null
+    
+    -- The confRev attribute is an unsigned int
+    --  Note: it is an Integer in the metamodel
+    inv SampledValueControl_confRev_unsignedInt
+        ( 'ERROR:[RequiredAttributes] confRev attribute shall be valid in SampledValueControl (line ' + self.lineNumber.toString() + '). '
+          + 'Current value is ' + self.confRev.toString()
+        )
+    :
+        self.confRev <> null implies self.confRev >= 0
+
+
+endpackage
+

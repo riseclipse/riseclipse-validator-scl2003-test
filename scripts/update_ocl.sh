@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SCRIPTS_DIR=$(dirname "${BASH_SOURCE[0]}")
+. "$SCRIPTS_DIR/config.env"
 . "$SCRIPTS_DIR/utils.sh"
 
 usage() {
@@ -51,20 +52,19 @@ if [ -z "$OCL_OUTPUT_DIR" ]; then
     OCL_OUTPUT_DIR="$ROOT_DIR/ocl"
 fi
 
-mkdir -p $OCL_OUTPUT_DIR
+mkdir -p "$OCL_OUTPUT_DIR"
 
-OCL_REPOSITORY='https://github.com/riseclipse/riseclipse-ocl-constraints-scl2003.git'
 TMP_DIR="$ROOT_DIR/tmp"
 
 echo -n "Fetching OCL files from distant '$OCL_BRANCH' branch... "
-git clone --quiet --depth 1 --branch $OCL_BRANCH $OCL_REPOSITORY $TMP_DIR
+git clone --quiet --depth 1 --branch "$OCL_BRANCH" "$OCL_REPOSITORY" "$TMP_DIR"
 echo "Done."
 
 OCL_FILES="$TMP_DIR/fr.centralesupelec.edf.riseclipse.iec61850.scl.ocl/*"
 
 echo -n "Moving OCL files to '$OCL_OUTPUT_DIR'... "
-mv --update $OCL_FILES $OCL_OUTPUT_DIR
-rm -rf $TMP_DIR
+mv -u $OCL_FILES "$OCL_OUTPUT_DIR"
+rm -rf "$TMP_DIR"
 echo "Done."
 
 exit 0
