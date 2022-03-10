@@ -11,6 +11,11 @@ echo -n "Updating snapshots... "
 
 for filepath in $SCL_PATHS; do
     OUTPUT=$(java -jar $JAR_PATH $filepath $OCL_PATHS $NSD_PATHS)
+    exit_code=$?
+    if [ $exit_code -ne 0 ]; then
+        exit $exit_code
+    fi
+
     SNAPSHOT_FILEPATH="$SCL_ROOT_DIR/snapshots/$(basename $filepath)"
     SNAPSHOT_FILEPATH="${SNAPSHOT_FILEPATH%.*}.out"
     printf "$OUTPUT" > $SNAPSHOT_FILEPATH
