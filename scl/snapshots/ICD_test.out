@@ -16,3 +16,218 @@ INFO:        https://riseclipse.github.io/
 INFO:    
 INFO:    RiseClipseValidatorSCL version: 1.1.0 a24 (15 october 2021)
 INFO:    
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_1_LLN0) (line 64) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_LPHD) (line 65) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TVTR_Fake) (line 66) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TVTR_Fake) (line 67) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TVTR_Fake) (line 68) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TVTR_Fake) (line 69) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TCTR_Fake) (line 70) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TCTR_Fake) (line 71) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TCTR_Fake) (line 72) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TCTR_Fake) (line 73) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_1_LLN0_TS) (line 76) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_1_LPHD_TS) (line 77) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_1_LLN0_CT) (line 82) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_1_LPHD_CT) (line 83) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TCTR) (line 86) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=ARtg) (line 88) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 88)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 89) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=HzRtg) (line 95) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 95)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 96) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=Clip) (line 102) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 102)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 103) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TCTR) (line 110) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=ARtg) (line 112) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 112)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 113) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=HzRtg) (line 119) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 119)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 120) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=Clip) (line 126) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 126)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 127) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TCTR) (line 134) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=ARtg) (line 136) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 136)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 137) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=HzRtg) (line 143) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 143)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 144) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=Clip) (line 150) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 150)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 151) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TCTR) (line 158) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=ARtg) (line 160) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 160)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 161) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=HzRtg) (line 167) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 167)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 168) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=Clip) (line 174) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 174)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 175) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_1_LLN0_VT) (line 184) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_1_LPHD_VT) (line 185) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TVTR) (line 188) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=VRtg) (line 190) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 190)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 191) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=HzRtg) (line 197) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 197)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 198) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=Clip) (line 204) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 204)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 205) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TVTR) (line 212) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=VRtg) (line 214) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 214)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 215) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=HzRtg) (line 221) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 221)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 222) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=Clip) (line 228) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 228)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 229) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TVTR) (line 236) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=VRtg) (line 238) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 238)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 239) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=HzRtg) (line 245) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 245)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 246) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=Clip) (line 252) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 252)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 253) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_2_TVTR) (line 260) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=VRtg) (line 262) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 262)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 263) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=HzRtg) (line 269) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 269)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 270) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DOI (name=Clip) (line 276) does not refer an existing DO in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN with DOI must refer to a LNodeType (line 276)
+ERROR:   [SemanticConstraints] SDI (name=setMag) (line 277) does not refer an existing SDO or DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] AnyLN (lnType=M6_Rev1_1_LLN0_MU) (line 286) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 288) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 289) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 290) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 291) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 292) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 293) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 294) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 295) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 296) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 297) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 298) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 299) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 300) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 301) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 302) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] FCDA (line 303) does not refer any existing DA or BDA in DataTypeTemplates section
+ERROR:   [SemanticConstraints] Control (name=MSVCB01) (line 305) does not refer an existing DataSet
+ERROR:   [SemanticConstraints] ServerAt (line 313) does not refer an existing AccessPoint
+ERROR:   [SemanticConstraints] BDA (name=SIUnit) (line 538) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] BDA (name=multiplier) (line 541) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] BDA (name=SIUnit) (line 549) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] BDA (name=multiplier) (line 552) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] BDA (name=SIUnit) (line 565) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] BDA (name=multiplier) (line 568) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] BDA (name=SIUnit) (line 576) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] BDA (name=multiplier) (line 579) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=stVal) (line 422) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=stVal) (line 427) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=stVal) (line 432) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=ctlModel) (line 435) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=units) (line 456) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=units) (line 462) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=instMag) (line 470) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=units) (line 472) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=sVC) (line 473) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=setMag) (line 476) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=units) (line 477) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=setMag) (line 480) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=units) (line 481) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=setMag) (line 484) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=instMag) (line 487) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=units) (line 489) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=sVC) (line 490) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=setMag) (line 493) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=units) (line 494) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DA (name=setMag) (line 497) does not refer an existing DAType or EnumType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=NamPlt) (line 324) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Beh) (line 325) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Health) (line 326) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Mod) (line 327) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=PhyNam) (line 330) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=PhyHealth) (line 331) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Proxy) (line 332) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Beh) (line 335) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=FuFail) (line 336) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=VolSv) (line 337) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=VRtg) (line 338) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=HzRtg) (line 339) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Clip) (line 340) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Beh) (line 343) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=AmpSv) (line 344) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=ARtg) (line 345) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=HzRtg) (line 346) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Clip) (line 347) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Beh) (line 350) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=GrRef) (line 351) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Mod) (line 352) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Health) (line 353) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=NamPlt) (line 354) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=PhyNam) (line 357) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=PhyHealth) (line 358) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Proxy) (line 359) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Beh) (line 362) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=GrRef) (line 363) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Mod) (line 364) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Health) (line 365) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=NamPlt) (line 366) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=PhyNam) (line 369) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=PhyHealth) (line 370) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Proxy) (line 371) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Beh) (line 374) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=AmpSv) (line 375) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=ARtg) (line 376) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=HzRtg) (line 377) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Clip) (line 378) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Beh) (line 381) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=GrRef) (line 382) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Mod) (line 383) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Health) (line 384) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=NamPlt) (line 385) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=PhyNam) (line 388) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=PhyHealth) (line 389) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Proxy) (line 390) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Beh) (line 393) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=FuFail) (line 394) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=VolSv) (line 395) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=VRtg) (line 396) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=HzRtg) (line 397) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Clip) (line 398) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Beh) (line 401) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=GrRef) (line 402) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Mod) (line 403) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=Health) (line 404) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] DO or SDO (name=NamPlt) (line 405) does not refer an existing DOType in DataTypeTemplates section
+ERROR:   [SemanticConstraints] ConnectedAP (apName=M6ServerModel) (line 19) does not refer an existing AccessPoint in IED section
+ERROR:   [SCD File] ConnectedAP must refer to an AccessPoint defined in an IED (line 19)
+ERROR:   [SemanticConstraints] ConnectedAP (apName=S1) (line 28) does not refer an existing AccessPoint in IED section
+ERROR:   [SCD File] ConnectedAP must refer to an AccessPoint defined in an IED (line 28)
+ERROR:   [SemanticConstraints] ControlBlock (line 34) does not refer an existing Control
+ERROR:   [SCD File] LNode (line 12) does not refer an existing Logical Node in IED section
+ERROR:   [CID File] LNode (line 12) does not refer an existing Logical Node in IED section
+ERROR:   [IID File] LNode (line 12) does not refer an existing Logical Node in IED section
+ERROR:   [IID File] LNode (line 12) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [CID File] LNode (line 12) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   [SCD File] LNode (line 12) does not refer an existing LNodeType in DataTypeTemplates section
+ERROR:   Problem loading file:/home/lemraus/tech/dev/cours/riseclipse/riseclipse-validator-scl2003-test/nsd/IECManifest.xsd : org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'schema' is not found or is abstract. (file:/home/lemraus/tech/dev/cours/riseclipse/riseclipse-validator-scl2003-test/nsd/IECManifest.xsd, 2, 287)
+ERROR:   Problem loading file:/home/lemraus/tech/dev/cours/riseclipse/riseclipse-validator-scl2003-test/nsd/IECCopyright.xsd : org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'schema' is not found or is abstract. (file:/home/lemraus/tech/dev/cours/riseclipse/riseclipse-validator-scl2003-test/nsd/IECCopyright.xsd, 2, 136)
+ERROR:   Problem loading file:/home/lemraus/tech/dev/cours/riseclipse/riseclipse-validator-scl2003-test/nsd/NSD.xsd : org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'schema' is not found or is abstract. (file:/home/lemraus/tech/dev/cours/riseclipse/riseclipse-validator-scl2003-test/nsd/NSD.xsd, 2, 275)
