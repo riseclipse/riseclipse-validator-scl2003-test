@@ -7,8 +7,6 @@ from argparse import Namespace
 from typing import Optional
 
 ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
-NSD_DIR = os.path.join(ROOT_DIR, "nsd")
-OCL_DIR = os.path.join(ROOT_DIR, "ocl")
 SCL_INPUT_DIR = os.path.join(ROOT_DIR, "scl", "input")
 SCRIPTS_DIR = os.path.join(ROOT_DIR, "scripts")
 
