@@ -19,6 +19,7 @@ for filepath in $SCL_PATHS; do
     if [ $exit_code -ne 0 ]; then
         exit $exit_code
     fi
+    ORDERED_OUTPUT=$(printf "$OUTPUT" |sort)
 
     SNAPSHOT_FILEPATH="$SCL_ROOT_DIR/snapshots/$(basename $filepath)"
     SNAPSHOT_FILEPATH="${SNAPSHOT_FILEPATH%.*}.out"
@@ -32,8 +33,9 @@ for filepath in $SCL_PATHS; do
     fi
 
     SNAPSHOT=$(cat $SNAPSHOT_FILEPATH)
+    ORDERED_SNAPSHOT=$(printf "$SNAPSHOT" |sort)
 
-    if [ "$OUTPUT" = "$SNAPSHOT" ]; then
+    if [ "$ORDERED_OUTPUT" = "$ORDERED_SNAPSHOT" ]; then
         PASSED_TESTS_COUNT=$((PASSED_TESTS_COUNT + 1))
         PASSED_TESTS="$PASSED_TESTS> $filepath\n"
     else
