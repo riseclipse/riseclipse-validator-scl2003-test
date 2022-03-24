@@ -68,11 +68,21 @@ def command_to_run(
     scl_files_string = " ".join(scl_filenames)
 
     if config is None:
-        return f"{base_command} --ocl --nsd {scl_files_string}"
-    else:
-        ocl_option = f"--ocl={':'.join(config['ocl'])}" if "ocl" in config else ""
-        nsd_option = f"--nsd={':'.join(config['nsd'])}" if "nsd" in config else ""
-        return f"{base_command} {ocl_option} {nsd_option} {scl_files_string}"
+        return f"{base_command} -o -n {scl_files_string}"
+
+    ocl_option = ""
+    if "ocl" in config:
+        ocl_option += "-o"
+        if "*" not in config["ocl"]:
+            ocl_option += ":".join(config["ocl"])
+
+    nsd_option = ""
+    if "nsd" in config:
+        nsd_option += "-n"
+        if "*" not in config["nsd"]:
+            nsd_option += ":".join(config["nsd"])
+
+    return f"{base_command} {ocl_option} {nsd_option} {scl_files_string}"
 
 
 def run_script(script: str, args: Namespace) -> None:
