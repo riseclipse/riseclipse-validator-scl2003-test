@@ -16,6 +16,13 @@ FilesForConfig = tuple[Config, list[Filename]]
 
 
 def get_all_scl_filenames() -> list[Filename]:
+    """
+    Returns the list of all SCL filenames in the 'scl' folder.
+
+    Returns:
+        list[Filename]: List of SCL filenames
+    """
+
     all_filenames = []
 
     for root, _, filenames in os.walk(SCL_INPUT_DIR):
@@ -27,6 +34,19 @@ def get_all_scl_filenames() -> list[Filename]:
 
 
 def get_scl_conf(filename: Filename) -> tuple[Filename, Config]:
+    """
+    Get the test config for a given SCL file.
+
+    Args:
+        filename (Filename): The SCL file to get config for
+
+    Raises:
+        FileNotFoundError: Error raised when the provided filename does not resolve to an existing file
+
+    Returns:
+        tuple[Filename, Config]: A tuple containing the filename and its test config
+    """
+
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"Could not find SCL file '{filename}'")
 
@@ -42,6 +62,16 @@ def get_scl_conf(filename: Filename) -> tuple[Filename, Config]:
 
 
 def grouped_scl_confs(scl_confs: list[tuple[Filename, Config]]) -> list[FilesForConfig]:
+    """
+    Groups test configurations with the SCL files that use them.
+
+    Args:
+        scl_confs (list[tuple[Filename, Config]]): List of (filename, config) tuples
+
+    Returns:
+        list[FilesForConfig]: List of configurations mapped to the files that use them
+    """
+
     by_conf = defaultdict(list)
 
     for filename, conf in scl_confs:
@@ -63,6 +93,18 @@ def grouped_scl_confs(scl_confs: list[tuple[Filename, Config]]) -> list[FilesFor
 def command_to_run(
     script: str, jar_path: Optional[str], files_for_config: FilesForConfig
 ) -> str:
+    """
+    Returns the command to be run with the given script, jar path and file config settings.
+
+    Args:
+        script (str): Path to the script to be used
+        jar_path (Optional[str]): Path to the jar used by the script
+        files_for_config (FilesForConfig): List of configurations mapped to the files that use them
+
+    Returns:
+        str: Command string which can then be run in a subprocess
+    """
+
     base_command = f"{script} --jar-path {jar_path}" if jar_path is not None else script
     config, scl_filenames = files_for_config
     scl_files_string = " ".join(scl_filenames)
@@ -86,6 +128,17 @@ def command_to_run(
 
 
 def run_script(script: str, args: Namespace) -> None:
+    """
+    Runs the given script as many times as necessary with arguments derived from the provided arguments.
+
+    Args:
+        script (str): Path to the script to be used
+        args (Namespace): Command line args parsed by the calling script.
+            Expected arguments are :
+            - scl_files: List of SCL files to run the script on (defaults to None)
+            - jar_path: Jar path passed on to the script (defaults to None)
+    """
+
     scl_filenames = args.scl_files if args.scl_files else get_all_scl_filenames()
     confs = list(map(get_scl_conf, scl_filenames))
     grouped_confs = grouped_scl_confs(confs)
