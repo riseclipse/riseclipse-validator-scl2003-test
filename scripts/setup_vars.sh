@@ -133,7 +133,7 @@ elif [ -n "$NSD_DIRS" ]; then
         NSD_PATHS="$NSD_PATHS $(find $path -path *.xsd |tr '\n' ' ')"
     done
 elif [ -d "$NSD_ROOT_DIR" ]; then
-    NSD_PATHS=$(find $NSD_ROOT_DIR -path *.xsd |tr '\n' ' ')
+    NSD_PATHS=$(find $NSD_ROOT_DIR -path *.nsd |tr '\n' ' ')
 else
     echo "Directory '$NSD_ROOT_DIR' was not found, cannot use NSD validation." 1>&2
     exit 1
