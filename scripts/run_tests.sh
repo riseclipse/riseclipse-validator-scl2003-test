@@ -13,26 +13,28 @@ FAILED_TESTS=""
 
 echo -n "Running tests... "
 
-for filepath in $SCL_PATHS; do
-    OUTPUT=$(java -jar $JAR_PATH $filepath $OCL_PATHS $NSD_PATHS)
+for filepath in "${SCL_PATHS[@]}"; do
+    OUTPUT=$(java -jar "$JAR_PATH" $JAR_OPTS "$filepath" $OCL_PATHS $NSD_PATHS)
+
     exit_code=$?
     if [ $exit_code -ne 0 ]; then
         exit $exit_code
     fi
+
     ORDERED_OUTPUT=$(printf "$OUTPUT" |sort)
 
-    SNAPSHOT_FILEPATH="$SCL_ROOT_DIR/snapshots/$(basename $filepath)"
+    SNAPSHOT_FILEPATH="$SCL_ROOT_DIR/snapshots/$(basename "$filepath")"
     SNAPSHOT_FILEPATH="${SNAPSHOT_FILEPATH%.*}.out"
 
-    if [ ! -f $SNAPSHOT_FILEPATH ]; then
+    if [ ! -f "$SNAPSHOT_FILEPATH" ]; then
         mkdir -p "$SCL_ROOT_DIR/snapshots"
-        printf "$OUTPUT" > $SNAPSHOT_FILEPATH
+        printf "$OUTPUT" > "$SNAPSHOT_FILEPATH"
         CREATED_SNAPSHOTS_COUNT=$((CREATED_SNAPSHOTS_COUNT + 1))
         CREATED_SNAPSHOTS="$CREATED_SNAPSHOTS> $SNAPSHOT_FILEPATH\n"
         continue
     fi
 
-    SNAPSHOT=$(cat $SNAPSHOT_FILEPATH)
+    SNAPSHOT=$(cat "$SNAPSHOT_FILEPATH")
     ORDERED_SNAPSHOT=$(printf "$SNAPSHOT" |sort)
 
     if [ "$ORDERED_OUTPUT" = "$ORDERED_SNAPSHOT" ]; then

@@ -18,12 +18,35 @@ usage() {
     printf -- "-n[PATHS] --nsd[=PATHS]  \tUse NSD validation. The optional PATHS argument is a column (:) separated list of relative paths to include NSD files from.\n"
     printf                       "\t\t\t\tThese paths are relative to the '$NSD_ROOT_DIR' directory, so make sure your NSD files are inside of it.\n"
     printf                       "\t\t\t\tPaths can either be directories which will be searched recursively, or full paths to NSD files.\n"
-    printf                       "\t\t\t\tBy default, all files under the '$NSD_ROOT_DIR' directory will be used for validation.\n"
+    printf                       "\t\t\t\tBy default, all files under the '$NSD_ROOT_DIR' directory will be used for validation.\n\n"
+    printf "Validator options (will be passed to the jar executable):\n"
+    printf -- "--verbose\n"
+    printf -- "--info\n"
+    printf -- "--warning\n"
+    printf -- "--error                    \tThe amount of messages displayed is chosen according to this option, default is --warning.\n"
+    printf -- "--use-color                \tcolors (using ANSI escape sequences) are used on message prefixes.\n"
+    printf -- "--make-explicit-links      \tImplicit links in SCL files are made explicit, this is usually needed for complete validation.\n"
+    printf                         "\t\t\t\tWarnings are displayed when problems are detected. Infos are displayed about explicit links being made.\n"
+    printf                         "\t\t\t\tVerbosity is about how explicit links are made.\n"
+    printf -- "--display-nsd-messages     \tOnly errors detected in NSD files are displayed by default.\n"
+    printf                         "\t\t\t\tThis option allows for other messages to be displayed (according to the chosen level).\n"
+    printf -- "--do-not-display-copyright \tThe tool information is not displayed at the beginning.\n"
+    printf -- "--help-environment         \tEnvironment variables used are displayed.\n"
 }
 
-OPTS=$(getopt -o hj:o::n:: -l help,jar-path,ocl::,,nsd:: -- "$@")
+OPTS=$(\
+    getopt -o hj:o::n:: \
+        -l help,jar-path,ocl::,,nsd::,verbose,info,warning,error,use-color,make-explicit-links,display-nsd-messages,do-not-display-copyright,help-environment \
+        -- "$@" \
+)
+
+if [ $? -ne 0 ]; then
+    exit 1
+fi
 
 eval set -- "$OPTS"
+
+JAR_OPTS=""
 
 while true; do
     case "$1" in
@@ -54,6 +77,9 @@ while true; do
                 done
             fi
             shift;;
+        --verbose | --info | --warning | --error | --use-color | --make-explicit-links \
+        | --display-nsd-messages | --do-not-display-copyright | --help-environment)
+            JAR_OPTS="$JAR_OPTS $1";;
         --) 
             shift
             break;;
@@ -79,14 +105,22 @@ if [ ! -f "$JAR_PATH" ]; then
 fi
 
 # Retrieve SCL files paths
-SCL_PATHS="$@"
+SCL_PATHS=("$@")
 
-if [ -z "$SCL_PATHS" ]; then
-    if [ ! -d "$SCL_ROOT_DIR/input" ] || [ -z $(ls -A "$SCL_ROOT_DIR/input") ]; then
+if [ ${#SCL_PATHS[@]} -eq 0 ]; then
+    if [ ! -d "$SCL_ROOT_DIR/input" ]; then
+        printf "No test input directory found.\n\n" 1>&2
+        exit 1
+    fi
+
+    # Find all files under the scl/input directory that do not end with .conf.json
+    # The use of 'eval' combined with find's '-printf' option deals with potential spaces in filenames
+    eval SCL_PATHS=($(find $SCL_ROOT_DIR/input -type f -not -name '*.conf.json' -printf '"%p" '))
+
+    if [ -z "$SCL_PATHS" ]; then
         printf "No test found.\n\n" 1>&2
         exit 1
     fi
-    SCL_PATHS="$SCL_ROOT_DIR/input/*"
 fi
 
 # Retrieve OCL files paths

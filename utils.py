@@ -3,6 +3,7 @@ import os
 import json
 import subprocess
 from collections import defaultdict
+from collections.abc import Iterable
 from argparse import Namespace
 from typing import Optional
 
@@ -75,10 +76,16 @@ def grouped_scl_confs(scl_confs: list[tuple[Filename, Config]]) -> list[FilesFor
     by_conf = defaultdict(list)
 
     for filename, conf in scl_confs:
-        sorted_conf_items = map(
-            lambda item: (item[0], tuple(sorted(item[1]))), conf.items()
-        )
-        conf_key = None if conf is None else frozenset(sorted_conf_items)
+        if conf is None:
+            conf_key = None
+        else:
+            sorted_conf_items = map(
+                lambda item: (item[0], tuple(sorted(item[1])))
+                if isinstance(item[1], Iterable)
+                else item,
+                conf.items(),
+            )
+            conf_key = frozenset(sorted_conf_items)
         by_conf[conf_key].append(filename)
 
     grouped_confs = []
@@ -107,6 +114,7 @@ def command_to_run(
 
     base_command = f"{script} --jar-path {jar_path}" if jar_path is not None else script
     config, scl_filenames = files_for_config
+    scl_filenames = map(lambda file: f'"{file}"', scl_filenames)
     scl_files_string = " ".join(scl_filenames)
 
     if config is None:
@@ -117,14 +125,21 @@ def command_to_run(
         ocl_option += "-o"
         if "*" not in config["ocl"]:
             ocl_option += ":".join(config["ocl"])
+        del config["ocl"]
 
     nsd_option = ""
     if "nsd" in config:
         nsd_option += "-n"
         if "*" not in config["nsd"]:
             nsd_option += ":".join(config["nsd"])
+        del config["nsd"]
 
-    return f"{base_command} {ocl_option} {nsd_option} {scl_files_string}"
+    jar_options = ""
+    for opt, val in config.items():
+        if val == 1:
+            jar_options += f"--{opt} "
+
+    return f"{base_command} {ocl_option} {nsd_option} {jar_options} {scl_files_string}"
 
 
 def run_script(script: str, args: Namespace) -> None:
@@ -146,7 +161,7 @@ def run_script(script: str, args: Namespace) -> None:
     for files_for_config in grouped_confs:
         command = command_to_run(script, args.jar_path, files_for_config)
         print(f"> {command}")
-        completed_process = subprocess.run(command.split(" "))
+        completed_process = subprocess.run(command, shell=True)
 
         if (return_code := completed_process.returncode) != 0:
             print(f"Command failed, exited with code {return_code}")
