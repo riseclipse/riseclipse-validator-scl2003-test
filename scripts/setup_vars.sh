@@ -36,7 +36,7 @@ usage() {
 
 OPTS=$(\
     getopt -o hj:o::n:: \
-        -l help,jar-path,ocl::,,nsd::,verbose,info,warning,error,use-color,make-explicit-links,display-nsd-messages,do-not-display-copyright,help-environment \
+        -l help,jar-path:,ocl::,,nsd::,verbose,info,warning,error,use-color,make-explicit-links,display-nsd-messages,do-not-display-copyright,help-environment \
         -- "$@" \
 )
 
