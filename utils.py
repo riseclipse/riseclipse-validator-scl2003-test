@@ -160,7 +160,7 @@ def run_script(script: str, args: Namespace) -> None:
 
     for files_for_config in grouped_confs:
         command = command_to_run(script, args.jar_path, files_for_config)
-        print(f"> {command}")
+        print(f"Test command: {command}")
         completed_process = subprocess.run(command, shell=True)
 
         if (return_code := completed_process.returncode) != 0:
