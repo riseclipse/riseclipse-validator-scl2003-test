@@ -49,6 +49,11 @@ while true; do
     shift
 done
 
+if [ -n "$1" ]; then
+    echo "Invalid argument: $1" 1>&2
+    exit 1
+fi
+
 if [ -z "$NSD_URL" ]; then
     NSD_URL="$DEFAULT_NSD_URL"
 fi
