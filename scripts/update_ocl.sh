@@ -18,6 +18,11 @@ usage() {
 
 OPTS=$(getopt -o hb:o: -l help,branch:,out-dir: -- "$@")
 
+if [ $? -ne 0 ]; then
+    echo "Options parsing failed, exiting..."
+    exit 1
+fi
+
 eval set -- "$OPTS"
 
 while true; do

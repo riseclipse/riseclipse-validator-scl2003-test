@@ -41,6 +41,7 @@ OPTS=$(\
 )
 
 if [ $? -ne 0 ]; then
+    echo "Options parsing failed, exiting..."
     exit 1
 fi
 
