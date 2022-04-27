@@ -1,0 +1,1468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 rel. 2 sp2 (x64) (http://www.altova.com) by Camille Bloch (SCHNEIDER ELECTRIC P&C) -->
+<NS xmlns="http://www.iec.ch/61850/2016/NSD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iec.ch/61850/2016/NSD NSD.xsd" id="IEC 61850-7-3" version="2007" revision="A" release="3">
+	<Copyright>
+		<Notice>
+			COPYRIGHT (c) IEC, 2020. This version of this NSD is part of IEC 61850-7-3:2007A3; see the IEC 61850-7-3:2007A3 for full legal notices. In case of any differences between the here-below code and the IEC published content, the here-below code is the valid one; it may contain updates. See history files. The whole document has to be taken into account to have a full description of this code component.
+See www.iec.ch/CCv1 for copyright details
+		</Notice>
+		<License uri="www.iec.ch/CCv1" kind="Standard">IEC License</License>
+	</Copyright>
+	<Changes version="2007" revision="A" tissues="697, 698, 816, 926, 929, 953, 954, 1041, 1428, 1598, 1622, 1630"/>
+	<DependsOn id="IEC 61850-7-2" version="2007" revision="A" release="3"/>
+	<Enumerations>
+		<Enumeration name="AngleReferenceKind" titleID="IEC 61850-7-3:AngleReferenceKind.title">
+			<Literal name="V" literalVal="0"/>
+			<Literal name="A" literalVal="1"/>
+			<Literal name="other" literalVal="2"/>
+			<Literal name="Synchrophasor" literalVal="3" descID="IEC 61850-7-3:AngleReferenceKind.Synchrophasor.desc"/>
+		</Enumeration>
+		<Enumeration name="CtlModelKind" titleID="IEC 61850-7-3:CtlModelKind.title">
+			<Literal name="status-only" literalVal="0" descID="IEC 61850-7-3:CtlModelKind.status-only.desc"/>
+			<Literal name="direct-with-normal-security" literalVal="1" descID="IEC 61850-7-3:CtlModelKind.direct-with-normal-security.desc"/>
+			<Literal name="sbo-with-normal-security" literalVal="2" descID="IEC 61850-7-3:CtlModelKind.sbo-with-normal-security.desc"/>
+			<Literal name="direct-with-enhanced-security" literalVal="3" descID="IEC 61850-7-3:CtlModelKind.direct-with-enhanced-security.desc"/>
+			<Literal name="sbo-with-enhanced-security" literalVal="4" descID="IEC 61850-7-3:CtlModelKind.sbo-with-enhanced-security.desc"/>
+		</Enumeration>
+		<Enumeration name="CurveCharKind" titleID="IEC 61850-7-3:CurveCharKind.title">
+			<Literal name="ANSI Extremely Inverse" literalVal="1" descID="IEC 61850-7-3:CurveCharKind.ANSI Extremely Inverse.desc"/>
+			<Literal name="ANSI Very Inverse" literalVal="2" descID="IEC 61850-7-3:CurveCharKind.ANSI Very Inverse.desc"/>
+			<Literal name="ANSI Normal Inverse" literalVal="3"/>
+			<Literal name="ANSI Moderate Inverse" literalVal="4" descID="IEC 61850-7-3:CurveCharKind.ANSI Moderate Inverse.desc"/>
+			<Literal name="ANSI Definite Time" literalVal="5" descID="IEC 61850-7-3:CurveCharKind.ANSI Definite Time.desc"/>
+			<Literal name="Long-Time Extremely Inverse" literalVal="6"/>
+			<Literal name="Long-Time Very Inverse" literalVal="7"/>
+			<Literal name="Long-Time Inverse" literalVal="8"/>
+			<Literal name="IEC Normal Inverse" literalVal="9"/>
+			<Literal name="IEC Very Inverse" literalVal="10" descID="IEC 61850-7-3:CurveCharKind.IEC Very Inverse.desc"/>
+			<Literal name="IEC Inverse" literalVal="11" descID="IEC 61850-7-3:CurveCharKind.IEC Inverse.desc"/>
+			<Literal name="IEC Extremely Inverse" literalVal="12" descID="IEC 61850-7-3:CurveCharKind.IEC Extremely Inverse.desc"/>
+			<Literal name="IEC Short-Time Inverse" literalVal="13"/>
+			<Literal name="IEC Long-Time Inverse" literalVal="14"/>
+			<Literal name="IEC Definite Time" literalVal="15" descID="IEC 61850-7-3:CurveCharKind.IEC Definite Time.desc"/>
+			<Literal name="Reserved" literalVal="16"/>
+			<Literal name="Polynom 1" literalVal="17" descID="IEC 61850-7-3:CurveCharKind.Polynom 1.desc"/>
+			<Literal name="Polynom 2" literalVal="18" descID="IEC 61850-7-3:CurveCharKind.Polynom 2.desc"/>
+			<Literal name="Polynom 3" literalVal="19" descID="IEC 61850-7-3:CurveCharKind.Polynom 3.desc"/>
+			<Literal name="Polynom 4" literalVal="20" descID="IEC 61850-7-3:CurveCharKind.Polynom 4.desc"/>
+			<Literal name="Polynom 5" literalVal="21" descID="IEC 61850-7-3:CurveCharKind.Polynom 5.desc"/>
+			<Literal name="Polynom 6" literalVal="22" descID="IEC 61850-7-3:CurveCharKind.Polynom 6.desc"/>
+			<Literal name="Polynom 7" literalVal="23" descID="IEC 61850-7-3:CurveCharKind.Polynom 7.desc"/>
+			<Literal name="Polynom 8" literalVal="24" descID="IEC 61850-7-3:CurveCharKind.Polynom 8.desc"/>
+			<Literal name="Polynom 9" literalVal="25" descID="IEC 61850-7-3:CurveCharKind.Polynom 9.desc"/>
+			<Literal name="Polynom 10" literalVal="26" descID="IEC 61850-7-3:CurveCharKind.Polynom 10.desc"/>
+			<Literal name="Polynom 11" literalVal="27" descID="IEC 61850-7-3:CurveCharKind.Polynom 11.desc"/>
+			<Literal name="Polynom 12" literalVal="28" descID="IEC 61850-7-3:CurveCharKind.Polynom 12.desc"/>
+			<Literal name="Polynom 13" literalVal="29" descID="IEC 61850-7-3:CurveCharKind.Polynom 13.desc"/>
+			<Literal name="Polynom 14" literalVal="30" descID="IEC 61850-7-3:CurveCharKind.Polynom 14.desc"/>
+			<Literal name="Polynom 15" literalVal="31" descID="IEC 61850-7-3:CurveCharKind.Polynom 15.desc"/>
+			<Literal name="Polynom 16" literalVal="32" descID="IEC 61850-7-3:CurveCharKind.Polynom 16.desc"/>
+			<Literal name="Multiline 1" literalVal="33" descID="IEC 61850-7-3:CurveCharKind.Multiline 1.desc"/>
+			<Literal name="Multiline 2" literalVal="34" descID="IEC 61850-7-3:CurveCharKind.Multiline 2.desc"/>
+			<Literal name="Multiline 3" literalVal="35" descID="IEC 61850-7-3:CurveCharKind.Multiline 3.desc"/>
+			<Literal name="Multiline 4" literalVal="36" descID="IEC 61850-7-3:CurveCharKind.Multiline 4.desc"/>
+			<Literal name="Multiline 5" literalVal="37" descID="IEC 61850-7-3:CurveCharKind.Multiline 5.desc"/>
+			<Literal name="Multiline 6" literalVal="38" descID="IEC 61850-7-3:CurveCharKind.Multiline 6.desc"/>
+			<Literal name="Multiline 7" literalVal="39" descID="IEC 61850-7-3:CurveCharKind.Multiline 7.desc"/>
+			<Literal name="Multiline 8" literalVal="40" descID="IEC 61850-7-3:CurveCharKind.Multiline 8.desc"/>
+			<Literal name="Multiline 9" literalVal="41" descID="IEC 61850-7-3:CurveCharKind.Multiline 9.desc"/>
+			<Literal name="Multiline 10" literalVal="42" descID="IEC 61850-7-3:CurveCharKind.Multiline 10.desc"/>
+			<Literal name="Multiline 11" literalVal="43" descID="IEC 61850-7-3:CurveCharKind.Multiline 11.desc"/>
+			<Literal name="Multiline 12" literalVal="44" descID="IEC 61850-7-3:CurveCharKind.Multiline 12.desc"/>
+			<Literal name="Multiline 13" literalVal="45" descID="IEC 61850-7-3:CurveCharKind.Multiline 13.desc"/>
+			<Literal name="Multiline 14" literalVal="46" descID="IEC 61850-7-3:CurveCharKind.Multiline 14.desc"/>
+			<Literal name="Multiline 15" literalVal="47" descID="IEC 61850-7-3:CurveCharKind.Multiline 15.desc"/>
+			<Literal name="Multiline 16" literalVal="48" descID="IEC 61850-7-3:CurveCharKind.Multiline 16.desc"/>
+		</Enumeration>
+		<Enumeration name="FaultDirectionKind" titleID="IEC 61850-7-3:FaultDirectionKind.title">
+			<Literal name="unknown" literalVal="0"/>
+			<Literal name="forward" literalVal="1"/>
+			<Literal name="backward" literalVal="2"/>
+			<Literal name="both" literalVal="3"/>
+		</Enumeration>
+		<Enumeration name="HvReferenceKind" titleID="IEC 61850-7-3:HvReferenceKind.title">
+			<Literal name="fundamental" literalVal="0"/>
+			<Literal name="rms" literalVal="1"/>
+			<Literal name="absolute" literalVal="2"/>
+		</Enumeration>
+		<Enumeration name="MonthKind" titleID="IEC 61850-7-3:MonthKind.title">
+			<Literal name="reserved" literalVal="0"/>
+			<Literal name="January" literalVal="1"/>
+			<Literal name="February" literalVal="2"/>
+			<Literal name="March" literalVal="3"/>
+			<Literal name="April" literalVal="4"/>
+			<Literal name="May" literalVal="5"/>
+			<Literal name="June" literalVal="6"/>
+			<Literal name="July" literalVal="7"/>
+			<Literal name="August" literalVal="8"/>
+			<Literal name="September" literalVal="9"/>
+			<Literal name="October" literalVal="10"/>
+			<Literal name="November" literalVal="11"/>
+			<Literal name="December" literalVal="12"/>
+		</Enumeration>
+		<Enumeration name="MultiplierKind" titleID="IEC 61850-7-3:MultiplierKind.title">
+			<Literal name="y" literalVal="-24" descID="IEC 61850-7-3:MultiplierKind.y.desc"/>
+			<Literal name="z" literalVal="-21" descID="IEC 61850-7-3:MultiplierKind.z.desc"/>
+			<Literal name="a" literalVal="-18" descID="IEC 61850-7-3:MultiplierKind.a.desc"/>
+			<Literal name="f" literalVal="-15" descID="IEC 61850-7-3:MultiplierKind.f.desc"/>
+			<Literal name="p" literalVal="-12" descID="IEC 61850-7-3:MultiplierKind.p.desc"/>
+			<Literal name="n" literalVal="-9" descID="IEC 61850-7-3:MultiplierKind.n.desc"/>
+			<Literal name="µ" literalVal="-6" descID="IEC 61850-7-3:MultiplierKind.µ.desc"/>
+			<Literal name="m" literalVal="-3" descID="IEC 61850-7-3:MultiplierKind.m.desc"/>
+			<Literal name="c" literalVal="-2" descID="IEC 61850-7-3:MultiplierKind.c.desc"/>
+			<Literal name="d" literalVal="-1" descID="IEC 61850-7-3:MultiplierKind.d.desc"/>
+			<Literal name="" literalVal="0" descID="IEC 61850-7-3:MultiplierKind..desc"/>
+			<Literal name="da" literalVal="1" descID="IEC 61850-7-3:MultiplierKind.da.desc"/>
+			<Literal name="h" literalVal="2" descID="IEC 61850-7-3:MultiplierKind.h.desc"/>
+			<Literal name="k" literalVal="3" descID="IEC 61850-7-3:MultiplierKind.k.desc"/>
+			<Literal name="M" literalVal="6" descID="IEC 61850-7-3:MultiplierKind.M.desc"/>
+			<Literal name="G" literalVal="9" descID="IEC 61850-7-3:MultiplierKind.G.desc"/>
+			<Literal name="T" literalVal="12" descID="IEC 61850-7-3:MultiplierKind.T.desc"/>
+			<Literal name="P" literalVal="15" descID="IEC 61850-7-3:MultiplierKind.P.desc"/>
+			<Literal name="E" literalVal="18" descID="IEC 61850-7-3:MultiplierKind.E.desc"/>
+			<Literal name="Z" literalVal="21" descID="IEC 61850-7-3:MultiplierKind.Z.desc"/>
+			<Literal name="Y" literalVal="24" descID="IEC 61850-7-3:MultiplierKind.Y.desc"/>
+		</Enumeration>
+		<Enumeration name="OccurrenceKind" titleID="IEC 61850-7-3:OccurrenceKind.title">
+			<Literal name="Time" literalVal="0"/>
+			<Literal name="WeekDay" literalVal="1"/>
+			<Literal name="WeekOfYear" literalVal="2"/>
+			<Literal name="DayOfMonth" literalVal="3"/>
+			<Literal name="DayOfYear" literalVal="4"/>
+		</Enumeration>
+		<Enumeration name="ControlOutputKind" titleID="IEC 61850-7-3:OutputSignalKind.title">
+			<Literal name="pulse" literalVal="0" descID="IEC 61850-7-3:OutputSignalKind.pulse.desc"/>
+			<Literal name="persistent" literalVal="1" descID="IEC 61850-7-3:OutputSignalKind.persistent.desc"/>
+			<Literal name="persistent-feedback" literalVal="2" descID="IEC 61850-7-3:OutputSignalKind.persistent-feedback.desc"/>
+		</Enumeration>
+		<Enumeration name="PeriodKind" titleID="IEC 61850-7-3:PeriodKind.title">
+			<Literal name="Hour" literalVal="0"/>
+			<Literal name="Day" literalVal="1"/>
+			<Literal name="Week" literalVal="2"/>
+			<Literal name="Month" literalVal="3"/>
+			<Literal name="Year" literalVal="4"/>
+		</Enumeration>
+		<Enumeration name="PhaseAngleReferenceKind" titleID="IEC 61850-7-3:PhaseAngleReferenceKind.title">
+			<Literal name="Va" literalVal="0"/>
+			<Literal name="Vb" literalVal="1"/>
+			<Literal name="Vc" literalVal="2"/>
+			<Literal name="Aa" literalVal="3"/>
+			<Literal name="Ab" literalVal="4"/>
+			<Literal name="Ac" literalVal="5"/>
+			<Literal name="Vab" literalVal="6"/>
+			<Literal name="Vbc" literalVal="7"/>
+			<Literal name="Vca" literalVal="8"/>
+			<Literal name="Vother" literalVal="9"/>
+			<Literal name="Aother" literalVal="10"/>
+			<Literal name="Synchrophasor" literalVal="11" descID="IEC 61850-7-3:PhaseAngleReferenceKind.Synchrophasor.desc"/>
+		</Enumeration>
+		<Enumeration name="PhaseFaultDirectionKind" titleID="IEC 61850-7-3:PhaseFaultDirectionKind.title">
+			<Literal name="unknown" literalVal="0"/>
+			<Literal name="forward" literalVal="1"/>
+			<Literal name="backward" literalVal="2"/>
+		</Enumeration>
+		<Enumeration name="PhaseReferenceKind" titleID="IEC 61850-7-3:PhaseReferenceKind.title">
+			<Literal name="A" literalVal="0"/>
+			<Literal name="B" literalVal="1"/>
+			<Literal name="C" literalVal="2"/>
+		</Enumeration>
+		<Enumeration name="RangeKind" titleID="IEC 61850-7-3:RangeKind.title">
+			<Literal name="normal" literalVal="0"/>
+			<Literal name="high" literalVal="1"/>
+			<Literal name="low" literalVal="2"/>
+			<Literal name="high-high" literalVal="3"/>
+			<Literal name="low-low" literalVal="4"/>
+		</Enumeration>
+		<Enumeration name="SIUnitKind" titleID="IEC 61850-7-3:SIUnitKind.title">
+			<Literal name="" literalVal="1" descID="IEC 61850-7-3:SIUnitKind..desc"/>
+			<Literal name="m" literalVal="2" descID="IEC 61850-7-3:SIUnitKind.m.desc"/>
+			<Literal name="kg" literalVal="3" descID="IEC 61850-7-3:SIUnitKind.kg.desc"/>
+			<Literal name="s" literalVal="4" descID="IEC 61850-7-3:SIUnitKind.s.desc"/>
+			<Literal name="A" literalVal="5" descID="IEC 61850-7-3:SIUnitKind.A.desc"/>
+			<Literal name="K" literalVal="6" descID="IEC 61850-7-3:SIUnitKind.K.desc"/>
+			<Literal name="mol" literalVal="7" descID="IEC 61850-7-3:SIUnitKind.mol.desc"/>
+			<Literal name="cd" literalVal="8" descID="IEC 61850-7-3:SIUnitKind.cd.desc"/>
+			<Literal name="deg" literalVal="9" descID="IEC 61850-7-3:SIUnitKind.deg.desc"/>
+			<Literal name="rad" literalVal="10" descID="IEC 61850-7-3:SIUnitKind.rad.desc"/>
+			<Literal name="sr" literalVal="11" descID="IEC 61850-7-3:SIUnitKind.sr.desc"/>
+			<Literal name="Gy" literalVal="21" descID="IEC 61850-7-3:SIUnitKind.Gy.desc"/>
+			<Literal name="Bq" literalVal="22" descID="IEC 61850-7-3:SIUnitKind.Bq.desc"/>
+			<Literal name="°C" literalVal="23" descID="IEC 61850-7-3:SIUnitKind.°C.desc"/>
+			<Literal name="Sv" literalVal="24" descID="IEC 61850-7-3:SIUnitKind.Sv.desc"/>
+			<Literal name="F" literalVal="25" descID="IEC 61850-7-3:SIUnitKind.F.desc"/>
+			<Literal name="C" literalVal="26" descID="IEC 61850-7-3:SIUnitKind.C.desc"/>
+			<Literal name="S" literalVal="27" descID="IEC 61850-7-3:SIUnitKind.S.desc"/>
+			<Literal name="H" literalVal="28" descID="IEC 61850-7-3:SIUnitKind.H.desc"/>
+			<Literal name="V" literalVal="29" descID="IEC 61850-7-3:SIUnitKind.V.desc"/>
+			<Literal name="ohm" literalVal="30" descID="IEC 61850-7-3:SIUnitKind.ohm.desc"/>
+			<Literal name="J" literalVal="31" descID="IEC 61850-7-3:SIUnitKind.J.desc"/>
+			<Literal name="N" literalVal="32" descID="IEC 61850-7-3:SIUnitKind.N.desc"/>
+			<Literal name="Hz" literalVal="33" descID="IEC 61850-7-3:SIUnitKind.Hz.desc"/>
+			<Literal name="lx" literalVal="34" descID="IEC 61850-7-3:SIUnitKind.lx.desc"/>
+			<Literal name="Lm" literalVal="35" descID="IEC 61850-7-3:SIUnitKind.Lm.desc"/>
+			<Literal name="Wb" literalVal="36" descID="IEC 61850-7-3:SIUnitKind.Wb.desc"/>
+			<Literal name="T" literalVal="37" descID="IEC 61850-7-3:SIUnitKind.T.desc"/>
+			<Literal name="W" literalVal="38" descID="IEC 61850-7-3:SIUnitKind.W.desc"/>
+			<Literal name="Pa" literalVal="39" descID="IEC 61850-7-3:SIUnitKind.Pa.desc"/>
+			<Literal name="m²" literalVal="41" descID="IEC 61850-7-3:SIUnitKind.m².desc"/>
+			<Literal name="m³" literalVal="42" descID="IEC 61850-7-3:SIUnitKind.m³.desc"/>
+			<Literal name="m/s" literalVal="43" descID="IEC 61850-7-3:SIUnitKind.m/s.desc"/>
+			<Literal name="m/s²" literalVal="44" descID="IEC 61850-7-3:SIUnitKind.m/s².desc"/>
+			<Literal name="m³/s" literalVal="45" descID="IEC 61850-7-3:SIUnitKind.m³/s.desc"/>
+			<Literal name="m/m³" literalVal="46" descID="IEC 61850-7-3:SIUnitKind.m/m³.desc"/>
+			<Literal name="M" literalVal="47" descID="IEC 61850-7-3:SIUnitKind.M.desc"/>
+			<Literal name="kg/m³" literalVal="48" descID="IEC 61850-7-3:SIUnitKind.kg/m³.desc"/>
+			<Literal name="m²/s" literalVal="49" descID="IEC 61850-7-3:SIUnitKind.m²/s.desc"/>
+			<Literal name="W/m K" literalVal="50" descID="IEC 61850-7-3:SIUnitKind.W/m K.desc"/>
+			<Literal name="J/K" literalVal="51" descID="IEC 61850-7-3:SIUnitKind.J/K.desc"/>
+			<Literal name="ppm" literalVal="52" descID="IEC 61850-7-3:SIUnitKind.ppm.desc"/>
+			<Literal name="1/s" literalVal="53" descID="IEC 61850-7-3:SIUnitKind.1/s.desc"/>
+			<Literal name="rad/s" literalVal="54" descID="IEC 61850-7-3:SIUnitKind.rad/s.desc"/>
+			<Literal name="W/m²" literalVal="55" descID="IEC 61850-7-3:SIUnitKind.W/m².desc"/>
+			<Literal name="J/m²" literalVal="56" descID="IEC 61850-7-3:SIUnitKind.J/m².desc"/>
+			<Literal name="S/m" literalVal="57" descID="IEC 61850-7-3:SIUnitKind.S/m.desc"/>
+			<Literal name="K/s" literalVal="58" descID="IEC 61850-7-3:SIUnitKind.K/s.desc"/>
+			<Literal name="Pa/s" literalVal="59" descID="IEC 61850-7-3:SIUnitKind.Pa/s.desc"/>
+			<Literal name="J/kg K" literalVal="60" descID="IEC 61850-7-3:SIUnitKind.J/kg K.desc"/>
+			<Literal name="VA" literalVal="61" descID="IEC 61850-7-3:SIUnitKind.VA.desc"/>
+			<Literal name="Watts" literalVal="62" descID="IEC 61850-7-3:SIUnitKind.Watts.desc"/>
+			<Literal name="VAr" literalVal="63" descID="IEC 61850-7-3:SIUnitKind.VAr.desc"/>
+			<Literal name="phi" literalVal="64" descID="IEC 61850-7-3:SIUnitKind.phi.desc"/>
+			<Literal name="cos(phi)" literalVal="65" descID="IEC 61850-7-3:SIUnitKind.cos(phi).desc"/>
+			<Literal name="Vs" literalVal="66" descID="IEC 61850-7-3:SIUnitKind.Vs.desc"/>
+			<Literal name="V²" literalVal="67" descID="IEC 61850-7-3:SIUnitKind.V².desc"/>
+			<Literal name="As" literalVal="68" descID="IEC 61850-7-3:SIUnitKind.As.desc"/>
+			<Literal name="A²" literalVal="69" descID="IEC 61850-7-3:SIUnitKind.A².desc"/>
+			<Literal name="A²t" literalVal="70" descID="IEC 61850-7-3:SIUnitKind.A²t.desc"/>
+			<Literal name="VAh" literalVal="71" descID="IEC 61850-7-3:SIUnitKind.VAh.desc"/>
+			<Literal name="Wh" literalVal="72" descID="IEC 61850-7-3:SIUnitKind.Wh.desc"/>
+			<Literal name="VArh" literalVal="73" descID="IEC 61850-7-3:SIUnitKind.VArh.desc"/>
+			<Literal name="V/Hz" literalVal="74" descID="IEC 61850-7-3:SIUnitKind.V/Hz.desc"/>
+			<Literal name="Hz/s" literalVal="75" descID="IEC 61850-7-3:SIUnitKind.Hz/s.desc"/>
+			<Literal name="char" literalVal="76" descID="IEC 61850-7-3:SIUnitKind.char.desc"/>
+			<Literal name="char/s" literalVal="77" descID="IEC 61850-7-3:SIUnitKind.char/s.desc"/>
+			<Literal name="kgm²" literalVal="78" descID="IEC 61850-7-3:SIUnitKind.kgm².desc"/>
+			<Literal name="dB" literalVal="79" descID="IEC 61850-7-3:SIUnitKind.dB.desc"/>
+			<Literal name="J/Wh" literalVal="80" descID="IEC 61850-7-3:SIUnitKind.J/Wh.desc"/>
+			<Literal name="W/s" literalVal="81" descID="IEC 61850-7-3:SIUnitKind.W/s.desc"/>
+			<Literal name="l/s" literalVal="82" descID="IEC 61850-7-3:SIUnitKind.l/s.desc"/>
+			<Literal name="dBm" literalVal="83" descID="IEC 61850-7-3:SIUnitKind.dBm.desc"/>
+			<Literal name="h" literalVal="84" descID="IEC 61850-7-3:SIUnitKind.h.desc"/>
+			<Literal name="min" literalVal="85" descID="IEC 61850-7-3:SIUnitKind.min.desc"/>
+		</Enumeration>
+		<Enumeration name="SboClassKind" titleID="IEC 61850-7-3:SboClassKind.title">
+			<Literal name="operate-once" literalVal="0" descID="IEC 61850-7-3:SboClassKind.operate-once.desc"/>
+			<Literal name="operate-many" literalVal="1" descID="IEC 61850-7-3:SboClassKind.operate-many.desc"/>
+		</Enumeration>
+		<Enumeration name="SequenceKind" titleID="IEC 61850-7-3:SequenceKind.title">
+			<Literal name="pos-neg-zero" literalVal="0" descID="IEC 61850-7-3:SequenceKind.pos-neg-zero.desc"/>
+			<Literal name="dir-quad-zero" literalVal="1" descID="IEC 61850-7-3:SequenceKind.dir-quad-zero.desc"/>
+		</Enumeration>
+		<Enumeration name="SeverityKind" titleID="IEC 61850-7-3:SeverityKind.title">
+			<Literal name="unknown" literalVal="0" descID="IEC 61850-7-3:SeverityKind.unknown.desc"/>
+			<Literal name="critical" literalVal="1" descID="IEC 61850-7-3:SeverityKind.critical.desc"/>
+			<Literal name="major" literalVal="2" descID="IEC 61850-7-3:SeverityKind.major.desc"/>
+			<Literal name="minor" literalVal="3" descID="IEC 61850-7-3:SeverityKind.minor.desc"/>
+			<Literal name="warning" literalVal="4" descID="IEC 61850-7-3:SeverityKind.warning.desc"/>
+		</Enumeration>
+		<Enumeration name="WeekdayKind" titleID="IEC 61850-7-3:WeekdayKind.title">
+			<Literal name="reserved" literalVal="0"/>
+			<Literal name="Monday" literalVal="1"/>
+			<Literal name="Tuesday" literalVal="2"/>
+			<Literal name="Wednesday" literalVal="3"/>
+			<Literal name="Thursday" literalVal="4"/>
+			<Literal name="Friday" literalVal="5"/>
+			<Literal name="Saturday" literalVal="6"/>
+			<Literal name="Sunday" literalVal="7"/>
+		</Enumeration>
+	</Enumerations>
+	<ConstructedAttributes>
+		<ConstructedAttribute name="ScaledValueConfig" titleID="IEC 61850-7-3:ScaledValueConfig.title">
+			<SubDataAttribute name="scaleFactor" type="FLOAT32" descID="IEC 61850-7-3:ScaledValueConfig.scaleFactor.desc" presCond="M"/>
+			<SubDataAttribute name="offset" type="FLOAT32" descID="IEC 61850-7-3:ScaledValueConfig.offset.desc" presCond="M"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="RangeConfig" titleID="IEC 61850-7-3:RangeConfig.title">
+			<SubDataAttribute name="hhLim" type="AnalogueValue" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:RangeConfig.hhLim.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<SubDataAttribute name="hLim" type="AnalogueValue" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:RangeConfig.hLim.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<SubDataAttribute name="lLim" type="AnalogueValue" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:RangeConfig.lLim.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<SubDataAttribute name="llLim" type="AnalogueValue" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:RangeConfig.llLim.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<SubDataAttribute name="min" type="AnalogueValue" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:RangeConfig.min.desc" presCond="M"/>
+			<SubDataAttribute name="max" type="AnalogueValue" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:RangeConfig.max.desc" presCond="M"/>
+			<SubDataAttribute name="limDb" type="INT32U" minValue="0" maxValue="100000" descID="IEC 61850-7-3:RangeConfig.limDb.desc" presCond="O"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="ValWithTrans" titleID="IEC 61850-7-3:ValWithTrans.title">
+			<SubDataAttribute name="posVal" type="INT8" minValue="-64" maxValue="63" descID="IEC 61850-7-3:ValWithTrans.posVal.desc" presCond="M"/>
+			<SubDataAttribute name="transInd" type="BOOLEAN" descID="IEC 61850-7-3:ValWithTrans.transInd.desc" presCond="O"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="PulseConfig" titleID="IEC 61850-7-3:PulseConfig.title">
+			<SubDataAttribute name="cmdQual" type="ControlOutputKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:PulseConfig.cmdQual.desc" presCond="M"/>
+			<SubDataAttribute name="onDur" type="INT32U" descID="IEC 61850-7-3:PulseConfig.onDur.desc" presCond="M"/>
+			<SubDataAttribute name="offDur" type="INT32U" descID="IEC 61850-7-3:PulseConfig.offDur.desc" presCond="M"/>
+			<SubDataAttribute name="numPls" type="INT32U" descID="IEC 61850-7-3:PulseConfig.numPls.desc" presCond="M"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="Originator" titleID="IEC 61850-7-3:Originator.title">
+			<SubDataAttribute name="orCat" type="OriginatorCategoryKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:Originator.orCat.desc" presCond="M"/>
+			<SubDataAttribute name="orIdent" type="Octet64" descID="IEC 61850-7-3:Originator.orIdent.desc" presCond="M"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="Unit" titleID="IEC 61850-7-3:Unit.title">
+			<SubDataAttribute name="SIUnit" type="SIUnitKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:Unit.SIUnit.desc" presCond="M"/>
+			<SubDataAttribute name="multiplier" type="MultiplierKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:Unit.multiplier.desc" presCond="O"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="Vector" titleID="IEC 61850-7-3:Vector.title">
+			<SubDataAttribute name="mag" type="AnalogueValue" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:Vector.mag.desc" presCond="M"/>
+			<SubDataAttribute name="ang" type="AnalogueValue" typeKind="CONSTRUCTED" minValue="-180" maxValue="180" descID="IEC 61850-7-3:Vector.ang.desc" presCond="O"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="Point" titleID="IEC 61850-7-3:Point.title">
+			<SubDataAttribute name="xVal" type="FLOAT32" descID="IEC 61850-7-3:Point.xVal.desc" presCond="M"/>
+			<SubDataAttribute name="yVal" type="FLOAT32" descID="IEC 61850-7-3:Point.yVal.desc" presCond="M"/>
+			<SubDataAttribute name="zVal" type="FLOAT32" descID="IEC 61850-7-3:Point.zVal.desc" presCond="O"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="Cell" titleID="IEC 61850-7-3:Cell.title">
+			<SubDataAttribute name="xStart" type="FLOAT32" descID="IEC 61850-7-3:Cell.xStart.desc" presCond="M"/>
+			<SubDataAttribute name="xEnd" type="FLOAT32" descID="IEC 61850-7-3:Cell.xEnd.desc" presCond="O"/>
+			<SubDataAttribute name="yStart" type="FLOAT32" descID="IEC 61850-7-3:Cell.yStart.desc" presCond="O"/>
+			<SubDataAttribute name="yEnd" type="FLOAT32" descID="IEC 61850-7-3:Cell.yEnd.desc" presCond="O"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="CalendarTime" titleID="IEC 61850-7-3:CalendarTime.title">
+			<SubDataAttribute name="occ" type="INT16U" descID="IEC 61850-7-3:CalendarTime.occ.desc" presCond="M"/>
+			<SubDataAttribute name="occType" type="OccurrenceKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:CalendarTime.occType.desc" presCond="M"/>
+			<SubDataAttribute name="occPer" type="PeriodKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:CalendarTime.occPer.desc" presCond="M"/>
+			<SubDataAttribute name="weekDay" type="WeekdayKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:CalendarTime.weekDay.desc" presCond="M"/>
+			<SubDataAttribute name="month" type="MonthKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:CalendarTime.month.desc" presCond="M"/>
+			<SubDataAttribute name="day" type="INT8U" minValue="1" maxValue="31" descID="IEC 61850-7-3:CalendarTime.day.desc" presCond="M"/>
+			<SubDataAttribute name="hr" type="INT8U" minValue="0" maxValue="23" descID="IEC 61850-7-3:CalendarTime.hr.desc" presCond="M"/>
+			<SubDataAttribute name="mn" type="INT8U" minValue="0" maxValue="59" descID="IEC 61850-7-3:CalendarTime.mn.desc" presCond="M"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="AnalogueValue" titleID="IEC 61850-7-3:AnalogueValue.title">
+			<SubDataAttribute name="i" type="INT32" descID="IEC 61850-7-3:AnalogueValue.i.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<SubDataAttribute name="f" type="FLOAT32" descID="IEC 61850-7-3:AnalogueValue.f.desc" presCond="AtLeastOne" presCondArgs="1"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="AnalogueValueCtl" titleID="IEC 61850-7-3:AnalogueValueCtl.title">
+			<SubDataAttribute name="i" type="INT32" descID="IEC 61850-7-3:AnalogueValueCtl.i.desc" presCond="AllOnlyOneGroup" presCondArgs="1"/>
+			<SubDataAttribute name="f" type="FLOAT32" descID="IEC 61850-7-3:AnalogueValueCtl.f.desc" presCond="AllOnlyOneGroup" presCondArgs="2"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="AnalogueValueCtlF" titleID="IEC 61850-7-3:AnalogueValueCtlF.title">
+			<SubDataAttribute name="f" type="FLOAT32" descID="IEC 61850-7-3:AnalogueValueCtlF.f.desc" presCond="M"/>
+		</ConstructedAttribute>
+		<ConstructedAttribute name="AnalogueValueCtlInt" titleID="IEC 61850-7-3:AnalogueValueCtlInt.title">
+			<SubDataAttribute name="i" type="INT32" descID="IEC 61850-7-3:AnalogueValueCtlInt.i.desc" presCond="M"/>
+		</ConstructedAttribute>
+	</ConstructedAttributes>
+	<CDCs>
+		<CDC name="SPS" titleID="IEC 61850-7-3:SPS.title">
+			<DataAttribute name="stVal" fc="ST" type="BOOLEAN" descID="IEC 61850-7-3:SPS.stVal.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:SPS.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:SPS.t.desc" presCond="M"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subVal" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SPS.subVal.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="DPS" titleID="IEC 61850-7-3:DPS.title">
+			<DataAttribute name="stVal" fc="ST" type="Dbpos" descID="IEC 61850-7-3:DPS.stVal.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:DPS.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:DPS.t.desc" presCond="M"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subVal" fc="SV" type="Dbpos" descID="IEC 61850-7-3:DPS.subVal.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="INS" titleID="IEC 61850-7-3:INS.title">
+			<DataAttribute name="stVal" fc="ST" type="INT32" descID="IEC 61850-7-3:INS.stVal.desc" presCond="M" dchg="true" dupd="true"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:INS.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:INS.t.desc" presCond="M"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subVal" fc="SV" type="INT32" descID="IEC 61850-7-3:INS.subVal.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="units" fc="CF" type="Unit" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:INS.units.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ENS" titleID="IEC 61850-7-3:ENS.title" enumParameterized="true">
+			<DataAttribute name="stVal" fc="ST" descID="IEC 61850-7-3:ENS.stVal.desc" presCond="M" typeKind="ENUMERATED" dchg="true" dupd="true"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:ENS.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:ENS.t.desc" presCond="M"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subVal" fc="SV" descID="IEC 61850-7-3:ENS.subVal.desc" presCond="MFsubst" typeKind="ENUMERATED"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ACT" titleID="IEC 61850-7-3:ACT.title">
+			<DataAttribute name="general" fc="ST" type="BOOLEAN" descID="IEC 61850-7-3:ACT.general.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="phsA" fc="ST" type="BOOLEAN" descID="IEC 61850-7-3:ACT.phsA.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="phsB" fc="ST" type="BOOLEAN" descID="IEC 61850-7-3:ACT.phsB.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="phsC" fc="ST" type="BOOLEAN" descID="IEC 61850-7-3:ACT.phsC.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="neut" fc="ST" type="BOOLEAN" descID="IEC 61850-7-3:ACT.neut.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:ACT.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:ACT.t.desc" presCond="M"/>
+			<DataAttribute name="originSrc" fc="ST" type="Originator" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:ACT.originSrc.desc" presCond="O"/>
+			<DataAttribute name="operTmPhsA" fc="ST" type="Timestamp" descID="IEC 61850-7-3:ACT.operTmPhsA.desc" presCond="O"/>
+			<DataAttribute name="operTmPhsB" fc="ST" type="Timestamp" descID="IEC 61850-7-3:ACT.operTmPhsB.desc" presCond="O"/>
+			<DataAttribute name="operTmPhsC" fc="ST" type="Timestamp" descID="IEC 61850-7-3:ACT.operTmPhsC.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ACD" titleID="IEC 61850-7-3:ACD.title">
+			<DataAttribute name="general" fc="ST" type="BOOLEAN" descID="IEC 61850-7-3:ACD.general.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="dirGeneral" fc="ST" type="FaultDirectionKind" dchg="true" descID="IEC 61850-7-3:ACD.dirGeneral.desc" presCond="M" typeKind="ENUMERATED"/>
+			<DataAttribute name="phsA" fc="ST" type="BOOLEAN" descID="IEC 61850-7-3:ACD.phsA.desc" presCond="AllOrNonePerGroup" presCondArgs="1" dchg="true"/>
+			<DataAttribute name="dirPhsA" fc="ST" type="PhaseFaultDirectionKind" descID="IEC 61850-7-3:ACD.dirPhsA.desc" presCond="AllOrNonePerGroup" presCondArgs="1" typeKind="ENUMERATED" dchg="true"/>
+			<DataAttribute name="phsB" fc="ST" type="BOOLEAN" descID="IEC 61850-7-3:ACD.phsB.desc" presCond="AllOrNonePerGroup" presCondArgs="2" dchg="true"/>
+			<DataAttribute name="dirPhsB" fc="ST" type="PhaseFaultDirectionKind" descID="IEC 61850-7-3:ACD.dirPhsB.desc" presCond="AllOrNonePerGroup" presCondArgs="2" typeKind="ENUMERATED" dchg="true"/>
+			<DataAttribute name="phsC" fc="ST" type="BOOLEAN" descID="IEC 61850-7-3:ACD.phsC.desc" presCond="AllOrNonePerGroup" presCondArgs="3" dchg="true"/>
+			<DataAttribute name="dirPhsC" fc="ST" type="PhaseFaultDirectionKind" descID="IEC 61850-7-3:ACD.dirPhsC.desc" presCond="AllOrNonePerGroup" presCondArgs="3" typeKind="ENUMERATED" dchg="true"/>
+			<DataAttribute name="neut" fc="ST" type="BOOLEAN" descID="IEC 61850-7-3:ACD.neut.desc" presCond="AllOrNonePerGroup" presCondArgs="4" dchg="true"/>
+			<DataAttribute name="dirNeut" fc="ST" type="PhaseFaultDirectionKind" descID="IEC 61850-7-3:ACD.dirNeut.desc" presCond="AllOrNonePerGroup" presCondArgs="4" typeKind="ENUMERATED" dchg="true"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:ACD.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:ACD.t.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="SEC" titleID="IEC 61850-7-3:SEC.title">
+			<DataAttribute name="cnt" fc="ST" type="INT32U" descID="IEC 61850-7-3:SEC.cnt.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="sev" fc="ST" type="SeverityKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:SEC.sev.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:SEC.t.desc" presCond="M"/>
+			<DataAttribute name="addr" fc="ST" type="Octet64" descID="IEC 61850-7-3:SEC.addr.desc" presCond="O"/>
+			<DataAttribute name="addInfo" fc="ST" type="VisString64" descID="IEC 61850-7-3:SEC.addInfo.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="BCR" titleID="IEC 61850-7-3:BCR.title">
+			<DataAttribute name="actVal" fc="ST" type="INT64" descID="IEC 61850-7-3:BCR.actVal.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="frVal" fc="ST" type="INT64" dupd="true" descID="IEC 61850-7-3:BCR.frVal.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="frTm" fc="ST" type="Timestamp" descID="IEC 61850-7-3:BCR.frTm.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:BCR.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:BCR.t.desc" presCond="M"/>
+			<DataAttribute name="units" fc="CF" type="Unit" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:BCR.units.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="pulsQty" fc="CF" type="FLOAT32" descID="IEC 61850-7-3:BCR.pulsQty.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="frEna" fc="CF" type="BOOLEAN" descID="IEC 61850-7-3:BCR.frEna.desc" presCond="AllOrNonePerGroup" presCondArgs="1" dchg="true"/>
+			<DataAttribute name="strTm" fc="CF" type="Timestamp" descID="IEC 61850-7-3:BCR.strTm.desc" presCond="AllOrNonePerGroup" presCondArgs="1" dchg="true"/>
+			<DataAttribute name="frPd" fc="CF" type="INT32" descID="IEC 61850-7-3:BCR.frPd.desc" presCond="AllOrNonePerGroup" presCondArgs="1" dchg="true"/>
+			<DataAttribute name="frRs" fc="CF" type="BOOLEAN" descID="IEC 61850-7-3:BCR.frRs.desc" presCond="AllOrNonePerGroup" presCondArgs="1" dchg="true"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="HST" titleID="IEC 61850-7-3:HST.title">
+			<DataAttribute name="hstVal" fc="ST" type="INT32" descID="IEC 61850-7-3:HST.hstVal.desc" presCond="M" isArray="true" sizeAttribute="maxPts" dchg="true" dupd="true"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:HST.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:HST.t.desc" presCond="M"/>
+			<DataAttribute name="numPts" fc="CF" type="INT16U" descID="IEC 61850-7-3:HST.numPts.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="hstRangeC" fc="CF" type="Cell" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:HST.hstRangeC.desc" presCond="M" isArray="true" sizeAttribute="maxPts" dchg="true"/>
+			<DataAttribute name="xUnits" fc="CF" type="Unit" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:HST.xUnits.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="yUnits" fc="CF" type="Unit" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:HST.yUnits.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="units" fc="CF" type="Unit" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:HST.units.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="maxPts" fc="CF" type="INT16U" descID="IEC 61850-7-3:HST.maxPts.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="xD" fc="DC" type="VisString255" descID="IEC 61850-7-3:HST.xD.desc" presCond="M"/>
+			<DataAttribute name="xDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:HST.xDU.desc" presCond="O"/>
+			<DataAttribute name="yD" fc="DC" type="VisString255" descID="IEC 61850-7-3:HST.yD.desc" presCond="O"/>
+			<DataAttribute name="yDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:HST.yDU.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="VSS" titleID="IEC 61850-7-3:VSS.title">
+			<DataAttribute name="stVal" fc="ST" type="VisString255" descID="IEC 61850-7-3:VSS.stVal.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:VSS.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:VSS.t.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="MV" titleID="IEC 61850-7-3:MV.title">
+			<DataAttribute name="instMag" fc="MX" type="AnalogueValue" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:MV.instMag.desc" presCond="O"/>
+			<DataAttribute name="mag" fc="MX" type="AnalogueValue" typeKind="CONSTRUCTED" dchg="true" dupd="true" descID="IEC 61850-7-3:MV.mag.desc" presCond="M"/>
+			<DataAttribute name="range" fc="MX" type="RangeKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:MV.range.desc" presCond="O"/>
+			<DataAttribute name="q" fc="MX" type="Quality" qchg="true" descID="IEC 61850-7-3:MV.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="MX" type="Timestamp" descID="IEC 61850-7-3:MV.t.desc" presCond="M"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subMag" fc="SV" type="AnalogueValue" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:MV.subMag.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="units" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:MV.units.desc" presCond="O"/>
+			<DataAttribute name="db" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:MV.db.desc" presCond="O"/>
+			<DataAttribute name="zeroDb" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:MV.zeroDb.desc" presCond="O"/>
+			<DataAttribute name="sVC" fc="CF" type="ScaledValueConfig" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:MV.sVC.desc" presCond="MFscaledAV"/>
+			<DataAttribute name="rangeC" fc="CF" type="RangeConfig" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:MV.rangeC.desc" presCond="MO" presCondArgs="range"/>
+			<DataAttribute name="smpRate" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:MV.smpRate.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CMV" titleID="IEC 61850-7-3:CMV.title">
+			<DataAttribute name="instCVal" fc="MX" type="Vector" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CMV.instCVal.desc" presCond="O"/>
+			<DataAttribute name="cVal" fc="MX" type="Vector" typeKind="CONSTRUCTED" dchg="true" dupd="true" descID="IEC 61850-7-3:CMV.cVal.desc" presCond="M"/>
+			<DataAttribute name="range" fc="MX" type="RangeKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:CMV.range.desc" presCond="O"/>
+			<DataAttribute name="rangeAng" fc="MX" type="RangeKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:CMV.rangeAng.desc" presCond="O"/>
+			<DataAttribute name="q" fc="MX" type="Quality" qchg="true" descID="IEC 61850-7-3:CMV.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="MX" type="Timestamp" descID="IEC 61850-7-3:CMV.t.desc" presCond="M"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subCVal" fc="SV" type="Vector" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CMV.subCVal.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="units" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:CMV.units.desc" presCond="O"/>
+			<DataAttribute name="db" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:CMV.db.desc" presCond="O"/>
+			<DataAttribute name="dbAng" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:CMV.dbAng.desc" presCond="O"/>
+			<DataAttribute name="zeroDb" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:CMV.zeroDb.desc" presCond="O"/>
+			<DataAttribute name="rangeC" fc="CF" type="RangeConfig" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:CMV.rangeC.desc" presCond="MO" presCondArgs="range"/>
+			<DataAttribute name="rangeAngC" fc="CF" type="RangeConfig" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:CMV.rangeAngC.desc" presCond="MO" presCondArgs="rangeAng"/>
+			<DataAttribute name="magSVC" fc="CF" type="ScaledValueConfig" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:CMV.magSVC.desc" presCond="MFscaledMagV"/>
+			<DataAttribute name="angSVC" fc="CF" type="ScaledValueConfig" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:CMV.angSVC.desc" presCond="MFscaledAngV"/>
+			<DataAttribute name="angRef" fc="CF" type="PhaseAngleReferenceKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:CMV.angRef.desc" presCond="O"/>
+			<DataAttribute name="smpRate" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:CMV.smpRate.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="SAV" titleID="IEC 61850-7-3:SAV.title">
+			<DataAttribute name="instMag" fc="MX" type="AnalogueValue" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:SAV.instMag.desc" presCond="M"/>
+			<DataAttribute name="q" fc="MX" type="Quality" qchg="true" descID="IEC 61850-7-3:SAV.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="MX" type="Timestamp" descID="IEC 61850-7-3:SAV.t.desc" presCond="O"/>
+			<DataAttribute name="units" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:SAV.units.desc" presCond="O"/>
+			<DataAttribute name="sVC" fc="CF" type="ScaledValueConfig" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:SAV.sVC.desc" presCond="MFscaledAV"/>
+			<DataAttribute name="min" fc="CF" type="AnalogueValue" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:SAV.min.desc" presCond="O"/>
+			<DataAttribute name="max" fc="CF" type="AnalogueValue" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:SAV.max.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="WYE" titleID="IEC 61850-7-3:WYE.title">
+			<SubDataObject name="phsA" type="CMV" descID="IEC 61850-7-3:WYE.phsA.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<SubDataObject name="phsB" type="CMV" descID="IEC 61850-7-3:WYE.phsB.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<SubDataObject name="phsC" type="CMV" descID="IEC 61850-7-3:WYE.phsC.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<SubDataObject name="neut" type="CMV" descID="IEC 61850-7-3:WYE.neut.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<SubDataObject name="net" type="CMV" descID="IEC 61850-7-3:WYE.net.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<SubDataObject name="res" type="CMV" descID="IEC 61850-7-3:WYE.res.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<DataAttribute name="angRef" fc="CF" type="PhaseAngleReferenceKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:WYE.angRef.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="phsToNeut" fc="CF" type="BOOLEAN" descID="IEC 61850-7-3:WYE.phsToNeut.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BaseComposedCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="DEL" titleID="IEC 61850-7-3:DEL.title">
+			<SubDataObject name="phsAB" type="CMV" descID="IEC 61850-7-3:DEL.phsAB.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<SubDataObject name="phsBC" type="CMV" descID="IEC 61850-7-3:DEL.phsBC.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<SubDataObject name="phsCA" type="CMV" descID="IEC 61850-7-3:DEL.phsCA.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<DataAttribute name="angRef" fc="CF" type="PhaseAngleReferenceKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:DEL.angRef.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BaseComposedCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="SEQ" titleID="IEC 61850-7-3:SEQ.title">
+			<SubDataObject name="c1" type="CMV" descID="IEC 61850-7-3:SEQ.c1.desc" presCond="M"/>
+			<SubDataObject name="c2" type="CMV" descID="IEC 61850-7-3:SEQ.c2.desc" presCond="M"/>
+			<SubDataObject name="c3" type="CMV" descID="IEC 61850-7-3:SEQ.c3.desc" presCond="M"/>
+			<DataAttribute name="seqT" fc="MX" type="SequenceKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:SEQ.seqT.desc" presCond="M"/>
+			<DataAttribute name="phsRef" fc="CF" type="PhaseReferenceKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:SEQ.phsRef.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BaseComposedCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="HMV" titleID="IEC 61850-7-3:HMV.title">
+			<SubDataObject name="har" type="CMV" descID="IEC 61850-7-3:HMV.har.desc" presCond="M" isArray="true" sizeAttribute="numHar"/>
+			<DataAttribute name="numHar" fc="CF" type="INT16U" descID="IEC 61850-7-3:HarmonicMeasurandCDC.numHar.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="numCyc" fc="CF" type="INT16U" descID="IEC 61850-7-3:HarmonicMeasurandCDC.numCyc.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="evalTm" fc="CF" type="INT16U" descID="IEC 61850-7-3:HarmonicMeasurandCDC.evalTm.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="smpRate" fc="CF" type="INT32U" descID="IEC 61850-7-3:HarmonicMeasurandCDC.smpRate.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="frequency" fc="CF" type="FLOAT32" descID="IEC 61850-7-3:HarmonicMeasurandCDC.frequency.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="hvRef" fc="CF" type="HvReferenceKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:HarmonicMeasurandCDC.hvRef.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="rmsCyc" fc="CF" type="INT16U" descID="IEC 61850-7-3:HarmonicMeasurandCDC.rmsCyc.desc" presCond="MOrms" dchg="true"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BaseComposedCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="HWYE" titleID="IEC 61850-7-3:HWYE.title">
+			<SubDataObject name="phsAHar" type="CMV" descID="IEC 61850-7-3:HWYE.phsAHar.desc" presCond="M" isArray="true" sizeAttribute="numHar"/>
+			<SubDataObject name="phsBHar" type="CMV" descID="IEC 61850-7-3:HWYE.phsBHar.desc" presCond="O" isArray="true" sizeAttribute="numHar"/>
+			<SubDataObject name="phsCHar" type="CMV" descID="IEC 61850-7-3:HWYE.phsCHar.desc" presCond="O" isArray="true" sizeAttribute="numHar"/>
+			<SubDataObject name="neutHar" type="CMV" descID="IEC 61850-7-3:HWYE.neutHar.desc" presCond="O" isArray="true" sizeAttribute="numHar"/>
+			<SubDataObject name="netHar" type="CMV" descID="IEC 61850-7-3:HWYE.netHar.desc" presCond="O" isArray="true" sizeAttribute="numHar"/>
+			<SubDataObject name="resHar" type="CMV" descID="IEC 61850-7-3:HWYE.resHar.desc" presCond="O" isArray="true" sizeAttribute="numHar"/>
+			<DataAttribute name="numHar" fc="CF" type="INT16U" descID="IEC 61850-7-3:HarmonicMeasurandCDC.numHar.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="numCyc" fc="CF" type="INT16U" descID="IEC 61850-7-3:HarmonicMeasurandCDC.numCyc.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="evalTm" fc="CF" type="INT16U" descID="IEC 61850-7-3:HarmonicMeasurandCDC.evalTm.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="angRef" fc="CF" type="PhaseAngleReferenceKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:HWYE.angRef.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="smpRate" fc="CF" type="INT32U" descID="IEC 61850-7-3:HarmonicMeasurandCDC.smpRate.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="frequency" fc="CF" type="FLOAT32" descID="IEC 61850-7-3:HarmonicMeasurandCDC.frequency.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="hvRef" fc="CF" type="HvReferenceKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:HarmonicMeasurandCDC.hvRef.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="rmsCyc" fc="CF" type="INT16U" descID="IEC 61850-7-3:HarmonicMeasurandCDC.rmsCyc.desc" presCond="MOrms" dchg="true"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BaseComposedCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="HDEL" titleID="IEC 61850-7-3:HDEL.title">
+			<SubDataObject name="phsABHar" type="CMV" descID="IEC 61850-7-3:HDEL.phsABHar.desc" presCond="M" isArray="true" sizeAttribute="numHar"/>
+			<SubDataObject name="phsBCHar" type="CMV" descID="IEC 61850-7-3:HDEL.phsBCHar.desc" presCond="O" isArray="true" sizeAttribute="numHar"/>
+			<SubDataObject name="phsCAHar" type="CMV" descID="IEC 61850-7-3:HDEL.phsCAHar.desc" presCond="O" isArray="true" sizeAttribute="numHar"/>
+			<DataAttribute name="numHar" fc="CF" type="INT16U" dchg="true" descID="IEC 61850-7-3:HarmonicMeasurandCDC.numHar.desc" presCond="M"/>
+			<DataAttribute name="numCyc" fc="CF" type="INT16U" dchg="true" descID="IEC 61850-7-3:HarmonicMeasurandCDC.numCyc.desc" presCond="M"/>
+			<DataAttribute name="evalTm" fc="CF" type="INT16U" dchg="true" descID="IEC 61850-7-3:HarmonicMeasurandCDC.evalTm.desc" presCond="M"/>
+			<DataAttribute name="angRef" fc="CF" type="PhaseAngleReferenceKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:HDEL.angRef.desc" presCond="O"/>
+			<DataAttribute name="smpRate" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:HarmonicMeasurandCDC.smpRate.desc" presCond="O"/>
+			<DataAttribute name="frequency" fc="CF" type="FLOAT32" dchg="true" descID="IEC 61850-7-3:HarmonicMeasurandCDC.frequency.desc" presCond="M"/>
+			<DataAttribute name="hvRef" fc="CF" type="HvReferenceKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:HarmonicMeasurandCDC.hvRef.desc" presCond="O"/>
+			<DataAttribute name="rmsCyc" fc="CF" type="INT16U" dchg="true" descID="IEC 61850-7-3:HarmonicMeasurandCDC.rmsCyc.desc" presCond="MOrms"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BaseComposedCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BaseComposedCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="SPC" titleID="IEC 61850-7-3:SPC.title">
+			<DataAttribute name="origin" fc="ST" type="Originator" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:SPC.origin.desc" presCond="O"/>
+			<DataAttribute name="ctlNum" fc="ST" type="INT8U" descID="IEC 61850-7-3:SPC.ctlNum.desc" presCond="O"/>
+			<DataAttribute name="stVal" fc="ST" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:SPC.stVal.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:SPC.q.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:SPC.t.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="stSeld" fc="ST" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:SPC.stSeld.desc" presCond="O"/>
+			<DataAttribute name="opRcvd" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opRcvd.desc" presCond="O"/>
+			<DataAttribute name="opOk" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opOk.desc" presCond="O"/>
+			<DataAttribute name="tOpOk" fc="OR" type="Timestamp" descID="IEC 61850-7-3:ControlTestingCDC.tOpOk.desc" presCond="O"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subVal" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SPC.subVal.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="pulseConfig" fc="CF" type="PulseConfig" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:SPC.pulseConfig.desc" presCond="O"/>
+			<DataAttribute name="ctlModel" fc="CF" type="CtlModelKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:SPC.ctlModel.desc" presCond="M"/>
+			<DataAttribute name="sboTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:SPC.sboTimeout.desc" presCond="O"/>
+			<DataAttribute name="sboClass" fc="CF" type="SboClassKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:SPC.sboClass.desc" presCond="O"/>
+			<DataAttribute name="operTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:SPC.operTimeout.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+			<ServiceParameter name="ctlVal" type="BOOLEAN" descID="IEC 61850-7-3:SPC.ctlVal.desc"/>
+		</CDC>
+		<CDC name="DPC" titleID="IEC 61850-7-3:DPC.title">
+			<DataAttribute name="origin" fc="ST" type="Originator" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:DPC.origin.desc" presCond="O"/>
+			<DataAttribute name="ctlNum" fc="ST" type="INT8U" descID="IEC 61850-7-3:DPC.ctlNum.desc" presCond="O"/>
+			<DataAttribute name="stVal" fc="ST" type="Dbpos" dchg="true" descID="IEC 61850-7-3:DPC.stVal.desc" presCond="M"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:DPC.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:DPC.t.desc" presCond="M"/>
+			<DataAttribute name="stSeld" fc="ST" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:DPC.stSeld.desc" presCond="O"/>
+			<DataAttribute name="opRcvd" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opRcvd.desc" presCond="O"/>
+			<DataAttribute name="opOk" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opOk.desc" presCond="O"/>
+			<DataAttribute name="tOpOk" fc="OR" type="Timestamp" descID="IEC 61850-7-3:ControlTestingCDC.tOpOk.desc" presCond="O"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subVal" fc="SV" type="Dbpos" descID="IEC 61850-7-3:DPC.subVal.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="pulseConfig" fc="CF" type="PulseConfig" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:DPC.pulseConfig.desc" presCond="O"/>
+			<DataAttribute name="ctlModel" fc="CF" type="CtlModelKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:DPC.ctlModel.desc" presCond="M"/>
+			<DataAttribute name="sboTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:DPC.sboTimeout.desc" presCond="O"/>
+			<DataAttribute name="sboClass" fc="CF" type="SboClassKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:DPC.sboClass.desc" presCond="O"/>
+			<DataAttribute name="operTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:DPC.operTimeout.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+			<ServiceParameter name="ctlVal" type="BOOLEAN" descID="IEC 61850-7-3:DPC.ctlVal.desc"/>
+		</CDC>
+		<CDC name="INC" titleID="IEC 61850-7-3:INC.title">
+			<DataAttribute name="origin" fc="ST" type="Originator" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:INC.origin.desc" presCond="O"/>
+			<DataAttribute name="ctlNum" fc="ST" type="INT8U" descID="IEC 61850-7-3:INC.ctlNum.desc" presCond="O"/>
+			<DataAttribute name="stVal" fc="ST" type="INT32" dchg="true" descID="IEC 61850-7-3:INC.stVal.desc" presCond="M"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:INC.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:INC.t.desc" presCond="M"/>
+			<DataAttribute name="stSeld" fc="ST" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:INC.stSeld.desc" presCond="O"/>
+			<DataAttribute name="opRcvd" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opRcvd.desc" presCond="O"/>
+			<DataAttribute name="opOk" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opOk.desc" presCond="O"/>
+			<DataAttribute name="tOpOk" fc="OR" type="Timestamp" descID="IEC 61850-7-3:ControlTestingCDC.tOpOk.desc" presCond="O"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subVal" fc="SV" type="INT32" descID="IEC 61850-7-3:INC.subVal.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="ctlModel" fc="CF" type="CtlModelKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:INC.ctlModel.desc" presCond="M"/>
+			<DataAttribute name="sboTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:INC.sboTimeout.desc" presCond="O"/>
+			<DataAttribute name="sboClass" fc="CF" type="SboClassKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:INC.sboClass.desc" presCond="O"/>
+			<DataAttribute name="minVal" fc="CF" type="INT32" dchg="true" descID="IEC 61850-7-3:INC.minVal.desc" presCond="O"/>
+			<DataAttribute name="maxVal" fc="CF" type="INT32" dchg="true" descID="IEC 61850-7-3:INC.maxVal.desc" presCond="O"/>
+			<DataAttribute name="stepSize" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:INC.stepSize.desc" presCond="O"/>
+			<DataAttribute name="operTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:INC.operTimeout.desc" presCond="O"/>
+			<DataAttribute name="units" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:INC.units.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+			<ServiceParameter name="ctlVal" type="INT32" descID="IEC 61850-7-3:INC.ctlVal.desc"/>
+		</CDC>
+		<CDC name="ENC" titleID="IEC 61850-7-3:ENC.title" enumParameterized="true">
+			<DataAttribute name="origin" fc="ST" type="Originator" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:ENC.origin.desc" presCond="O"/>
+			<DataAttribute name="ctlNum" fc="ST" type="INT8U" descID="IEC 61850-7-3:ENC.ctlNum.desc" presCond="O"/>
+			<DataAttribute name="stVal" fc="ST" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:ENC.stVal.desc" presCond="M"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:ENC.q.desc" presCond="M"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:ENC.t.desc" presCond="M"/>
+			<DataAttribute name="stSeld" fc="ST" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ENC.stSeld.desc" presCond="O"/>
+			<DataAttribute name="opRcvd" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opRcvd.desc" presCond="O"/>
+			<DataAttribute name="opOk" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opOk.desc" presCond="O"/>
+			<DataAttribute name="tOpOk" fc="OR" type="Timestamp" descID="IEC 61850-7-3:ControlTestingCDC.tOpOk.desc" presCond="O"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subVal" fc="SV" typeKind="ENUMERATED" descID="IEC 61850-7-3:ENC.subVal.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="ctlModel" fc="CF" type="CtlModelKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:ENC.ctlModel.desc" presCond="M"/>
+			<DataAttribute name="sboTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:ENC.sboTimeout.desc" presCond="O"/>
+			<DataAttribute name="sboClass" fc="CF" type="SboClassKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:ENC.sboClass.desc" presCond="O"/>
+			<DataAttribute name="operTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:ENC.operTimeout.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+			<ServiceParameter name="ctlVal" typeKind="ENUMERATED" descID="IEC 61850-7-3:ENC.ctlVal.desc"/>
+		</CDC>
+		<CDC name="BSC" titleID="IEC 61850-7-3:BSC.title">
+			<DataAttribute name="origin" fc="ST" type="Originator" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:BSC.origin.desc" presCond="O"/>
+			<DataAttribute name="ctlNum" fc="ST" type="INT8U" descID="IEC 61850-7-3:BSC.ctlNum.desc" presCond="O"/>
+			<DataAttribute name="valWTr" fc="ST" type="ValWithTrans" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:BSC.valWTr.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:BSC.q.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:BSC.t.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="stSeld" fc="ST" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:BSC.stSeld.desc" presCond="O"/>
+			<DataAttribute name="opRcvd" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opRcvd.desc" presCond="O"/>
+			<DataAttribute name="opOk" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opOk.desc" presCond="O"/>
+			<DataAttribute name="tOpOk" fc="OR" type="Timestamp" descID="IEC 61850-7-3:ControlTestingCDC.tOpOk.desc" presCond="O"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subVal" fc="SV" type="ValWithTrans" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:BSC.subVal.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="persistent" fc="CF" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:BSC.persistent.desc" presCond="M"/>
+			<DataAttribute name="ctlModel" fc="CF" type="CtlModelKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:BSC.ctlModel.desc" presCond="M"/>
+			<DataAttribute name="sboTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:BSC.sboTimeout.desc" presCond="O"/>
+			<DataAttribute name="sboClass" fc="CF" type="SboClassKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:BSC.sboClass.desc" presCond="O"/>
+			<DataAttribute name="minVal" fc="CF" type="INT8" dchg="true" descID="IEC 61850-7-3:BSC.minVal.desc" presCond="O"/>
+			<DataAttribute name="maxVal" fc="CF" type="INT8" dchg="true" descID="IEC 61850-7-3:BSC.maxVal.desc" presCond="O"/>
+			<DataAttribute name="operTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:BSC.operTimeout.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+			<ServiceParameter name="ctlVal" type="Tcmd" descID="IEC 61850-7-3:BSC.ctlVal.desc"/>
+		</CDC>
+		<CDC name="ISC" titleID="IEC 61850-7-3:ISC.title">
+			<DataAttribute name="origin" fc="ST" type="Originator" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:ISC.origin.desc" presCond="O"/>
+			<DataAttribute name="ctlNum" fc="ST" type="INT8U" descID="IEC 61850-7-3:ISC.ctlNum.desc" presCond="O"/>
+			<DataAttribute name="valWTr" fc="ST" type="ValWithTrans" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:ISC.valWTr.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="q" fc="ST" type="Quality" qchg="true" descID="IEC 61850-7-3:ISC.q.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="t" fc="ST" type="Timestamp" descID="IEC 61850-7-3:ISC.t.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="stSeld" fc="ST" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ISC.stSeld.desc" presCond="O"/>
+			<DataAttribute name="opRcvd" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opRcvd.desc" presCond="O"/>
+			<DataAttribute name="opOk" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opOk.desc" presCond="O"/>
+			<DataAttribute name="tOpOk" fc="OR" type="Timestamp" descID="IEC 61850-7-3:ControlTestingCDC.tOpOk.desc" presCond="O"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subVal" fc="SV" type="ValWithTrans" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:ISC.subVal.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="ctlModel" fc="CF" type="CtlModelKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:ISC.ctlModel.desc" presCond="M"/>
+			<DataAttribute name="sboTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:ISC.sboTimeout.desc" presCond="O"/>
+			<DataAttribute name="sboClass" fc="CF" type="SboClassKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:ISC.sboClass.desc" presCond="O"/>
+			<DataAttribute name="minVal" fc="CF" type="INT8" dchg="true" descID="IEC 61850-7-3:ISC.minVal.desc" presCond="O"/>
+			<DataAttribute name="maxVal" fc="CF" type="INT8" dchg="true" descID="IEC 61850-7-3:ISC.maxVal.desc" presCond="O"/>
+			<DataAttribute name="operTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:ISC.operTimeout.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+			<ServiceParameter name="ctlVal" type="INT8" descID="IEC 61850-7-3:ISC.ctlVal.desc"/>
+		</CDC>
+		<CDC name="APC" titleID="IEC 61850-7-3:APC.title">
+			<DataAttribute name="origin" fc="MX" type="Originator" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:APC.origin.desc" presCond="O"/>
+			<DataAttribute name="ctlNum" fc="MX" type="INT8U" descID="IEC 61850-7-3:APC.ctlNum.desc" presCond="O"/>
+			<DataAttribute name="mxVal" fc="MX" type="AnalogueValue" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:APC.mxVal.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="q" fc="MX" type="Quality" qchg="true" descID="IEC 61850-7-3:APC.q.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="t" fc="MX" type="Timestamp" descID="IEC 61850-7-3:APC.t.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="stSeld" fc="MX" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:APC.stSeld.desc" presCond="O"/>
+			<DataAttribute name="opRcvd" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opRcvd.desc" presCond="O"/>
+			<DataAttribute name="opOk" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opOk.desc" presCond="O"/>
+			<DataAttribute name="tOpOk" fc="OR" type="Timestamp" descID="IEC 61850-7-3:ControlTestingCDC.tOpOk.desc" presCond="O"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subVal" fc="SV" type="AnalogueValue" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:APC.subVal.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="ctlModel" fc="CF" type="CtlModelKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:APC.ctlModel.desc" presCond="M"/>
+			<DataAttribute name="sboTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:APC.sboTimeout.desc" presCond="O"/>
+			<DataAttribute name="sboClass" fc="CF" type="SboClassKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:APC.sboClass.desc" presCond="O"/>
+			<DataAttribute name="units" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:APC.units.desc" presCond="O"/>
+			<DataAttribute name="db" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:APC.db.desc" presCond="O"/>
+			<DataAttribute name="sVC" fc="CF" type="ScaledValueConfig" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:APC.sVC.desc" presCond="MFscaledAV"/>
+			<DataAttribute name="minVal" fc="CF" type="AnalogueValue" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:APC.minVal.desc" presCond="O"/>
+			<DataAttribute name="maxVal" fc="CF" type="AnalogueValue" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:APC.maxVal.desc" presCond="O"/>
+			<DataAttribute name="stepSize" fc="CF" type="AnalogueValue" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:APC.stepSize.desc" presCond="O"/>
+			<DataAttribute name="operTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:APC.operTimeout.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+			<ServiceParameter name="ctlVal" type="AnalogueValueCtl" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:APC.ctlVal.desc"/>
+		</CDC>
+		<CDC name="BAC" titleID="IEC 61850-7-3:BAC.title">
+			<DataAttribute name="origin" fc="MX" type="Originator" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:BAC.origin.desc" presCond="O"/>
+			<DataAttribute name="ctlNum" fc="MX" type="INT8U" descID="IEC 61850-7-3:BAC.ctlNum.desc" presCond="O"/>
+			<DataAttribute name="mxVal" fc="MX" type="AnalogueValue" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:BAC.mxVal.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="q" fc="MX" type="Quality" qchg="true" descID="IEC 61850-7-3:BAC.q.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="t" fc="MX" type="Timestamp" descID="IEC 61850-7-3:BAC.t.desc" presCond="AllOrNonePerGroup" presCondArgs="1"/>
+			<DataAttribute name="stSeld" fc="MX" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:BAC.stSeld.desc" presCond="O"/>
+			<DataAttribute name="opRcvd" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opRcvd.desc" presCond="O"/>
+			<DataAttribute name="opOk" fc="OR" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:ControlTestingCDC.opOk.desc" presCond="O"/>
+			<DataAttribute name="tOpOk" fc="OR" type="Timestamp" descID="IEC 61850-7-3:ControlTestingCDC.tOpOk.desc" presCond="O"/>
+			<DataAttribute name="subEna" fc="SV" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.subEna.desc" presCond="MFsubst"/>
+			<DataAttribute name="subVal" fc="SV" type="AnalogueValue" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:BAC.subVal.desc" presCond="MFsubst"/>
+			<DataAttribute name="subQ" fc="SV" type="Quality" descID="IEC 61850-7-3:SubstitutionCDC.subQ.desc" presCond="MFsubst"/>
+			<DataAttribute name="subID" fc="SV" type="VisString64" descID="IEC 61850-7-3:SubstitutionCDC.subID.desc" presCond="MFsubst"/>
+			<DataAttribute name="blkEna" fc="BL" type="BOOLEAN" descID="IEC 61850-7-3:SubstitutionCDC.blkEna.desc" presCond="O"/>
+			<DataAttribute name="persistent" fc="CF" type="BOOLEAN" dchg="true" descID="IEC 61850-7-3:BAC.persistent.desc" presCond="M"/>
+			<DataAttribute name="ctlModel" fc="CF" type="CtlModelKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:BAC.ctlModel.desc" presCond="M"/>
+			<DataAttribute name="sboTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:BAC.sboTimeout.desc" presCond="O"/>
+			<DataAttribute name="sboClass" fc="CF" type="SboClassKind" typeKind="ENUMERATED" dchg="true" descID="IEC 61850-7-3:BAC.sboClass.desc" presCond="O"/>
+			<DataAttribute name="units" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:BAC.units.desc" presCond="O"/>
+			<DataAttribute name="db" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:BAC.db.desc" presCond="O"/>
+			<DataAttribute name="sVC" fc="CF" type="ScaledValueConfig" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:BAC.sVC.desc" presCond="MFscaledAV"/>
+			<DataAttribute name="minVal" fc="CF" type="AnalogueValue" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:BAC.minVal.desc" presCond="O"/>
+			<DataAttribute name="maxVal" fc="CF" type="AnalogueValue" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:BAC.maxVal.desc" presCond="O"/>
+			<DataAttribute name="stepSize" fc="CF" type="AnalogueValue" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:BAC.stepSize.desc" presCond="O"/>
+			<DataAttribute name="operTimeout" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:BAC.operTimeout.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+			<ServiceParameter name="ctlVal" type="Tcmd" descID="IEC 61850-7-3:BAC.ctlVal.desc"/>
+		</CDC>
+		<CDC name="SPG" variant="SP" titleID="IEC 61850-7-3:SPG_SP.title">
+			<DataAttribute name="setVal" fc="SP" type="BOOLEAN" descID="IEC 61850-7-3:SPG_SP.setVal.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="SPG" variant="SG" titleID="IEC 61850-7-3:SPG_SG.title">
+			<DataAttribute name="setVal" fc="SG" type="BOOLEAN" descID="IEC 61850-7-3:SPG_SG.setVal.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="SPG" variant="SE" titleID="IEC 61850-7-3:SPG_SE.title">
+			<DataAttribute name="setVal" fc="SE" type="BOOLEAN" descID="IEC 61850-7-3:SPG_SE.setVal.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ING" variant="SP" titleID="IEC 61850-7-3:ING_SP.title">
+			<DataAttribute name="setVal" fc="SP" type="INT32" descID="IEC 61850-7-3:ING_SP.setVal.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="minVal" fc="CF" type="INT32" descID="IEC 61850-7-3:ING.minVal.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="maxVal" fc="CF" type="INT32" descID="IEC 61850-7-3:ING.maxVal.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="stepSize" fc="CF" type="INT32U" descID="IEC 61850-7-3:ING.stepSize.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="units" fc="CF" type="Unit" descID="IEC 61850-7-3:ING.units.desc" presCond="O" dchg="true" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ING" variant="SG" titleID="IEC 61850-7-3:ING_SG.title">
+			<DataAttribute name="setVal" fc="SG" type="INT32" descID="IEC 61850-7-3:ING_SG.setVal.desc" presCond="M"/>
+			<DataAttribute name="minVal" fc="CF" type="INT32" dchg="true" descID="IEC 61850-7-3:ING.minVal.desc" presCond="O"/>
+			<DataAttribute name="maxVal" fc="CF" type="INT32" dchg="true" descID="IEC 61850-7-3:ING.maxVal.desc" presCond="O"/>
+			<DataAttribute name="stepSize" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:ING.stepSize.desc" presCond="O"/>
+			<DataAttribute name="units" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:ING.units.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ING" variant="SE" titleID="IEC 61850-7-3:ING_SE.title">
+			<DataAttribute name="setVal" fc="SE" type="INT32" descID="IEC 61850-7-3:ING_SE.setVal.desc" presCond="M"/>
+			<DataAttribute name="minVal" fc="CF" type="INT32" dchg="true" descID="IEC 61850-7-3:ING.minVal.desc" presCond="O"/>
+			<DataAttribute name="maxVal" fc="CF" type="INT32" dchg="true" descID="IEC 61850-7-3:ING.maxVal.desc" presCond="O"/>
+			<DataAttribute name="stepSize" fc="CF" type="INT32U" dchg="true" descID="IEC 61850-7-3:ING.stepSize.desc" presCond="O"/>
+			<DataAttribute name="units" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:ING.units.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ENG" variant="SP" enumParameterized="true" titleID="IEC 61850-7-3:ENG_SP.title">
+			<DataAttribute name="setVal" fc="SP" descID="IEC 61850-7-3:ENG_SP.setVal.desc" presCond="M" dchg="true" typeKind="ENUMERATED"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ENG" variant="SG" enumParameterized="true" titleID="IEC 61850-7-3:ENG_SG.title">
+			<DataAttribute name="setVal" fc="SG" descID="IEC 61850-7-3:ENG_SG.setVal.desc" presCond="M" typeKind="ENUMERATED"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ENG" variant="SE" enumParameterized="true" titleID="IEC 61850-7-3:ENG_SE.title">
+			<DataAttribute name="setVal" fc="SE" typeKind="ENUMERATED" descID="IEC 61850-7-3:ENG_SE.setVal.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ORG" titleID="IEC 61850-7-3:ORG.title">
+			<DataAttribute name="setSrcRef" fc="SP" type="ObjRef" descID="IEC 61850-7-3:ORG.setSrcRef.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="setTstRef" fc="SP" type="ObjRef" descID="IEC 61850-7-3:ORG.setTstRef.desc" presCond="AllOrNonePerGroup" presCondArgs="1" dchg="true"/>
+			<DataAttribute name="setSrcCB" fc="SP" type="ObjRef" descID="IEC 61850-7-3:ORG.setSrcCB.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="setTstCB" fc="SP" type="ObjRef" descID="IEC 61850-7-3:ORG.setTstCB.desc" presCond="OF" presCondArgs="setTstRef" dchg="true"/>
+			<DataAttribute name="intAddr" fc="SP" type="VisString255" descID="IEC 61850-7-3:ORG.intAddr.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="tstEna" fc="SP" type="BOOLEAN" descID="IEC 61850-7-3:ORG.tstEna.desc" presCond="AllOrNonePerGroup" presCondArgs="1" dchg="true"/>
+			<DataAttribute name="purpose" fc="DC" type="VisString255" descID="IEC 61850-7-3:ORG.purpose.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="TSG" variant="SP" titleID="IEC 61850-7-3:TSG_SP.title">
+			<DataAttribute name="setTm" fc="SP" type="Timestamp" descID="IEC 61850-7-3:TSG_SP.setTm.desc" presCond="AtLeastOne" presCondArgs="1" dchg="true"/>
+			<DataAttribute name="setCal" fc="SP" type="CalendarTime" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:TSG_SP.setCal.desc" presCond="AtLeastOne" presCondArgs="1" dchg="true"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="TSG" variant="SG" titleID="IEC 61850-7-3:TSG_SG.title">
+			<DataAttribute name="setTm" fc="SG" type="Timestamp" descID="IEC 61850-7-3:TSG_SG.setTm.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<DataAttribute name="setCal" fc="SG" type="CalendarTime" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:TSG_SG.setCal.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="TSG" variant="SE" titleID="IEC 61850-7-3:TSG_SE.title">
+			<DataAttribute name="setTm" fc="SE" type="Timestamp" descID="IEC 61850-7-3:TSG_SE.setTm.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<DataAttribute name="setCal" fc="SE" type="CalendarTime" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:TSG_SE.setCal.desc" presCond="AtLeastOne" presCondArgs="1"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CUG" variant="SP" titleID="IEC 61850-7-3:CUG_SP.title">
+			<DataAttribute name="cur" fc="SP" type="Currency" descID="IEC 61850-7-3:CUG_SP.cur.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CUG" variant="SG" titleID="IEC 61850-7-3:CUG_SG.title">
+			<DataAttribute name="cur" fc="SG" type="Currency" descID="IEC 61850-7-3:CUG_SG.cur.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CUG" variant="SE" titleID="IEC 61850-7-3:CUG_SE.title">
+			<DataAttribute name="cur" fc="SE" type="Currency" descID="IEC 61850-7-3:CUG_SE.cur.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="VSG" variant="SP" titleID="IEC 61850-7-3:VSG_SP.title">
+			<DataAttribute name="setVal" fc="SP" type="VisString255" descID="IEC 61850-7-3:VSG_SP.setVal.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="VSG" variant="SG" titleID="IEC 61850-7-3:VSG_SG.title">
+			<DataAttribute name="setVal" fc="SG" type="VisString255" descID="IEC 61850-7-3:VSG_SG.setVal.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="VSG" variant="SE" titleID="IEC 61850-7-3:VSG_SE.title">
+			<DataAttribute name="setVal" fc="SE" type="VisString255" descID="IEC 61850-7-3:VSG_SE.setVal.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ASG" variant="SP" titleID="IEC 61850-7-3:ASG_SP.title">
+			<DataAttribute name="setMag" fc="SP" type="AnalogueValueCtl" descID="IEC 61850-7-3:ASG_SP.setMag.desc" presCond="M" typeKind="CONSTRUCTED" dchg="true"/>
+			<DataAttribute name="units" fc="CF" type="Unit" descID="IEC 61850-7-3:ASG.units.desc" presCond="O" typeKind="CONSTRUCTED" dchg="true"/>
+			<DataAttribute name="sVC" fc="CF" type="ScaledValueConfig" descID="IEC 61850-7-3:ASG.sVC.desc" presCond="MFscaledAV" typeKind="CONSTRUCTED" dchg="true"/>
+			<DataAttribute name="minVal" fc="CF" type="AnalogueValue" descID="IEC 61850-7-3:ASG.minVal.desc" presCond="O" typeKind="CONSTRUCTED" dchg="true"/>
+			<DataAttribute name="maxVal" fc="CF" type="AnalogueValue" descID="IEC 61850-7-3:ASG.maxVal.desc" presCond="O" typeKind="CONSTRUCTED" dchg="true"/>
+			<DataAttribute name="stepSize" fc="CF" type="AnalogueValue" descID="IEC 61850-7-3:ASG.stepSize.desc" presCond="O" typeKind="CONSTRUCTED" dchg="true"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ASG" variant="SG" titleID="IEC 61850-7-3:ASG_SG.title">
+			<DataAttribute name="setMag" fc="SG" type="AnalogueValueCtl" descID="IEC 61850-7-3:ASG_SG.setMag.desc" presCond="M" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="units" fc="CF" type="Unit" dchg="true" descID="IEC 61850-7-3:ASG.units.desc" presCond="O" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="sVC" fc="CF" type="ScaledValueConfig" dchg="true" descID="IEC 61850-7-3:ASG.sVC.desc" presCond="MFscaledAV" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="minVal" fc="CF" type="AnalogueValue" dchg="true" descID="IEC 61850-7-3:ASG.minVal.desc" presCond="O" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="maxVal" fc="CF" type="AnalogueValue" dchg="true" descID="IEC 61850-7-3:ASG.maxVal.desc" presCond="O" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="stepSize" fc="CF" type="AnalogueValue" dchg="true" descID="IEC 61850-7-3:ASG.stepSize.desc" presCond="O" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="ASG" variant="SE" titleID="IEC 61850-7-3:ASG_SE.title">
+			<DataAttribute name="setMag" fc="SE" type="AnalogueValueCtl" descID="IEC 61850-7-3:ASG_SE.setMag.desc" presCond="M" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="units" fc="CF" type="Unit" dchg="true" descID="IEC 61850-7-3:ASG.units.desc" presCond="O" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="sVC" fc="CF" type="ScaledValueConfig" dchg="true" descID="IEC 61850-7-3:ASG.sVC.desc" presCond="MFscaledAV" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="minVal" fc="CF" type="AnalogueValue" dchg="true" descID="IEC 61850-7-3:ASG.minVal.desc" presCond="O" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="maxVal" fc="CF" type="AnalogueValue" dchg="true" descID="IEC 61850-7-3:ASG.maxVal.desc" presCond="O" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="stepSize" fc="CF" type="AnalogueValue" dchg="true" descID="IEC 61850-7-3:ASG.stepSize.desc" presCond="O" typeKind="CONSTRUCTED"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CURVE" variant="SP" titleID="IEC 61850-7-3:CURVE_SP.title">
+			<DataAttribute name="setCharact" fc="SP" type="CurveCharKind" descID="IEC 61850-7-3:CURVE_SP.setCharact.desc" presCond="M" typeKind="ENUMERATED" dchg="true"/>
+			<DataAttribute name="setParA" fc="SP" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SP.setParA.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="setParB" fc="SP" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SP.setParB.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="setParC" fc="SP" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SP.setParC.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="setParD" fc="SP" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SP.setParD.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="setParE" fc="SP" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SP.setParE.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="setParF" fc="SP" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SP.setParF.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CURVE" variant="SG" titleID="IEC 61850-7-3:CURVE_SG.title">
+			<DataAttribute name="setCharact" fc="SG" type="CurveCharKind" descID="IEC 61850-7-3:CURVE_SG.setCharact.desc" presCond="M" typeKind="ENUMERATED"/>
+			<DataAttribute name="setParA" fc="SG" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SG.setParA.desc" presCond="O"/>
+			<DataAttribute name="setParB" fc="SG" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SG.setParB.desc" presCond="O"/>
+			<DataAttribute name="setParC" fc="SG" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SG.setParC.desc" presCond="O"/>
+			<DataAttribute name="setParD" fc="SG" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SG.setParD.desc" presCond="O"/>
+			<DataAttribute name="setParE" fc="SG" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SG.setParE.desc" presCond="O"/>
+			<DataAttribute name="setParF" fc="SG" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SG.setParF.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CURVE" variant="SE" titleID="IEC 61850-7-3:CURVE_SE.title">
+			<DataAttribute name="setCharact" fc="SE" type="CurveCharKind" descID="IEC 61850-7-3:CURVE_SE.setCharact.desc" presCond="M" typeKind="ENUMERATED"/>
+			<DataAttribute name="setParA" fc="SE" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SE.setParA.desc" presCond="O"/>
+			<DataAttribute name="setParB" fc="SE" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SE.setParB.desc" presCond="O"/>
+			<DataAttribute name="setParC" fc="SE" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SE.setParC.desc" presCond="O"/>
+			<DataAttribute name="setParD" fc="SE" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SE.setParD.desc" presCond="O"/>
+			<DataAttribute name="setParE" fc="SE" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SE.setParE.desc" presCond="O"/>
+			<DataAttribute name="setParF" fc="SE" type="FLOAT32" descID="IEC 61850-7-3:CURVE_SE.setParF.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CSG" variant="SP" titleID="IEC 61850-7-3:CSG_SP.title">
+			<DataAttribute name="pointZ" fc="SP" type="FLOAT32" descID="IEC 61850-7-3:CSG_SP.pointZ.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="numPts" fc="SP" type="INT16U" descID="IEC 61850-7-3:CSG_SP.numPts.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="crvPts" fc="SP" type="Point" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CSG_SP.crvPts.desc" presCond="M" dchg="true" isArray="true" sizeAttribute="maxPts"/>
+			<DataAttribute name="xUnits" fc="CF" type="Unit" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CSG.xUnits.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="yUnits" fc="CF" type="Unit" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CSG.yUnits.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="zUnits" fc="CF" type="Unit" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CSG.zUnits.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="maxPts" fc="CF" type="INT16U" descID="IEC 61850-7-3:CSG.maxPts.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="xD" fc="DC" type="VisString255" descID="IEC 61850-7-3:CSG.xD.desc" presCond="M"/>
+			<DataAttribute name="xDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:CSG.xDU.desc" presCond="O"/>
+			<DataAttribute name="yD" fc="DC" type="VisString255" descID="IEC 61850-7-3:CSG.yD.desc" presCond="M"/>
+			<DataAttribute name="yDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:CSG.yDU.desc" presCond="O"/>
+			<DataAttribute name="zD" fc="DC" type="VisString255" descID="IEC 61850-7-3:CSG.zD.desc" presCond="O"/>
+			<DataAttribute name="zDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:CSG.zDU.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CSG" variant="SG" titleID="IEC 61850-7-3:CSG_SG.title">
+			<DataAttribute name="pointZ" fc="SG" type="FLOAT32" descID="IEC 61850-7-3:CSG_SG.pointZ.desc" presCond="O"/>
+			<DataAttribute name="numPts" fc="SG" type="INT16U" descID="IEC 61850-7-3:CSG_SG.numPts.desc" presCond="M"/>
+			<DataAttribute name="crvPts" fc="SG" type="Point" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CSG_SG.crvPts.desc" presCond="M" isArray="true" sizeAttribute="maxPts"/>
+			<DataAttribute name="xUnits" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:CSG.xUnits.desc" presCond="M"/>
+			<DataAttribute name="yUnits" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:CSG.yUnits.desc" presCond="M"/>
+			<DataAttribute name="zUnits" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:CSG.zUnits.desc" presCond="O"/>
+			<DataAttribute name="maxPts" fc="CF" type="INT16U" descID="IEC 61850-7-3:CSG.maxPts.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="xD" fc="DC" type="VisString255" descID="IEC 61850-7-3:CSG.xD.desc" presCond="M"/>
+			<DataAttribute name="xDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:CSG.xDU.desc" presCond="O"/>
+			<DataAttribute name="yD" fc="DC" type="VisString255" descID="IEC 61850-7-3:CSG.yD.desc" presCond="M"/>
+			<DataAttribute name="yDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:CSG.yDU.desc" presCond="O"/>
+			<DataAttribute name="zD" fc="DC" type="VisString255" descID="IEC 61850-7-3:CSG.zD.desc" presCond="O"/>
+			<DataAttribute name="zDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:CSG.zDU.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CSG" variant="SE" titleID="IEC 61850-7-3:CSG_SE.title">
+			<DataAttribute name="pointZ" fc="SE" type="FLOAT32" descID="IEC 61850-7-3:CSG_SE.pointZ.desc" presCond="O"/>
+			<DataAttribute name="numPts" fc="SE" type="INT16U" descID="IEC 61850-7-3:CSG_SE.numPts.desc" presCond="M"/>
+			<DataAttribute name="crvPts" fc="SE" type="Point" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CSG_SE.crvPts.desc" presCond="M" isArray="true" sizeAttribute="maxPts"/>
+			<DataAttribute name="xUnits" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:CSG.xUnits.desc" presCond="M"/>
+			<DataAttribute name="yUnits" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:CSG.yUnits.desc" presCond="M"/>
+			<DataAttribute name="zUnits" fc="CF" type="Unit" typeKind="CONSTRUCTED" dchg="true" descID="IEC 61850-7-3:CSG.zUnits.desc" presCond="O"/>
+			<DataAttribute name="maxPts" fc="CF" type="INT16U" descID="IEC 61850-7-3:CSG.maxPts.desc" presCond="M" dchg="true"/>
+			<DataAttribute name="xD" fc="DC" type="VisString255" descID="IEC 61850-7-3:CSG.xD.desc" presCond="M"/>
+			<DataAttribute name="xDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:CSG.xDU.desc" presCond="O"/>
+			<DataAttribute name="yD" fc="DC" type="VisString255" descID="IEC 61850-7-3:CSG.yD.desc" presCond="M"/>
+			<DataAttribute name="yDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:CSG.yDU.desc" presCond="O"/>
+			<DataAttribute name="zD" fc="DC" type="VisString255" descID="IEC 61850-7-3:CSG.zD.desc" presCond="O"/>
+			<DataAttribute name="zDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:CSG.zDU.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="DPL" titleID="IEC 61850-7-3:DPL.title">
+			<DataAttribute name="vendor" fc="DC" type="VisString255" descID="IEC 61850-7-3:DPL.vendor.desc" presCond="M"/>
+			<DataAttribute name="hwRev" fc="DC" type="VisString255" descID="IEC 61850-7-3:DPL.hwRev.desc" presCond="O"/>
+			<DataAttribute name="swRev" fc="DC" type="VisString255" descID="IEC 61850-7-3:DPL.swRev.desc" presCond="O"/>
+			<DataAttribute name="serNum" fc="DC" type="VisString255" descID="IEC 61850-7-3:DPL.serNum.desc" presCond="O"/>
+			<DataAttribute name="model" fc="DC" type="VisString255" descID="IEC 61850-7-3:DPL.model.desc" presCond="O"/>
+			<DataAttribute name="location" fc="DC" type="VisString255" descID="IEC 61850-7-3:DPL.location.desc" presCond="O"/>
+			<DataAttribute name="name" fc="DC" type="VisString64" descID="IEC 61850-7-3:DPL.name.desc" presCond="O"/>
+			<DataAttribute name="owner" fc="DC" type="VisString255" descID="IEC 61850-7-3:DPL.owner.desc" presCond="O"/>
+			<DataAttribute name="ePSName" fc="DC" type="VisString255" descID="IEC 61850-7-3:DPL.ePSName.desc" presCond="O"/>
+			<DataAttribute name="primeOper" fc="DC" type="VisString255" descID="IEC 61850-7-3:DPL.primeOper.desc" presCond="O"/>
+			<DataAttribute name="secondOper" fc="DC" type="VisString255" descID="IEC 61850-7-3:DPL.secondOper.desc" presCond="O"/>
+			<DataAttribute name="latitude" fc="DC" type="FLOAT32" descID="IEC 61850-7-3:DPL.latitude.desc" presCond="O"/>
+			<DataAttribute name="longitude" fc="DC" type="FLOAT32" descID="IEC 61850-7-3:DPL.longitude.desc" presCond="O"/>
+			<DataAttribute name="altitude" fc="DC" type="FLOAT32" descID="IEC 61850-7-3:DPL.altitude.desc" presCond="O"/>
+			<DataAttribute name="mRID" fc="DC" type="VisString255" descID="IEC 61850-7-3:DPL.mRID.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="LPL" titleID="IEC 61850-7-3:LPL.title">
+			<DataAttribute name="vendor" fc="DC" type="VisString255" descID="IEC 61850-7-3:LPL.vendor.desc" presCond="M"/>
+			<DataAttribute name="swRev" fc="DC" type="VisString255" descID="IEC 61850-7-3:LPL.swRev.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="configRev" fc="DC" type="VisString255" descID="IEC 61850-7-3:LPL.configRev.desc" presCond="MOln0"/>
+			<DataAttribute name="paramRev" fc="ST" type="INT32" descID="IEC 61850-7-3:LPL.paramRev.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="valRev" fc="ST" type="INT32" descID="IEC 61850-7-3:LPL.valRev.desc" presCond="O" dchg="true"/>
+			<DataAttribute name="ldNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:LPL.ldNs.desc" presCond="MFln0"/>
+			<DataAttribute name="lnNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:LPL.lnNs.desc" presCond="MOlnNs"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CSD" titleID="IEC 61850-7-3:CSD.title">
+			<DataAttribute name="xUnits" fc="DC" type="Unit" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CSD.xUnits.desc" presCond="M"/>
+			<DataAttribute name="xD" fc="DC" type="VisString255" descID="IEC 61850-7-3:CSD.xD.desc" presCond="M"/>
+			<DataAttribute name="xDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:CSD.xDU.desc" presCond="O"/>
+			<DataAttribute name="yUnits" fc="DC" type="Unit" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CSD.yUnits.desc" presCond="M"/>
+			<DataAttribute name="yD" fc="DC" type="VisString255" descID="IEC 61850-7-3:CSD.yD.desc" presCond="M"/>
+			<DataAttribute name="yDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:CSD.yDU.desc" presCond="O"/>
+			<DataAttribute name="zUnits" fc="DC" type="Unit" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CSD.zUnits.desc" presCond="O"/>
+			<DataAttribute name="zD" fc="DC" type="VisString255" descID="IEC 61850-7-3:CSD.zD.desc" presCond="O"/>
+			<DataAttribute name="zDU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:CSD.zDU.desc" presCond="O"/>
+			<DataAttribute name="numPts" fc="DC" type="INT16U" descID="IEC 61850-7-3:CSD.numPts.desc" presCond="M"/>
+			<DataAttribute name="crvPts" fc="DC" type="Point" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CSD.crvPts.desc" presCond="M" isArray="true" sizeAttribute="numPts"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CST" titleID="IEC 61850-7-3:CST.title">
+			<DataAttribute name="objRef" fc="SR" type="ObjRef" dupd="true" descID="IEC 61850-7-3:CST.objRef.desc" presCond="M"/>
+			<DataAttribute name="serviceType" fc="SR" type="ServiceNameKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:CST.serviceType.desc" presCond="M"/>
+			<DataAttribute name="errorCode" fc="SR" type="ServiceStatusKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:CST.errorCode.desc" presCond="M"/>
+			<DataAttribute name="originatorID" fc="SR" type="Octet64" descID="IEC 61850-7-3:CST.originatorID.desc" presCond="O"/>
+			<DataAttribute name="t" fc="SR" type="Timestamp" descID="IEC 61850-7-3:CST.t.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="BTS" titleID="IEC 61850-7-3:BTS.title">
+			<DataAttribute name="objRef" fc="SR" type="ObjRef" dupd="true" descID="IEC 61850-7-3:BTS.objRef.desc" presCond="M"/>
+			<DataAttribute name="serviceType" fc="SR" type="ServiceNameKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:BTS.serviceType.desc" presCond="M"/>
+			<DataAttribute name="errorCode" fc="SR" type="ServiceStatusKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:BTS.errorCode.desc" presCond="M"/>
+			<DataAttribute name="originatorID" fc="SR" type="Octet64" descID="IEC 61850-7-3:BTS.originatorID.desc" presCond="O"/>
+			<DataAttribute name="t" fc="SR" type="Timestamp" descID="IEC 61850-7-3:BTS.t.desc" presCond="M"/>
+			<DataAttribute name="rptID" fc="SR" type="VisString129" descID="IEC 61850-7-3:BTS.rptID.desc" presCond="M"/>
+			<DataAttribute name="rptEna" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:BTS.rptEna.desc" presCond="M"/>
+			<DataAttribute name="datSet" fc="SR" type="ObjRef" descID="IEC 61850-7-3:BTS.datSet.desc" presCond="M"/>
+			<DataAttribute name="confRev" fc="SR" type="INT32U" descID="IEC 61850-7-3:BTS.confRev.desc" presCond="M"/>
+			<DataAttribute name="optFlds" fc="SR" type="OptFlds" descID="IEC 61850-7-3:BTS.optFlds.desc" presCond="M"/>
+			<DataAttribute name="bufTm" fc="SR" type="INT32U" descID="IEC 61850-7-3:BTS.bufTm.desc" presCond="M"/>
+			<DataAttribute name="sqNum" fc="SR" type="INT16U" descID="IEC 61850-7-3:BTS.sqNum.desc" presCond="M"/>
+			<DataAttribute name="trgOps" fc="SR" type="TrgOps" descID="IEC 61850-7-3:BTS.trgOps.desc" presCond="M"/>
+			<DataAttribute name="intgPd" fc="SR" type="INT32U" descID="IEC 61850-7-3:BTS.intgPd.desc" presCond="M"/>
+			<DataAttribute name="gi" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:BTS.gi.desc" presCond="M"/>
+			<DataAttribute name="purgeBuf" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:BTS.purgeBuf.desc" presCond="M"/>
+			<DataAttribute name="entryID" fc="SR" type="EntryID" descID="IEC 61850-7-3:BTS.entryID.desc" presCond="M"/>
+			<DataAttribute name="timeOfEntry" fc="SR" type="EntryTime" descID="IEC 61850-7-3:BTS.timeOfEntry.desc" presCond="M"/>
+			<DataAttribute name="resvTms" fc="SR" type="INT16" descID="IEC 61850-7-3:BTS.resvTms.desc" presCond="O"/>
+			<DataAttribute name="owner" fc="SR" type="Octet64" descID="IEC 61850-7-3:BTS.owner.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="UTS" titleID="IEC 61850-7-3:UTS.title">
+			<DataAttribute name="objRef" fc="SR" type="ObjRef" dupd="true" descID="IEC 61850-7-3:UTS.objRef.desc" presCond="M"/>
+			<DataAttribute name="serviceType" fc="SR" type="ServiceNameKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:UTS.serviceType.desc" presCond="M"/>
+			<DataAttribute name="errorCode" fc="SR" type="ServiceStatusKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:UTS.errorCode.desc" presCond="M"/>
+			<DataAttribute name="originatorID" fc="SR" type="Octet64" descID="IEC 61850-7-3:UTS.originatorID.desc" presCond="O"/>
+			<DataAttribute name="t" fc="SR" type="Timestamp" descID="IEC 61850-7-3:UTS.t.desc" presCond="M"/>
+			<DataAttribute name="rptID" fc="SR" type="VisString129" descID="IEC 61850-7-3:UTS.rptID.desc" presCond="M"/>
+			<DataAttribute name="rptEna" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:UTS.rptEna.desc" presCond="M"/>
+			<DataAttribute name="resv" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:UTS.resv.desc" presCond="M"/>
+			<DataAttribute name="datSet" fc="SR" type="ObjRef" descID="IEC 61850-7-3:UTS.datSet.desc" presCond="M"/>
+			<DataAttribute name="confRev" fc="SR" type="INT32U" descID="IEC 61850-7-3:UTS.confRev.desc" presCond="M"/>
+			<DataAttribute name="optFlds" fc="SR" type="OptFlds" descID="IEC 61850-7-3:UTS.optFlds.desc" presCond="M"/>
+			<DataAttribute name="bufTm" fc="SR" type="INT32U" descID="IEC 61850-7-3:UTS.bufTm.desc" presCond="M"/>
+			<DataAttribute name="sqNum" fc="SR" type="INT8U" descID="IEC 61850-7-3:UTS.sqNum.desc" presCond="M"/>
+			<DataAttribute name="trgOps" fc="SR" type="TrgOps" descID="IEC 61850-7-3:UTS.trgOps.desc" presCond="M"/>
+			<DataAttribute name="intgPd" fc="SR" type="INT32U" descID="IEC 61850-7-3:UTS.intgPd.desc" presCond="M"/>
+			<DataAttribute name="gi" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:UTS.gi.desc" presCond="M"/>
+			<DataAttribute name="owner" fc="SR" type="Octet64" descID="IEC 61850-7-3:BTS.owner.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="LTS" titleID="IEC 61850-7-3:LTS.title">
+			<DataAttribute name="objRef" fc="SR" type="ObjRef" dupd="true" descID="IEC 61850-7-3:LTS.objRef.desc" presCond="M"/>
+			<DataAttribute name="serviceType" fc="SR" type="ServiceNameKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:LTS.serviceType.desc" presCond="M"/>
+			<DataAttribute name="errorCode" fc="SR" type="ServiceStatusKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:LTS.errorCode.desc" presCond="M"/>
+			<DataAttribute name="originatorID" fc="SR" type="Octet64" descID="IEC 61850-7-3:LTS.originatorID.desc" presCond="O"/>
+			<DataAttribute name="t" fc="SR" type="Timestamp" descID="IEC 61850-7-3:LTS.t.desc" presCond="M"/>
+			<DataAttribute name="logEna" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:LTS.logEna.desc" presCond="M"/>
+			<DataAttribute name="logRef" fc="SR" type="ObjRef" descID="IEC 61850-7-3:LTS.logRef.desc" presCond="M"/>
+			<DataAttribute name="datSet" fc="SR" type="ObjRef" descID="IEC 61850-7-3:LTS.datSet.desc" presCond="M"/>
+			<DataAttribute name="oldEntrTm" fc="SR" type="EntryTime" descID="IEC 61850-7-3:LTS.oldEntrTm.desc" presCond="M"/>
+			<DataAttribute name="newEntrTm" fc="SR" type="EntryTime" descID="IEC 61850-7-3:LTS.newEntrTm.desc" presCond="M"/>
+			<DataAttribute name="oldEnt" fc="SR" type="EntryID" descID="IEC 61850-7-3:LTS.oldEnt.desc" presCond="M"/>
+			<DataAttribute name="newEnt" fc="SR" type="EntryID" descID="IEC 61850-7-3:LTS.newEnt.desc" presCond="M"/>
+			<DataAttribute name="trgOps" fc="SR" type="TrgOps" descID="IEC 61850-7-3:LTS.trgOps.desc" presCond="M"/>
+			<DataAttribute name="intgPd" fc="SR" type="INT32U" descID="IEC 61850-7-3:LTS.intgPd.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="OTS" titleID="IEC 61850-7-3:OTS.title">
+			<DataAttribute name="objRef" fc="SR" type="ObjRef" dupd="true" descID="IEC 61850-7-3:OTS.objRef.desc" presCond="M"/>
+			<DataAttribute name="serviceType" fc="SR" type="ServiceNameKind" descID="IEC 61850-7-3:OTS.serviceType.desc" typeKind="ENUMERATED" presCond="M"/>
+			<DataAttribute name="errorCode" fc="SR" type="ServiceStatusKind" descID="IEC 61850-7-3:OTS.errorCode.desc" typeKind="ENUMERATED" presCond="M"/>
+			<DataAttribute name="originatorID" fc="SR" type="Octet64" descID="IEC 61850-7-3:OTS.originatorID.desc" presCond="O"/>
+			<DataAttribute name="t" fc="SR" type="Timestamp" descID="IEC 61850-7-3:OTS.t.desc" presCond="M"/>
+			<DataAttribute name="oldEntrTm" fc="SR" type="Timestamp" descID="IEC 61850-7-3:OTS.oldEntrTm.desc" presCond="M"/>
+			<DataAttribute name="newEntrTm" fc="SR" type="Timestamp" descID="IEC 61850-7-3:OTS.newEntrTm.desc" presCond="M"/>
+			<DataAttribute name="oldEnt" fc="SR" type="INT32U" descID="IEC 61850-7-3:OTS.oldEnt.desc" presCond="M"/>
+			<DataAttribute name="newEnt" fc="SR" type="INT32U" descID="IEC 61850-7-3:OTS.newEnt.desc" presCond="M"/>
+			<DataAttribute name="rangeStrTm" fc="SR" type="Timestamp" descID="IEC 61850-7-3:OTS.rangeStrTm.desc" presCond="M"/>
+			<DataAttribute name="rangeStpTm" fc="SR" type="Timestamp" descID="IEC 61850-7-3:OTS.rangeStpTm.desc" presCond="M"/>
+			<DataAttribute name="entry" fc="SR" type="EntryID" descID="IEC 61850-7-3:OTS.entry.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="GTS" titleID="IEC 61850-7-3:GTS.title">
+			<DataAttribute name="objRef" fc="SR" type="ObjRef" dupd="true" descID="IEC 61850-7-3:GTS.objRef.desc" presCond="M"/>
+			<DataAttribute name="serviceType" fc="SR" type="ServiceNameKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:GTS.serviceType.desc" presCond="M"/>
+			<DataAttribute name="errorCode" fc="SR" type="ServiceStatusKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:GTS.errorCode.desc" presCond="M"/>
+			<DataAttribute name="originatorID" fc="SR" type="Octet64" descID="IEC 61850-7-3:GTS.originatorID.desc" presCond="O"/>
+			<DataAttribute name="t" fc="SR" type="Timestamp" descID="IEC 61850-7-3:GTS.t.desc" presCond="M"/>
+			<DataAttribute name="goEna" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:GTS.goEna.desc" presCond="M"/>
+			<DataAttribute name="goID" fc="SR" type="VisString129" descID="IEC 61850-7-3:GTS.goID.desc" presCond="M"/>
+			<DataAttribute name="datSet" fc="SR" type="ObjRef" descID="IEC 61850-7-3:GTS.datSet.desc" presCond="M"/>
+			<DataAttribute name="confRev" fc="SR" type="INT32U" descID="IEC 61850-7-3:GTS.confRev.desc" presCond="M"/>
+			<DataAttribute name="ndsCom" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:GTS.ndsCom.desc" presCond="M"/>
+			<DataAttribute name="dstAddress" fc="SR" type="PhyComAddr" descID="IEC 61850-7-3:GTS.dstAddress.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="MTS" titleID="IEC 61850-7-3:MTS.title">
+			<DataAttribute name="objRef" fc="SR" type="ObjRef" dupd="true" descID="IEC 61850-7-3:MTS.objRef.desc" presCond="M"/>
+			<DataAttribute name="serviceType" fc="SR" type="ServiceNameKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:MTS.serviceType.desc" presCond="M"/>
+			<DataAttribute name="errorCode" fc="SR" type="ServiceStatusKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:MTS.errorCode.desc" presCond="M"/>
+			<DataAttribute name="originatorID" fc="SR" type="Octet64" descID="IEC 61850-7-3:MTS.originatorID.desc" presCond="O"/>
+			<DataAttribute name="t" fc="SR" type="Timestamp" descID="IEC 61850-7-3:MTS.t.desc" presCond="M"/>
+			<DataAttribute name="svEna" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:MTS.svEna.desc" presCond="M"/>
+			<DataAttribute name="msvID" fc="SR" type="VisString129" descID="IEC 61850-7-3:MTS.msvID.desc" presCond="M"/>
+			<DataAttribute name="datSet" fc="SR" type="ObjRef" descID="IEC 61850-7-3:MTS.datSet.desc" presCond="M"/>
+			<DataAttribute name="confRev" fc="SR" type="INT32U" descID="IEC 61850-7-3:MTS.confRev.desc" presCond="M"/>
+			<DataAttribute name="smpRate" fc="SR" type="INT16U" descID="IEC 61850-7-3:MTS.smpRate.desc" presCond="M"/>
+			<DataAttribute name="optFlds" fc="SR" type="SvOptFlds" descID="IEC 61850-7-3:MTS.optFlds.desc" presCond="M"/>
+			<DataAttribute name="smpMod" fc="SR" type="SamplingModeKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:MTS.smpMod.desc" presCond="M"/>
+			<DataAttribute name="dstAddress" fc="SR" type="PhyComAddr" descID="IEC 61850-7-3:MTS.dstAddress.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="NTS" titleID="IEC 61850-7-3:NTS.title">
+			<DataAttribute name="objRef" fc="SR" type="ObjRef" dupd="true" descID="IEC 61850-7-3:NTS.objRef.desc" presCond="M"/>
+			<DataAttribute name="serviceType" fc="SR" type="ServiceNameKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:NTS.serviceType.desc" presCond="M"/>
+			<DataAttribute name="errorCode" fc="SR" type="ServiceStatusKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:NTS.errorCode.desc" presCond="M"/>
+			<DataAttribute name="originatorID" fc="SR" type="Octet64" descID="IEC 61850-7-3:NTS.originatorID.desc" presCond="O"/>
+			<DataAttribute name="t" fc="SR" type="Timestamp" descID="IEC 61850-7-3:NTS.t.desc" presCond="M"/>
+			<DataAttribute name="svEna" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:NTS.svEna.desc" presCond="M"/>
+			<DataAttribute name="resv" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:NTS.resv.desc" presCond="M"/>
+			<DataAttribute name="usvID" fc="SR" type="VisString129" descID="IEC 61850-7-3:NTS.usvID.desc" presCond="M"/>
+			<DataAttribute name="datSet" fc="SR" type="ObjRef" descID="IEC 61850-7-3:NTS.datSet.desc" presCond="M"/>
+			<DataAttribute name="confRev" fc="SR" type="INT32U" descID="IEC 61850-7-3:NTS.confRev.desc" presCond="M"/>
+			<DataAttribute name="smpRate" fc="SR" type="INT16U" descID="IEC 61850-7-3:NTS.smpRate.desc" presCond="M"/>
+			<DataAttribute name="optFlds" fc="SR" type="SvOptFlds" descID="IEC 61850-7-3:NTS.optFlds.desc" presCond="M"/>
+			<DataAttribute name="smpMod" fc="SR" type="SamplingModeKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:NTS.smpMod.desc" presCond="M"/>
+			<DataAttribute name="dstAddress" fc="SR" type="PhyComAddr" descID="IEC 61850-7-3:NTS.dstAddress.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="STS" titleID="IEC 61850-7-3:STS.title">
+			<DataAttribute name="objRef" fc="SR" type="ObjRef" dupd="true" descID="IEC 61850-7-3:STS.objRef.desc" presCond="M"/>
+			<DataAttribute name="serviceType" fc="SR" type="ServiceNameKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:STS.serviceType.desc" presCond="M"/>
+			<DataAttribute name="errorCode" fc="SR" type="ServiceStatusKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:STS.errorCode.desc" presCond="M"/>
+			<DataAttribute name="originatorID" fc="SR" type="Octet64" descID="IEC 61850-7-3:STS.originatorID.desc" presCond="O"/>
+			<DataAttribute name="t" fc="SR" type="Timestamp" descID="IEC 61850-7-3:STS.t.desc" presCond="M"/>
+			<DataAttribute name="numOfSG" fc="SR" type="INT8U" descID="IEC 61850-7-3:STS.numOfSG.desc" presCond="M"/>
+			<DataAttribute name="actSG" fc="SR" type="INT8U" descID="IEC 61850-7-3:STS.actSG.desc" presCond="M"/>
+			<DataAttribute name="editSG" fc="SR" type="INT8U" descID="IEC 61850-7-3:STS.editSG.desc" presCond="M"/>
+			<DataAttribute name="cnfEdit" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:STS.cnfEdit.desc" presCond="M"/>
+			<DataAttribute name="lActTm" fc="SR" type="Timestamp" descID="IEC 61850-7-3:STS.lActTm.desc" presCond="M"/>
+			<DataAttribute name="resvTms" fc="SR" type="INT16U" descID="IEC 61850-7-3:STS.resvTms.desc" presCond="O"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+		<CDC name="CTS" titleID="IEC 61850-7-3:CTS.title" typeKindParameterized="true">
+			<DataAttribute name="objRef" fc="SR" type="ObjRef" dupd="true" descID="IEC 61850-7-3:CTS.objRef.desc" presCond="M"/>
+			<DataAttribute name="serviceType" fc="SR" type="ServiceNameKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:CTS.serviceType.desc" presCond="M"/>
+			<DataAttribute name="errorCode" fc="SR" type="ServiceStatusKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:CTS.errorCode.desc" presCond="M"/>
+			<DataAttribute name="originatorID" fc="SR" type="Octet64" descID="IEC 61850-7-3:CTS.originatorID.desc" presCond="O"/>
+			<DataAttribute name="t" fc="SR" type="Timestamp" descID="IEC 61850-7-3:CTS.t.desc" presCond="M"/>
+			<DataAttribute name="ctlVal" fc="SR" typeKind="undefined" descID="IEC 61850-7-3:CTS.ctlVal.desc" presCond="M"/>
+			<DataAttribute name="operTm" fc="SR" type="Timestamp" descID="IEC 61850-7-3:CTS.operTm.desc" presCond="MOoperTm"/>
+			<DataAttribute name="origin" fc="SR" type="Originator" typeKind="CONSTRUCTED" descID="IEC 61850-7-3:CTS.origin.desc" presCond="M"/>
+			<DataAttribute name="ctlNum" fc="SR" type="INT8U" descID="IEC 61850-7-3:CTS.ctlNum.desc" presCond="M"/>
+			<DataAttribute name="T" fc="SR" type="Timestamp" descID="IEC 61850-7-3:CTS.T.desc" presCond="M"/>
+			<DataAttribute name="Test" fc="SR" type="BOOLEAN" descID="IEC 61850-7-3:CTS.Test.desc" presCond="M"/>
+			<DataAttribute name="Check" fc="SR" type="Check" descID="IEC 61850-7-3:CTS.Check.desc" presCond="M"/>
+			<DataAttribute name="respAddCause" fc="SR" type="ControlServiceStatusKind" typeKind="ENUMERATED" descID="IEC 61850-7-3:CTS.respAddCause.desc" presCond="M"/>
+			<DataAttribute name="d" fc="DC" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.d.desc" presCond="O"/>
+			<DataAttribute name="dU" fc="DC" type="Unicode255" descID="IEC 61850-7-3:BasePrimitiveCDC.dU.desc" presCond="O"/>
+			<DataAttribute name="cdcNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcNs.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="cdcName" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.cdcName.desc" presCond="MOcdcNs"/>
+			<DataAttribute name="dataNs" fc="EX" type="VisString255" descID="IEC 61850-7-3:BasePrimitiveCDC.dataNs.desc" presCond="MOdataNs"/>
+		</CDC>
+	</CDCs>
+</NS>
