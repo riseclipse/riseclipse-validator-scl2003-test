@@ -17,8 +17,9 @@ for filepath in "${SCL_PATHS[@]}"; do
         exit $exit_code
     fi
 
-    SNAPSHOT_FILEPATH="$SCL_ROOT_DIR/snapshots/$(basename "$filepath")"
+    SNAPSHOT_FILEPATH="$SCL_ROOT_DIR/snapshots/$(echo "$filepath" | cut -d/ -f3,4,5,6,7,8,9)"
     SNAPSHOT_FILEPATH="${SNAPSHOT_FILEPATH%.*}.out"
+    mkdir -p $(dirname "$SNAPSHOT_FILEPATH")
     printf "$OUTPUT" > "$SNAPSHOT_FILEPATH"
     UPDATED_SNAPSHOTS_COUNT=$((UPDATED_SNAPSHOTS_COUNT + 1))
     UPDATED_SNAPSHOTS="$UPDATED_SNAPSHOTS> $SNAPSHOT_FILEPATH\n"
