@@ -9,7 +9,7 @@ usage() {
     printf "Updates NSD validation files from the given URL by downloading them to the desired target directory.\n"
     printf "Options:\n"
     printf -- "-h --help        \tShow this help message\n"
-    printf -- "-c --clean       \tRemove unneeded .xml and .xsd files\n"
+    printf -- "-c --clean       \tRemove unneeded .xml, .xsd and .txt files\n"
     printf -- "-o --out-dir     \tThe directory in which you want to store NSD files.\n"
     printf                 "\t\t\tDefault is '<ROOT>/nsd' where <ROOT> is the root of the testing repository.\n"
 }
@@ -84,7 +84,7 @@ rm $FILENAME
 
 if [ "$CLEAN" -eq 1 ]; then
     echo "Cleaning..."
-    rm "$NSD_OUTPUT_DIR"/*.xml "$NSD_OUTPUT_DIR"/*.xsd
+    rm "$NSD_OUTPUT_DIR"/*.xml "$NSD_OUTPUT_DIR"/*.xsd "$NSD_OUTPUT_DIR"/*.txt
 fi
 
 exit 0
