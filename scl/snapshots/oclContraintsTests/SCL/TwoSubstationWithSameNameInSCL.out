@@ -1,0 +1,1 @@
+ERROR   : [OCL/SemanticConstraints/SCL_unique_Substation_name] All Substation within an SCL file shall have different name (:2)

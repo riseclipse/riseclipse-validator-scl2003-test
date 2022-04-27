@@ -1,0 +1,5 @@
+{
+    "ocl": ["SemanticConstraints/SCL.ocl"],
+    "make-explicit-links": 1,
+    "do-not-display-copyright": 1
+}
