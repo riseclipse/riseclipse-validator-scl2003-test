@@ -20,8 +20,9 @@ usage() {
     printf                       "\t\t\t\tPaths can either be directories which will be searched recursively, or full paths to NSD files.\n"
     printf                       "\t\t\t\tBy default, all files under the '$NSD_ROOT_DIR' directory will be used for validation.\n\n"
     printf "Validator options (will be passed to the jar executable):\n"
-    printf -- "--verbose\n"
+    printf -- "--debug\n"
     printf -- "--info\n"
+    printf -- "--notice\n"
     printf -- "--warning\n"
     printf -- "--error                    \tThe amount of messages displayed is chosen according to this option, default is --warning.\n"
     printf -- "--use-color                \tcolors (using ANSI escape sequences) are used on message prefixes.\n"
@@ -36,7 +37,7 @@ usage() {
 
 OPTS=$(\
     getopt -o hj:o::n:: \
-        -l help,jar-path:,ocl::,,nsd::,verbose,info,warning,error,use-color,make-explicit-links,display-nsd-messages,do-not-display-copyright,help-environment \
+        -l help,jar-path:,ocl::,,nsd::,debug,info,notice,warning,error,use-color,make-explicit-links,display-nsd-messages,do-not-display-copyright,help-environment \
         -- "$@" \
 )
 
@@ -78,7 +79,7 @@ while true; do
                 done
             fi
             shift;;
-        --verbose | --info | --warning | --error | --use-color | --make-explicit-links \
+        --debug | --info | --notice | --warning | --error | --use-color | --make-explicit-links \
         | --display-nsd-messages | --do-not-display-copyright | --help-environment)
             JAR_OPTS="$JAR_OPTS $1";;
         --) 
