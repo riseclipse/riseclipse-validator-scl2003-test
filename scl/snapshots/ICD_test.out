@@ -1,18 +1,16 @@
-INFO:    Copyright (c) 2016-2022 CentraleSupélec & EDF.
-INFO:    All rights reserved. This program and the accompanying materials
-INFO:    are made available under the terms of the Eclipse Public License v2.0
-INFO:    which accompanies this distribution, and is available at
-INFO:    https://www.eclipse.org/legal/epl-v20.html
-INFO:    
-INFO:    This tool is part of RiseClipse.
-INFO:    Contributors:
-INFO:        Computer Science Department, CentraleSupélec
-INFO:        EDF R&D
-INFO:    Contacts:
-INFO:        dominique.marcadet@centralesupelec.fr
-INFO:        aurelie.dehouck-neveu@edf.fr
-INFO:    Web site:
-INFO:        https://riseclipse.github.io/
-INFO:    
-INFO:    RiseClipseValidatorSCL version: 1.2.1-SNAPSHOT (11 April 2022)
-INFO:    
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:456)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:462)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:470)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:472)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:473)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:476)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:477)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:480)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:481)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:484)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:487)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:489)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:490)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:493)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:494)
+WARNING : [OCL/SemanticConstraints/DA_Struct_no_valKind_or_valImport] The attributes valKind and valImport make no sense for DA elements with bType = Struct (:497)
