@@ -19,4 +19,22 @@
 *************************************************************************
 */
 
-import '../Common/ExtRef.ocl'
+import scl: 'http://www.iec.ch/61850/2003/SCL'
+
+package scl
+
+context AbstractConductingEquipment
+
+    -- The SubEquipment in AbstractConductingEquipment shall have unique child name (from SCL_Substation.xsd)
+    inv AbstractConductingEquipment_unique_name_of_SubEquipment
+        (   'ERROR;'
+          + 'OCL/SemanticConstraints/AbstractConductingEquipment_unique_name_of_SubEquipment;'
+          + self.lineNumber.toString() + ';'
+          + 'Unique child name of SubEquipment in AbstractConductingEquipment'
+        )
+    :
+        self.SubEquipment -> isUnique( n : Naming | n.name )
+        
+
+endpackage
+
