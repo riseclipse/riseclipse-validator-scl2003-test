@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCL revision="B" version="2007" xmlns="http://www.iec.ch/61850/2003/SCL" >
+  <Header id=""/>
+  <Substation name="substation">
+  	<VoltageLevel name="voltageLevel">
+      <!-- Note: LNode must come before Bay according to the XSD.
+                 This is not verified by RiseClipse -->
+  	  <LNode lnInst="0123456789" lnClass="ABCD" iedName="iedName" ldInst="ldInst" prefix="prefix">
+  	  </LNode>
+  	  <LNode lnInst="0123456789" lnClass="ABCD" iedName="iedName" ldInst="ldInst" prefix="prefix">
+  	  </LNode>
+  	  <Bay name="bay">
+  	  </Bay>
+  	</VoltageLevel>
+  </Substation>
+</SCL>
