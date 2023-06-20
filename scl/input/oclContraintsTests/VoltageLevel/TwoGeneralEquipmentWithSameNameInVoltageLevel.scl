@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCL revision="B" version="2007" xmlns="http://www.iec.ch/61850/2003/SCL" >
+  <Header id=""/>
+  <Substation name="substation">
+  	<VoltageLevel name="voltageLevel">
+    <!-- Note: GeneralEquipment must come before Bay according to the XSD.
+               This is not verified by RiseClipse -->
+  	<GeneralEquipment name="generalEquipment" type="VLV">
+  	</GeneralEquipment>
+  	<GeneralEquipment name="generalEquipment" type="BAT">
+  	</GeneralEquipment>
+  	  <Bay name="bay">
+  	  </Bay>
+  	</VoltageLevel>
+  </Substation>
+</SCL>

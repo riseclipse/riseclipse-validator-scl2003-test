@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCL revision="B" version="2007" xmlns="http://www.iec.ch/61850/2003/SCL" >
+  <Header id=""/>
+  <DataTypeTemplates>
+    <LNodeType lnClass="LNCL" id="lNodeType">
+      <DO name="Do" type="doType1">
+      </DO>
+    </LNodeType>
+    <DOType id="doType1" cdc="INC">
+      <SDO name="sdo" type="doType2">
+      </SDO>
+    </DOType>
+    <DOType id="doType2" cdc="INC">
+      <SDO name="sdo" type="doType3">
+      </SDO>
+    </DOType>
+    <DOType id="doType3" cdc="INC">
+      <SDO name="sdo" type="doType1">
+      </SDO>
+    </DOType>
+  </DataTypeTemplates>
+</SCL>

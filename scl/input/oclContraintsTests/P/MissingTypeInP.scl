@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCL revision="B" version="2007" xmlns="http://www.iec.ch/61850/2003/SCL" >
+  <Header id=""/>
+  <Communication>
+    <SubNetwork name="subNetwork">
+      <ConnectedAP iedName="iedName" apName="apName">
+        <Address>
+          <P>
+          </P>
+        </Address>
+      </ConnectedAP>
+    </SubNetwork>
+  </Communication>
+  <IED name="iedName">
+    <AccessPoint name="apName">
+    </AccessPoint>
+  </IED>
+</SCL>

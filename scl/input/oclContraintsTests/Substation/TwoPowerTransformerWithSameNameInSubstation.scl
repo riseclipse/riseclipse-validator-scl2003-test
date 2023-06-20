@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCL revision="B" version="2007" xmlns="http://www.iec.ch/61850/2003/SCL" >
+  <Header id=""/>
+  <Substation name="substation">
+    <!-- Note: PowerTransformer must come before VoltageLevel according to the XSD.
+               This is not verified by RiseClipse -->
+  	<PowerTransformer name="powerTransformer" type="PTR">
+  	  <TransformerWinding name="transformerWinding1" type="PTW">
+  	  </TransformerWinding>
+  	</PowerTransformer>
+  	<PowerTransformer name="powerTransformer" type="PTR">
+  	  <TransformerWinding name="transformerWinding2" type="PTW">
+  	  </TransformerWinding>
+  	</PowerTransformer>
+  	<VoltageLevel name="voltageLevel">
+  	  <Bay name="bay">
+  	  </Bay>
+  	</VoltageLevel>
+  </Substation>
+</SCL>
