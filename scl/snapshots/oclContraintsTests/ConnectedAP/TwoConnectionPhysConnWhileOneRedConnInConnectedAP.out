@@ -1,0 +1,1 @@
+ERROR   : [OCL/RequiredElements/ConnectedAP_at_most_one_PhysConnTypeConnection_required] Only one PhysConn type Connection is allowed when there is one PhysConn type RedConn in ConnectedAP (TwoConnectionPhysConnWhileOneRedConnInConnectedAP.scl:6)

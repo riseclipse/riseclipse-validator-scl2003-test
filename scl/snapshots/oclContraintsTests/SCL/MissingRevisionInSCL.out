@@ -1,1 +1,1 @@
-ERROR   : [OCL/RequiredAttributes/SCL_revision_required] revision attribute shall be present in SCL (:2)
+ERROR   : [OCL/RequiredAttributes/SCL_revision_required] revision attribute shall be present in SCL (MissingRevisionInSCL.scl:2)

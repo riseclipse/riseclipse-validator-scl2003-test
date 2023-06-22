@@ -1,0 +1,1 @@
+ERROR   : [OCL/RequiredAttributes/ConnectedAP_redProt_valid] redProt attribute shall be valid if present in ConnectedAP. Current value is xxx (InvalidRedProtInConnectedAP.scl:6)

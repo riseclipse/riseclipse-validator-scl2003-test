@@ -1,0 +1,1 @@
+ERROR   : [OCL/RequiredElements/Communication_at_least_one_SubNetwork_required] Communication shall contain at least one SubNetwork (MissingSubNetworkInCommunication.scl:4)

@@ -1,0 +1,2 @@
+ERROR   : [OCL/SemanticConstraints/EquipmentContainer_unique_PowerTransformer_name] PowerTransformer in EquipmentContainer shall have different name (TwoPowerTransformerWithSameNameInVoltageLevel.scl:5)
+ERROR   : [OCL/SemanticConstraints/VoltageLevel_unique_DirectChild_name] All direct childs in VoltageLevel shall have different name (TwoPowerTransformerWithSameNameInVoltageLevel.scl:5)

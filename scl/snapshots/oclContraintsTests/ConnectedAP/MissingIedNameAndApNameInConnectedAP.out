@@ -1,0 +1,4 @@
+WARNING : [SCL/ExplicitLinks] while resolving link from ConnectedAP: iedName is missing (MissingIedNameAndApNameInConnectedAP.scl:6)
+ERROR   : [OCL/RequiredAttributes/ConnectedAP_iedName_required] iedName attribute shall be present in ConnectedAP (MissingIedNameAndApNameInConnectedAP.scl:6)
+ERROR   : [OCL/RequiredAttributes/ConnectedAP_apName_required] apName attribute shall be present in ConnectedAP (MissingIedNameAndApNameInConnectedAP.scl:6)
+ERROR   : [OCL/SemanticConstraints/ConnectedAP_RefersToAccessPoint] ConnectedAP (apName=null)  does not refer an existing AccessPoint in IED section (MissingIedNameAndApNameInConnectedAP.scl:6)

@@ -1,0 +1,1 @@
+ERROR   : [OCL/RequiredAttributes/P_type_valid] type attribute shall be valid in P. Current value is ip (InvalidTypeInP.scl:8)

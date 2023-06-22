@@ -1,0 +1,1 @@
+ERROR   : [OCL/RequiredAttributes/Header_nameStructure_value_IEDName] nameStructure attribute shall be equal to IEDName in Header. Current value is badValueForNameStructure (InvalidNameStructureAttributeValueInHeader.scl:3)

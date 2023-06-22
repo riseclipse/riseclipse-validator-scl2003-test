@@ -1,0 +1,1 @@
+ERROR   : [OCL/SemanticConstraints/History_unique_Hitem] Hitem in History must have different version or revision (NonUniqueHitemInHistory.scl:4)

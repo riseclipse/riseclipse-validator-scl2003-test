@@ -1,0 +1,2 @@
+ERROR   : [OCL/SemanticConstraints/VoltageLevel_unique_Function_name] Function in VoltageLevel shall have different name (TwoFunctionWithSameNameInVoltageLevel.scl:5)
+ERROR   : [OCL/SemanticConstraints/VoltageLevel_unique_DirectChild_name] All direct childs in VoltageLevel shall have different name (TwoFunctionWithSameNameInVoltageLevel.scl:5)

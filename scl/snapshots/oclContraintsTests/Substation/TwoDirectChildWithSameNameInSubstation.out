@@ -1,0 +1,1 @@
+ERROR   : [OCL/SemanticConstraints/Substation_unique_DirectChild_name] All direct childs in Substation shall have different name (TwoDirectChildWithSameNameInSubstation.scl:4)

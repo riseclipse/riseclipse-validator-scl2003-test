@@ -1,0 +1,3 @@
+ERROR   : [OCL/RequiredAttributes/BitRateInMbPerSec_value_valid] value shall be positive in BitRateInMbPerSec. Current value is -10100 (InvalidUnitAndMultiplierInBitRate.scl:6)
+ERROR   : [OCL/RequiredAttributes/BitRateInMbPerSec_unit_value] unit attribute if present shall be b/s in BitRateInMbPerSec. Current value is s/b (InvalidUnitAndMultiplierInBitRate.scl:6)
+ERROR   : [OCL/RequiredAttributes/BitRateInMbPerSec_multiplier_value] multiplier attribute if present shall be M in BitRateInMbPerSec. Current value is 'http://www.iec.ch/61850/2003/SCL'::UnitMultiplierEnum::k (InvalidUnitAndMultiplierInBitRate.scl:6)
