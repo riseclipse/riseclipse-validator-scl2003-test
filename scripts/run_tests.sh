@@ -23,7 +23,8 @@ for filepath in "${SCL_PATHS[@]}"; do
 
     ORDERED_OUTPUT=$(printf "$OUTPUT" |sort)
 
-    SNAPSHOT_FILEPATH="$SCL_ROOT_DIR/snapshots/$(echo "$filepath" | cut -d/ -f3,4,5,6,7,8,9)"
+    SNAPSHOT_FILEPATH=$(realpath --relative-to="$SCL_ROOT_DIR"/input "$filepath")
+    SNAPSHOT_FILEPATH="$SCL_ROOT_DIR/snapshots/$SNAPSHOT_FILEPATH"
     SNAPSHOT_FILEPATH="${SNAPSHOT_FILEPATH%.*}.out"
 
     if [ ! -f "$SNAPSHOT_FILEPATH" ]; then
