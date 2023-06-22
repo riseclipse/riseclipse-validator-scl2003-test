@@ -1,0 +1,5 @@
+WARNING : [SCL/ExplicitLinks] while resolving link from LNode: (looking for LN) cannot find IED( name = iedName ) (TwoLNodeWithSameCombinationInSubstation.scl:7)
+WARNING : [SCL/ExplicitLinks] while resolving link from LNode: (looking for LN) cannot find IED( name = iedName ) (TwoLNodeWithSameCombinationInSubstation.scl:9)
+ERROR   : [OCL/SemanticConstraints/LNodeContainer_unique_LNode_combination] LNode in LNodeContainer shall have different combination of { lnInst, lnClass, iedName, ldInst, prefix } (TwoLNodeWithSameCombinationInSubstation.scl:4)
+ERROR   : [OCL/RequiredAttributes/LNode_lnInst_value] lnInst attribute shall have a valid value in LNode. Current value is 0123456789 (TwoLNodeWithSameCombinationInSubstation.scl:7)
+ERROR   : [OCL/RequiredAttributes/LNode_lnInst_value] lnInst attribute shall have a valid value in LNode. Current value is 0123456789 (TwoLNodeWithSameCombinationInSubstation.scl:9)

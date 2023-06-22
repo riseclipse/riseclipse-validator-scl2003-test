@@ -1,0 +1,2 @@
+ERROR   : [OCL/SemanticConstraints/SCL_unique_SubNetwork_name] All SubNetwork within an SCL file shall have different name (TwoSubNetworkWithSameNameInCommunication.scl:2)
+ERROR   : [OCL/SemanticConstraints/Communication_unique_SubNetwork_name] SubNetwork in Communication shall have different name (TwoSubNetworkWithSameNameInCommunication.scl:4)

@@ -1,1 +1,1 @@
-ERROR   : [OCL/RequiredAttributes/SCL_version_value_2007] version attribute shall be equal to 2007 in SCL. Current value is 2005 (:2)
+ERROR   : [OCL/RequiredAttributes/SCL_version_value_2007] version attribute shall be equal to 2007 in SCL. Current value is 2005 (InvalidVersionValueInSCL.scl:2)

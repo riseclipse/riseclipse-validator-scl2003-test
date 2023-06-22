@@ -1,1 +1,1 @@
-ERROR   : [OCL/RequiredAttributes/SCL_release_value_1] release attribute shall be equal to 4 in SCL. Current value is 3 (:2)
+ERROR   : [OCL/RequiredAttributes/SCL_release_value_1] release attribute shall be equal to 4 in SCL. Current value is 3 (InvalidReleaseValueInSCL.scl:2)

@@ -1,1 +1,1 @@
-ERROR   : [OCL/RequiredElements/SCL_one_Header_required] SCL shall contain an Header (:2)
+ERROR   : [OCL/RequiredElements/SCL_one_Header_required] SCL shall contain an Header (MissingHeaderInSCL.scl:2)

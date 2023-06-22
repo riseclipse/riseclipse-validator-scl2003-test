@@ -1,5 +1,5 @@
 {
-    "ocl": ["RequiredElements/SCL.ocl"],
+    "ocl": ["FileSpecifics", "RequiredAttributes", "RequiredElements", "SemanticConstraints"],
     "make-explicit-links": 1,
     "do-not-display-copyright": 1
 }

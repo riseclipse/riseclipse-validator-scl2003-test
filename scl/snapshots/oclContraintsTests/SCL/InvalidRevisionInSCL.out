@@ -1,2 +1,2 @@
-ERROR   : [OCL/RequiredAttributes/SCL_revision_value_B] revision attribute shall be equal to B in SCL. Current value is 4 (:2)
-ERROR   : [OCL/RequiredAttributes/SCL_revision_valid] revision attribute shall be an uppercase letter in SCL. Current value is 4 (:2)
+ERROR   : [OCL/RequiredAttributes/SCL_revision_valid] revision attribute shall be an uppercase letter in SCL. Current value is 4 (InvalidRevisionInSCL.scl:2)
+ERROR   : [OCL/RequiredAttributes/SCL_revision_value_B] revision attribute shall be equal to B in SCL. Current value is 4 (InvalidRevisionInSCL.scl:2)

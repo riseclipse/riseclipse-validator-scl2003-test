@@ -1,0 +1,3 @@
+WARNING : [SCL/ExplicitLinks] while resolving link from ConnectedAP: cannot find IED( name = iedName ) (MissingIEDReferedByConnectedAP.scl:6)
+ERROR   : [OCL/SemanticConstraints/ConnectedAP_ied_exists] iedName attribute shall refer to an existing IED in ConnectedAP. Current value is iedName (MissingIEDReferedByConnectedAP.scl:6)
+ERROR   : [OCL/SemanticConstraints/ConnectedAP_RefersToAccessPoint] ConnectedAP (apName=apName)  does not refer an existing AccessPoint in IED section (MissingIEDReferedByConnectedAP.scl:6)

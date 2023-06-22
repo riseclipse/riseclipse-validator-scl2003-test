@@ -1,0 +1,1 @@
+ERROR   : [OCL/RequiredAttributes/Naming_name_valid] name attribute shall be valid in scl::VoltageLevel. Current value is  (EmptyNameInVoltageLevel.scl:5)

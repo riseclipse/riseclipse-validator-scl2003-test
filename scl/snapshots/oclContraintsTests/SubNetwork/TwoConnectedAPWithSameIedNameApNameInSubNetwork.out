@@ -1,0 +1,1 @@
+ERROR   : [OCL/SemanticConstraints/SubNetwork_unique_ConnectedAP_combination] ConnectedAP in SubNetwork shall have different combination of { iedName, apName } (TwoConnectedAPWithSameIedNameApNameInSubNetwork.scl:5)

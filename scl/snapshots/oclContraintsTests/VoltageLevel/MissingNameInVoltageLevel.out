@@ -1,0 +1,1 @@
+ERROR   : [OCL/RequiredAttributes/Naming_name_required] name attribute shall be present in scl::VoltageLevel (MissingNameInVoltageLevel.scl:5)

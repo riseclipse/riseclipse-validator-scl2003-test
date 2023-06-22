@@ -1,0 +1,2 @@
+WARNING : [SCL/ExplicitLinks] while resolving link from ConnectedAP: cannot find AccessPoint( name = apName ) (MissingAccessPointReferedByConnectedAP.scl:6)
+ERROR   : [OCL/SemanticConstraints/ConnectedAP_RefersToAccessPoint] ConnectedAP (apName=apName)  does not refer an existing AccessPoint in IED section (MissingAccessPointReferedByConnectedAP.scl:6)

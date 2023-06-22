@@ -1,1 +1,1 @@
-ERROR   : [OCL/RequiredAttributes/SCL_revision_value_B] revision attribute shall be equal to B in SCL. Current value is C (:2)
+ERROR   : [OCL/RequiredAttributes/SCL_revision_value_B] revision attribute shall be equal to B in SCL. Current value is C (InvalidRevisionValueInSCL.scl:2)

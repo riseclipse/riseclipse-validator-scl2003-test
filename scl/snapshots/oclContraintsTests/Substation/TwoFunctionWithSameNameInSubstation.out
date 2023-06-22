@@ -1,0 +1,2 @@
+ERROR   : [OCL/SemanticConstraints/Substation_unique_Function_name] Function in Substation shall have different name (TwoFunctionWithSameNameInSubstation.scl:4)
+ERROR   : [OCL/SemanticConstraints/Substation_unique_DirectChild_name] All direct childs in Substation shall have different name (TwoFunctionWithSameNameInSubstation.scl:4)

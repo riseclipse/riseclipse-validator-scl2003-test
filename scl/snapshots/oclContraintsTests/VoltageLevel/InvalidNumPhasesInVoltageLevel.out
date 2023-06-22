@@ -1,0 +1,1 @@
+ERROR   : [OCL/RequiredAttributes/VoltageLevel_numPhases_value] numPhases attribute shall be between 1 and 255 in VoltageLevel. Current value is 0 (InvalidNumPhasesInVoltageLevel.scl:5)

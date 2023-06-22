@@ -1,0 +1,1 @@
+ERROR   : [OCL/RequiredAttributes/IED_name_required] name attribute shall be present in IED (MissingNameInIED.scl:4)

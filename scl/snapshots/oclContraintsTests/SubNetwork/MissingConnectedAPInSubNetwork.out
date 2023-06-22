@@ -1,0 +1,1 @@
+ERROR   : [OCL/RequiredElements/SubNetwork_at_least_one_ConnectedAP_required] SubNetwork shall contain at least one ConnectedAP (MissingConnectedAPInSubNetwork.scl:5)

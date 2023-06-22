@@ -1,2 +1,2 @@
-ERROR   : [OCL/RequiredAttributes/SCL_version_valid] version attribute shall be a year between 2000 and 2999 in SCL. Current value is 1000 (:2)
-ERROR   : [OCL/RequiredAttributes/SCL_version_value_2007] version attribute shall be equal to 2007 in SCL. Current value is 1000 (:2)
+ERROR   : [OCL/RequiredAttributes/SCL_version_valid] version attribute shall be a year between 2000 and 2999 in SCL. Current value is 1000 (InvalidVersionInSCL.scl:2)
+ERROR   : [OCL/RequiredAttributes/SCL_version_value_2007] version attribute shall be equal to 2007 in SCL. Current value is 1000 (InvalidVersionInSCL.scl:2)
