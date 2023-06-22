@@ -1,2 +1,6 @@
 {
+    "ocl": ["FileSpecifics", "RequiredAttributes", "RequiredElements", "SemanticConstraints"],
+    "nsd": ["NSD2007B4"],
+    "make-explicit-links": 1,
+    "do-not-display-copyright": 1
 }
